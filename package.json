@@ -1,0 +1,26 @@
+{
+  "name": "genreland",
+  "version": "1.0.0",
+  "description": "A platform for understanding music tastes in relation to location, and helping people with similar tastes connect.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yardenhochman/GenreLand.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yardenhochman/GenreLand/issues"
+  },
+  "homepage": "https://github.com/yardenhochman/GenreLand#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "logger": "0.0.1",
+    "method-override": "^2.3.9",
+    "path": "^0.12.7"
+  }
+}
