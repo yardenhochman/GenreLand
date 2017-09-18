@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS events (
   datetime VARCHAR(255) UNIQUE NOT NULL,
   genre TEXT NOT NULL,
   description TEXT NOT NULL,
-  createdby
+  createdby INTEGER NOT NULL
 );
