@@ -5,20 +5,20 @@ class Location extends Component {
     super();
     this.state = {
       response: null,
-      searchTerm: ''
+      location: ''
     }
   }
   handleChange(event) {
     event.preventDefault();
     let input = event.target.value;
-    this.setState({searchTerm: input})
+    this.setState({location: input})
   }
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.searchTerm =! '')
+    if (this.state.location =! '')
         this.getLocation()
   }
-  getLocation() {
+  getLocation() { //take zipcode, return city
     fetch(``/* location api and key */)
     .then ( response => response.json())
     .then ( (jsonRes) => {
@@ -31,11 +31,11 @@ class Location extends Component {
 
   render() {
     <div className='Where do you live?'>
-        <h2>{this.props.name}</h2>
-        <input type="text" onChange = {this.handleChange} value = {this.state.searchTerm}></input>
-        <button onClick = {this.handleSubmit} >Submit</button>
-        <button onClick = {this.automatic} >Use your current location</button>
-      </div>
+      <h2>{this.props.name}</h2>
+      <input type="text" onChange = {this.handleChange} value = {this.state.searchTerm}></input>
+      <button onClick = {this.handleSubmit} >Submit</button>
+      <button onClick = {this.automatic} >Use your current location</button>
+    </div>
   }
 
 }
