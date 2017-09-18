@@ -4,4 +4,7 @@ const profileRoutes = express.Router();
 //import controller
 //add routes
 
-// module.exports =
+//displays profile page
+profileRoutes.get('/', somecontroller)
+
+module.exports = profileRoutes;
