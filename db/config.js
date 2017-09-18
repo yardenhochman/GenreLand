@@ -9,7 +9,7 @@ const options = {
   function setDatabase() {
     if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
       return pgp({
-        database: 'netflix',
+        database: 'sound_land',
         port: 5432,
         host: 'localhost',
       });
