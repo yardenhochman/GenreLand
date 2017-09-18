@@ -1,0 +1,8 @@
+\c sound_land;
+
+CREATE TABLE IF NOT EXISTS events (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  address VARCHAR(255) UNIQUE NOT NULL,
+  place VARCHAR(255) UNIQUE NOT NULL,
+  password_digest TEXT NOT NULL
