@@ -11,3 +11,4 @@ Music2locations.insert = (data) => {
     [data.music_id, data.location_id, data.user_id])
 }
 
+module.exports = Music2locations;

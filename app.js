@@ -15,7 +15,7 @@ app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.send('hello world')
 });
 

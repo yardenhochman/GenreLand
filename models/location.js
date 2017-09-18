@@ -10,3 +10,5 @@ Location.insert = (location) =>{
         RETURNING *`,
         [location.zip, location.description])
 };
+
+module.exports = Location;

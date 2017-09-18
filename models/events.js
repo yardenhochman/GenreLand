@@ -11,3 +11,4 @@ Events.insert = data => {
     [data.title, data.address, data.datetime, data.genre, data.description, data.createdby])
 };
 
+module.exports = Events;
