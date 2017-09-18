@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS music (
 
 CREATE TABLE IF NOT EXISTS location (
   id SERIAL PRIMARY KEY,
-  zipcode VARCHAR(255) NOT NULL
+  zipcode VARCHAR(255) NOT NULL,
+  description VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS music2location (
