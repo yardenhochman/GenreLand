@@ -13,7 +13,7 @@ class GenreDown extends React.Component {
         handleChange(event) {
           this.setState({value: event.target.value});
         }
-      
+      //submit must be redirected to DB
         handleSubmit(event) {
           alert('A name was submitted: ' + this.state.value);
           event.preventDefault();
