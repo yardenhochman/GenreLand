@@ -8,11 +8,12 @@ require('dotenv').config();
 //.then should put the responded data in locals
 //then call next()
 function getAllZips(req, res, next){
-    fetch(`https://www.zipcodeapi.com/rest/${zipcodeapi_API_KEY}/radius.json/${req.body.zipcode}/1/mi`)
+    fetch(`https://www.zipcodeapi.com/rest/${zipcodeapi_API_KEY}/radius.json/${req.body.zipcode}/3/mi`)
    .then(fetchRez => {
         fetchRez.json()
    })
-   .then(allZips => {
+   .then(allZip => {
+       let allZips = allZip.zip_code;
     res.locals.allZips = allZips;
     next()
    })

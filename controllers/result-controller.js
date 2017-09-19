@@ -1,14 +1,14 @@
-const Music2locations = require('../models/music2locations')
+const Music2locations = require('../models/music2location')
 const Location = require('../models/location')
 
 const resultsController = {};
 
 resultsController.queryResults = (req, res) =>{
-    Music2locations.results(data)
+    Music2locations.results(res.locals.allZips)
     .then(results =>{
         res.json({
             message: 'ok',
-            data: data
+            data: results
         })
     }).catch(err =>{
         console.log(err)

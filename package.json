@@ -28,6 +28,7 @@
     "method-override": "^2.3.9",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg-promise": "^6.7.1"
   }
 }
