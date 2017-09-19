@@ -19,7 +19,8 @@ class Location extends Component {
         this.getLocation()
   }
   getLocation() { //take zipcode, return city
-    fetch(` https://www.zipcodeapi.com/rest/${API_KEY}/info.json/${this.state.zipcode}/degrees`)
+    let zipcode = this.state.zipcodel
+    fetch(` https://www.zipcodeapi.com/rest/${zipcodeapi_API_KEY}/info.json/${zipcode}/degrees`)
     .then ( response => response.json())
     .then ( (jsonRes) => {
         let locationData = {
@@ -30,10 +31,51 @@ class Location extends Component {
     }).catch( error => console.log(error))
   }
 
+  success(position) {
+    let cords;
+    cords.latitude = position.coords.latitude;
+    cords.longitude = position.coords.longitude;
+    findZip(cords)
+  }
+  error(err) {
+    console.log(err)
+  }
+  options() {
+    enableHighAccuracy: true
+  }
+  
+  automatic() { 
+    //this function returns a variable which we will refer to as "position" for convenience. see success
+    if (!navigator.geolocation)
+      return
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    //the get currentposition function needs predefined success, error, options functions. see above functions
+  }
+
+
+
+  findZip(cords) {
+    fetch(` https://maps.googleapis.com/maps/api/geocode/json?latlng=${cords.latitude},${cords.longitude}&key=${GOOGLE_API_KEY}`)
+    .then ( response => response.json() )
+    .then ( (jsonRes) => {
+      let location
+      location.city = jsonRes[0].address_components[2].long_name;
+      location.zipcode = jsonRes[0].address_components[7].long_name;
+    })
+    this.setState({
+      zipcode: location.zipcode
+    })
+    let locationData = {
+      zipcode: this.state.zipcode,
+      city: jsonRes.city
+    }
+    this.props.updateLocation(locationData);ß
+  }
+
   render() {
     <div className='Please enter your zipcode?'>
       <h2>{this.props.name}</h2>
-      <input type="text" onChange = {this.handleChange} value = {this.state.searchTerm}></input>
+      <input type="text" onChange = {this.handleChange} value = {this.state.zipcode}></input>
       <button onClick = {this.handleSubmit} >Submit</button>
       <button onClick = {this.automatic} >Use your current location</button>
     </div>
