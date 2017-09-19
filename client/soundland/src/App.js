@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import GenreDown from './Components/GenreSelect'
 import Location from './Components/Location'
@@ -39,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>You live in {this.state.location.city}, {this.state.location.state}</h1>
+        {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
         <GenreDown name={'Favorite Musical Artist'} updateMusic={this.updateMusic} />
         <Location name={'Where do you live'} updateLocation={this.updateLocation} />
         <button onClick = {this.onSubmit} >Submit</button>
