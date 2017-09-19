@@ -12,6 +12,7 @@ class App extends Component {
     }
     this.updateLocation = this.updateLocation.bind(this)
     this.updateMusic = this.updateMusic.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
 
   }
     updateLocation(location) {
@@ -25,6 +26,17 @@ class App extends Component {
       });
     }
     onSubmit() {
+      if (this.state.location === null || this.state.music === null) {
+        return
+      }
+      let body = {};
+      body.location = this.state.location;
+      body.music = this.state.music;
+      fetch("localhost:3000", {
+        method: "POST",
+        body: body
+      });
+    }
       /* 
       if state.location and state.music are both not Null, 
       send objects saved in state into the router. 
@@ -33,7 +45,7 @@ class App extends Component {
       a map or list, that will inform the user where in the area he can find 
       places to listen to the music he loves.
        */
-    }
+    
 
   render() {
     return (
