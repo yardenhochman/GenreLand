@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       location: null,
       music: "0",
+      results: null
     }
     this.updateLocation = this.updateLocation.bind(this)
     this.updateMusic = this.updateMusic.bind(this)
@@ -32,10 +33,17 @@ class App extends Component {
       let body = {};
       body.location = this.state.location;
       body.music = this.state.music;
-      fetch("localhost:3000", {
+      fetch("localhost:3001/results", {
         method: "POST",
-        body: body
-      });
+        data: {
+        genre: Number(this.state.music),
+        zipcode: this.state.Location
+        },
+      }).then(res =>{
+        this.setState({results: res})
+      }).catch(err =>{
+        console.log(err)
+      })
     }
       /* 
       if state.location and state.music are both not Null, 

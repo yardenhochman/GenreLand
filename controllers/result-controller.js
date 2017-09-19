@@ -23,7 +23,7 @@ resultsController.insertLocation = (req, res, next) => {
     Location.insert(req.body.zipcode)
     .then(data =>{
         let location_id = data.location_id;
-        res.locals.location_id =location_id;
+        res.locals.location_id = location_id;
         next();
     })
 }
