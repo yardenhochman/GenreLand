@@ -4,7 +4,6 @@ class Music extends Component {
   constructor() {
     super();
     this.state = {
-      response: null,
       searchTerm: ''
     }
   }
@@ -38,3 +37,5 @@ class Music extends Component {
   }
 
 }
+
+export default Music;

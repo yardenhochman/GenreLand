@@ -40,6 +40,7 @@ class Location extends Component {
   }
 
 }
+export default Location;
 
 /*
 returns a list of close zip codes. see ending 
