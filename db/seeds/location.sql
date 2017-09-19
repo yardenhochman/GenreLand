@@ -1,3 +1,5 @@
+\c sound_land
+
 INSERT INTO location (zipcode) VALUES
   ('11214'),
   ('11204'),
@@ -22,5 +24,4 @@ INSERT INTO location (zipcode) VALUES
   ('11211'),
   ('11224'),
   ('11238'),
-  ('10038'),
-;
+  ('10038');
