@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Music from './components/Music'
-import Location from './components/Location'
+import GenreDown from './Components/GenreSelect'
+import Location from './Components/Location'
 
 class App extends Component {
   constructor() {
