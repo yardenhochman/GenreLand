@@ -20,6 +20,8 @@
   "homepage": "https://github.com/yardenhochman/GenreLand#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "logger": "0.0.1",
     "method-override": "^2.3.9",

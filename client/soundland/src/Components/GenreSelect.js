@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class GenreDown extends React.Component {
     constructor(props) {
       super(props);
-
       this.state = {value: 'Rock'};
       
           this.handleChange = this.handleChange.bind(this);
@@ -17,13 +16,14 @@ class GenreDown extends React.Component {
         handleSubmit(event) {
           alert('A name was submitted: ' + this.state.value);
           event.preventDefault();
+          this.props.updateMusic(this.state.value)
         }
       
         render() {
             return (
               <form onSubmit={this.handleSubmit}>
                 <label>
-                  Pick your favorite genre:
+                <h2>{this.props.name}</h2>
                   <select value={this.state.value} onChange={this.handleChange}>
                     <option value="Rock">Rock</option>
                     <option value="Alternative">Alternative</option>
@@ -56,4 +56,9 @@ class GenreDown extends React.Component {
           }
         }
 
-        export default GenreDown;
+export default GenreDown;
+
+/* 
+after failing to merge gary's work I'm resorting to 
+old school copy paste. Credits go to Gary for this code
+*/
