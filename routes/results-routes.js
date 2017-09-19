@@ -1,5 +1,6 @@
 const express = require('express');
 const resultsRoutes = express.Router();
+const resultsController = require('../controllers/results-controller')
 
 //import controller
 //add routes
@@ -8,6 +9,7 @@ const resultsRoutes = express.Router();
 
 //needs a controller to call a model that returns the results 
 //displays the results page
-resultsRoutes.get('/', somecontroller)
+resultsRoutes.get('/', resultsController.queryResults)
+
 
 module.exports = resultsRoutes;

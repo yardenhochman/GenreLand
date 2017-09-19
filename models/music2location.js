@@ -11,4 +11,15 @@ Music2locations.insert = (data) => {
     [data.music_id, data.location_id, data.user_id])
 }
 
+Music2locations.results = data => { 
+    return db.query(`
+    SELECT muisc.genre, location.zipcode FROM music
+    JOIN music2location 
+    ON music2location.music_id = music.id
+    JOIN location 
+    ON music2location.location_id = location.id
+    WHERE location.zipcode IN ($1, $2, $3, $4, $5)`
+    [data.zipcode[0], data.zipcode[1], data.zipcode[2], data.zipcode[3], data.zipcode[4]])
+}
+
 module.exports = Music2locations;
