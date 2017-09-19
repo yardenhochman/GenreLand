@@ -9,7 +9,7 @@ const resultsController = require('../controllers/results-controller')
 
 //needs a controller to call a model that returns the results 
 //displays the results page
-resultsRoutes.get('/', resultsController.queryResults)
+resultsRoutes.post('/', resultsController.insertLocation, resultsController.queryResults)
 
 
 module.exports = resultsRoutes;
