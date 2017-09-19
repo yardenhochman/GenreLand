@@ -1,3 +1,10 @@
+/* 
+this file isn't used at this time and was superceded by genreSelect. 
+I'm keeping it here for reference in case we need it. 
+This file is intended for API calling music information
+*/
+
+
 import React, { Component } from 'react';
 
 class Music extends Component {
