@@ -5,6 +5,6 @@ const profileRoutes = express.Router();
 //add routes
 
 //displays profile page
-profileRoutes.get('/', somecontroller)
+// profileRoutes.get('/', somecontroller)
 
 module.exports = profileRoutes;

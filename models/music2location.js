@@ -13,7 +13,7 @@ Music2locations.insert = (data) => {
 
 Music2locations.results = data => { 
     return db.query(`
-    SELECT muisc.genre, location.zipcode FROM music
+    SELECT location.zipcode, music.genre FROM music
     JOIN music2location 
     ON music2location.music_id = music.id
     JOIN location 

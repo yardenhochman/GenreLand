@@ -1,3 +1,5 @@
+\c sound_land
+
 INSERT INTO music (genre) VALUES
   ('Rock'),
   ('Alternative'),
@@ -21,5 +23,5 @@ INSERT INTO music (genre) VALUES
   ('Industrial'),
   ('Opera'),
   ('Bluegrass'),
-  ('Disco'),
+  ('Disco')
   ;
