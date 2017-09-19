@@ -35,7 +35,7 @@ class Location extends Component {
     let cords;
     cords.latitude = position.coords.latitude;
     cords.longitude = position.coords.longitude;
-    findZip(cords)
+    this.findZip(cords)
   }
   error(err) {
     console.log(err)
@@ -48,37 +48,38 @@ class Location extends Component {
     //this function returns a variable which we will refer to as "position" for convenience. see success
     if (!navigator.geolocation)
       return
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    navigator.geolocation.getCurrentPosition(this.success, this.error, this.options);
     //the get currentposition function needs predefined success, error, options functions. see above functions
   }
 
-
-
   findZip(cords) {
-    fetch(` https://maps.googleapis.com/maps/api/geocode/json?latlng=${cords.latitude},${cords.longitude}&key=${GOOGLE_API_KEY}`)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${cords.latitude},${cords.longitude}&key=${GOOGLE_API_KEY}`)
     .then ( response => response.json() )
     .then ( (jsonRes) => {
-      let location
-      location.city = jsonRes[0].address_components[2].long_name;
-      location.zipcode = jsonRes[0].address_components[7].long_name;
-    })
+      let result;
+      result.city = jsonRes[0].address_components[2].long_name;
+      result.zipcode = jsonRes[0].address_components[7].long_name;
+    
     this.setState({
-      zipcode: location.zipcode
+      zipcode: result.zipcode
     })
     let locationData = {
       zipcode: this.state.zipcode,
       city: jsonRes.city
     }
-    this.props.updateLocation(locationData);ß
-  }
+    this.props.updateLocation(locationData);
+  })
+}
 
   render() {
+    return (
     <div className='Please enter your zipcode?'>
       <h2>{this.props.name}</h2>
       <input type="text" onChange = {this.handleChange} value = {this.state.zipcode}></input>
       <button onClick = {this.handleSubmit} >Submit</button>
       <button onClick = {this.automatic} >Use your current location</button>
     </div>
+    )
   }
 
 }
