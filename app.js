@@ -28,7 +28,7 @@ const profileRoutes = require('./routes/profile-routes');
 app.use('/profile', profileRoutes);
 
 const resultsRoutes = require('./routes/results-routes');
-app.use('results', resultsRoutes)
+app.use('/results', resultsRoutes)
 
 app.get('*', (req, res) => {
     res.send('404error');

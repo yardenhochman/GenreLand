@@ -4,6 +4,7 @@ const Location = require('../models/location')
 const resultsController = {};
 
 resultsController.queryResults = (req, res) =>{
+    console.log('queryResults reached');
     Music2locations.results(res.locals.allZips)
     .then(results =>{
         res.json({
@@ -20,23 +21,32 @@ resultsController.queryResults = (req, res) =>{
 }
 
 resultsController.insertLocation = (req, res, next) => {
+    console.log('insertLocation reached');
+    console.log(req.body)
     Location.insert(req.body.zipcode)
     .then(data =>{
-        let location_id = data.location_id;
-        res.locals.location_id = location_id;
+        //let location_id = data.location_id;
+        res.locals.id = data.id;
         next();
+    })
+    .catch(err =>{
+        console.log(err)
     })
 }
 
 resultsController.insertMusic2Location = (req, res, next) =>{
+    console.log('music2locations reached');
     let data = {
         genre_id: req.body.genre,
-        location_id: res.locals.location_id,
+        location_id: res.locals.id,
         user_id: req.body.id
     }
     Music2locations.insert(data)
     .then(() => {
         next();
+    })
+    .catch(err =>{
+        console.log(err)
     })
 }
 
