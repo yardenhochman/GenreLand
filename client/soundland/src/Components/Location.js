@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+
 class Location extends Component {
   constructor() {
     super();
     this.state = {
       zipcode: '',
+
       coords: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -14,6 +16,7 @@ class Location extends Component {
   handleChange(event) {
     event.preventDefault();
     let input = Number(event.target.value);
+
     this.setState({zipcode: input})
   }
   success (position) {
@@ -30,8 +33,9 @@ class Location extends Component {
     navigator.geolocation.getCurrentPosition(this.success, error, options);
     //the get currentposition function needs predefined success, error, options functions. see above functions
   }
-
+ 
   render() {
+
     return (
     <div className='Please enter your zipcode?'>
       <h2>{this.props.name}</h2>
@@ -41,11 +45,12 @@ class Location extends Component {
     </div>
     )
   }
-
 }
 export default Location;
 
 /*
+orig
+https://www.zipcodeapi.com/rest/${API_KEY}/info.json/${this.state.zipcode}/degrees
 returns a list of close zip codes. see ending 
 https://www.zipcodeapi.com/rest/uhIXlyIX5ti6rQzIFn2CksKeouBVtG8XYQVkpDhu7AByqah6ykISMs6aWI6qoenn/radius.json/32131/5/km
 returns information for zipcode
