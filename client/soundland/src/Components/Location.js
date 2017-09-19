@@ -6,8 +6,7 @@ class Location extends Component {
     super();
     this.state = {
       zipcode: '',
-
-      coords: ''
+      /* coords: '' */
     }
     this.handleChange = this.handleChange.bind(this)
     /* this.automatic = this.automatic.bind(this)
@@ -16,9 +15,9 @@ class Location extends Component {
   handleChange(event) {
     event.preventDefault();
     let input = Number(event.target.value);
-
+    console.log(input)
     this.setState({zipcode: input})
-    this.props.updateLocation(this.state.zipcode)
+    this.props.updateLocation(input)
   }
  /*  success (position) {
     let coords = position.coords
