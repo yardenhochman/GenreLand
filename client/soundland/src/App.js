@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import GenreDown from './Components/GenreSelect'
+import Genreland from './Components/Genreland'
 import Location from './Components/Location'
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       location: null,
-      music: null,
+      music: "0",
     }
     this.updateLocation = this.updateLocation.bind(this)
     this.updateMusic = this.updateMusic.bind(this)
@@ -26,7 +26,7 @@ class App extends Component {
       });
     }
     onSubmit() {
-      if (this.state.location === null || this.state.music === null) {
+      if (this.state.location === null || this.state.music === "0") {
         return
       }
       let body = {};
@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <div>
         {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
-        <GenreDown name={'Favorite Musical Artist'} updateMusic={this.updateMusic} />
+        <Genreland name={'Favorite Musical Artist'} updateMusic={this.updateMusic} />
         <Location name={'Where do you live'} updateLocation={this.updateLocation} />
         <button onClick = {this.onSubmit} >Submit</button>
       </div>
