@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Genreland from './Components/Genreland'
 import Location from './Components/Location'
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -30,20 +31,34 @@ class App extends Component {
       if (this.state.location === null || this.state.music === "0") {
         return
       }
-      let body = {};
-      body.location = this.state.location;
-      body.music = this.state.music;
-      fetch("localhost:3001/results", {
-        method: "POST",
-        data: {
-        genre: Number(this.state.music),
-        zipcode: this.state.Location
-        },
-      }).then(res =>{
-        this.setState({results: res})
-      }).catch(err =>{
-        console.log(err)
-      })
+      let data = {};
+      data.zipcode = this.state.location;
+      data.genre = Number(this.state.music);
+
+    //   let myRequest = new Request('http://localhost:3001/results', {method: 'POST', body: {
+    //     zipcode: this.state.location,
+    //     genre: Number(this.state.music)
+    //   }
+    // });
+
+    //   fetch(myRequest)
+    //   .then(res =>{
+    //     this.setState({results: res})
+    //   }).catch(err =>{
+    //     console.log(err)
+    //   })
+
+    axios({
+      method: 'POST',
+      url: 'http://localhost:3001/results',
+      data
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
     }
       /* 
       if state.location and state.music are both not Null, 

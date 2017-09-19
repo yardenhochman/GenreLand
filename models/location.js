@@ -2,13 +2,13 @@ const db = require('../db/config');
 
 const Location = {};
 
-Location.insert = (location) =>{
+Location.insert = (zipcode) =>{
     return db.one (`
         INSERT INTO location
         (zipcode, description)
         Values ($1, $2)
         RETURNING *`,
-        [location.zip, location.description])
+        [zipcode, ' '])
 };
 
 module.exports = Location;
