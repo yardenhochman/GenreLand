@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Music from './components/Music'
+import Location from './components/Location'
 
 class App extends Component {
   constructor() {
