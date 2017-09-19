@@ -40,8 +40,8 @@ class App extends Component {
     return (
       <div>
         <h1>You live in {this.state.location.city}, {this.state.location.state}</h1>
-        <Music name={'Favorite Musical Artist'} updateLocation={this.updateLocation} />
-        <Location name={'Where do you live'} updateMusic={this.updateMusic} />
+        <GenreDown name={'Favorite Musical Artist'} updateMusic={this.updateMusic} />
+        <Location name={'Where do you live'} updateLocation={this.updateLocation} />
         <button onClick = {this.onSubmit} >Submit</button>
       </div>
     );
