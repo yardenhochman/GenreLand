@@ -1,8 +1,6 @@
 require('isomorphic-fetch');
 require('dotenv').config();
 
-
-
 //add the url for the fetch
 //add above key var to url
 //.then should put the responded data in locals
@@ -13,9 +11,9 @@ function getAllZips(req, res, next){
         fetchRez.json()
    })
    .then(allZip => {
-       let allZips = allZip.zip_code;
+    let allZips = allZip.zip_code;
     res.locals.allZips = allZips;
-    next()
+    next();
    })
 }
 
