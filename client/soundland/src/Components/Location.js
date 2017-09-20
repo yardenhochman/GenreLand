@@ -15,7 +15,8 @@ class Location extends Component {
   handleChange(event) {
     event.preventDefault();
     let input = Number(event.target.value);
-    console.log(input)
+    if (isNaN(input))
+      return
     this.setState({zipcode: input})
     this.props.updateLocation(input)
   }
