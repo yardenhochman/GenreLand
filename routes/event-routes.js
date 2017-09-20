@@ -1,14 +1,13 @@
 const express = require('express');
 const eventRoutes = express.Router();
+const eventController = require('../controllers/result-controller')
 
-//import controller
-//add routes
 
-// //to display all events currently live
-// eventRoutes.get('/', somecontroller);
+//to display all events currently live
+eventRoutes.get('/', eventController.all);
 
-// //display specific event page
-// eventRoutes.get('/:id', somecontroller);
+//display specific event page
+eventRoutes.get('/:id', eventController.findOne);
 
 // //create an event
 // eventRoutes.post('/:id', somecontroller);
