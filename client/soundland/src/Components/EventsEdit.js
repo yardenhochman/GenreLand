@@ -134,7 +134,7 @@ class EventsEdit extends Component {
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
+             ? <Redirect push to={`/events-general/${this.state.newId}`} />
              : ''}
              
           </div>  
