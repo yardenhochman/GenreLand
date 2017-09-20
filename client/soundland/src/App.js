@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import Genreland from './Components/Genreland'
 import Location from './Components/Location'
+import Results from './Components/results'
 import axios from 'axios';
+import Footer from './Components/Footer';
+//import Nav from './Nav';
 
 class App extends Component {
   constructor() {
@@ -10,6 +13,7 @@ class App extends Component {
     this.state = {
       location: null,
       music: "0",
+      waiting: false,
       results: null
     }
     this.updateLocation = this.updateLocation.bind(this)
@@ -28,9 +32,9 @@ class App extends Component {
       });
     }
     onSubmit() {
-      if (this.state.location === null || this.state.music === "0") {
+      if (this.state.location === null || this.state.music === "0")
         return
-      }
+      this.setState({waiting: true})
       let data = {
         zipcode: this.state.location,
         genre: Number(this.state.music),
@@ -44,21 +48,15 @@ class App extends Component {
     })
     .then(res => {
       console.log(res.data);
-      this.setState({results:res.data})
+      this.setState({
+        results:res.data,
+        waiting: false
+      })
     })
     .catch(err => {
       console.log(err);
     })
-    }
-      /* 
-      if state.location and state.music are both not Null, 
-      send objects saved in state into the router. 
-      The router will store the location and music in the database in case they do not exist yet,
-      and save their link in a shared table. Once this process is done, it will direct the user into
-      a map or list, that will inform the user where in the area he can find 
-      places to listen to the music he loves.
-       */
-    
+  }
 
   render() {
     return (
@@ -66,7 +64,8 @@ class App extends Component {
         {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
         <Genreland name={'Favorite Musical Artist'} updateMusic={this.updateMusic} />
         <Location name={'Where do you live'} updateLocation={this.updateLocation} />
-        <button onClick = {this.onSubmit} >Submit</button>
+        <button onClick={this.onSubmit} >Submit</button>
+        <Results results={this.state.results} waiting={this.state.waiting} />
       </div>
     );
   }
