@@ -10,30 +10,50 @@ class Results extends Component {
     }
   }
 
-  renderResults(results) {
-    console.log(results)
-    return ( 
-      <div>
-        fdsfs
-      </div>
-    )
+  sort(data) {
+    let results = {};
+    data.map( (number) => {
+      if (!results[number.zipcode])
+        results[number.zipcode] = {[number.genre]: 1};
+      else if (!results[number.zipcode][number.genre])
+        results[number.zipcode][number.genre] = 1;
+      else
+        results[number.zipcode][number.genre]++;
+      })
+      return results;
+  }
+  displayResults(results) {
+
+  }
+
+
+
+  resultsParser(results) {
+    if (results.message !== 'ok')
+      return (
+        <div>
+          Try a different zipcode.
+        </div>
+      )
+    results = this.sort(results.data)
+    return this.displayResults(results)
   }
   renderLoading() {
+    console.log('rendering loading message')
     return (
       <h2>
         Searching your area
       </h2>
     )
   }
-
   checkResults() {
     const results = this.props.results
     const waiting = this.props.waiting
     if (!results && !waiting)
-      return
+      return ('')
     if (waiting) 
-      this.renderLoading()
-    this.renderResults(results)
+      return this.renderLoading()
+    return this.resultsParser(results)
   }
   render() {
     return (
