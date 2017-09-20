@@ -36,7 +36,6 @@ class Location extends Component {
 
 
   render() {
-
     return (
     <div className='Please enter your zipcode?'>
       <h2>{this.props.name}</h2>
