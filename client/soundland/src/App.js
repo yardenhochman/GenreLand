@@ -31,22 +31,10 @@ class App extends Component {
       if (this.state.location === null || this.state.music === "0") {
         return
       }
-      let data = {};
-      data.zipcode = this.state.location;
-      data.genre = Number(this.state.music);
-
-    //   let myRequest = new Request('http://localhost:3001/results', {method: 'POST', body: {
-    //     zipcode: this.state.location,
-    //     genre: Number(this.state.music)
-    //   }
-    // });
-
-    //   fetch(myRequest)
-    //   .then(res =>{
-    //     this.setState({results: res})
-    //   }).catch(err =>{
-    //     console.log(err)
-    //   })
+      let data = {
+        zipcode: this.state.location,
+        genre: Number(this.state.music)
+      };
 
     axios({
       method: 'POST',
