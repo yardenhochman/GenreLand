@@ -42,7 +42,8 @@ class App extends Component {
       data
     })
     .then(res => {
-      console.log(res);
+      console.log(res.data);
+      this.setState({results:res.data})
     })
     .catch(err => {
       console.log(err);
