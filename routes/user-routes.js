@@ -1,10 +1,8 @@
 const express = require('express');
-const profileRoutes = express.Router();
+const userRoutes = express.Router();
+const usersController = require('../controllers/users-controller');
+const authHelpers = require('../services/auth/auth-helpers');
 
-//import controller
-//add routes
+userRoutes.get('/', authHelpers.loginRequired, usersController.index);
 
-//displays profile page
-profileRoutes.get('/', somecontroller)
-
-module.exports = profileRoutes;
+module.exports = userRoutes;
