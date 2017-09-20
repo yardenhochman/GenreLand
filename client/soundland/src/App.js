@@ -33,7 +33,8 @@ class App extends Component {
       }
       let data = {
         zipcode: this.state.location,
-        genre: Number(this.state.music)
+        genre: Number(this.state.music),
+        description: ' '
       };
 
     axios({
