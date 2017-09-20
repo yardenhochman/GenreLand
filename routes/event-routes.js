@@ -18,4 +18,4 @@ eventRoutes.delete('/:id', eventController.kill);
 // //update an event
 // eventRoutes.put('/:id', somecontroller);
 
-// module.exports = eventRoutes;
+module.exports = eventRoutes;
