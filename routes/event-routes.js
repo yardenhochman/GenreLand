@@ -15,7 +15,7 @@ eventRoutes.post('/:id', eventController.create);
 //delete an event
 eventRoutes.delete('/:id', eventController.kill);
 
-// //update an event
-// eventRoutes.put('/:id', somecontroller);
+//update an event
+eventRoutes.put('/:id', eventController.update);
 
 module.exports = eventRoutes;
