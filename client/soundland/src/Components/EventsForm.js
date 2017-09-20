@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Nav from './Nav';
 import Footer from '.Footer';
+import axios from 'axios';
 
 class EventsForm extends Component {
     constructor() {
@@ -29,7 +30,7 @@ class EventsForm extends Component {
 
       eventFormSubmit(event){
           event.preventDefault();
-        fetch
+        axios
           .post('/event', {
               title: this.state.title,
               address: this.state.address,
@@ -117,7 +118,7 @@ class EventsForm extends Component {
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/events/${this.state.newId}`} />
+             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
              : ''}
              
           </div>  
