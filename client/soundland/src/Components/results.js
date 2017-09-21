@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Footer from './Footer';
-//import Nav from './Nav';
 import AreaDisplay from './AreaDisplay'
 class Results extends Component {
   constructor() {
@@ -9,16 +7,20 @@ class Results extends Component {
       eventClicked: false,
     }
   }
-
- displayResults(results) {
+  displayAreas(results) {
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
-      let genres = Object.getOwnPropertyNames(results[zipcode])
-      const findValue = (a,b) => results[zipcode][b]-results[zipcode][a]
-      let sortedGenres = genres.sort(findValue)
-      let zipcodeText = Object.keys(props);
-       return (
-       <AreaDisplay key={index} zipcodetext={zipcodeText} zipcode={results[zipcode]} genres={sortedGenres}/>
+      const key = String(zipcode) + String(' number ' + index)
+      const unsortedGenres = Object.getOwnPropertyNames(results[zipcode])
+      const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
+      const value = (a,b) => results[zipcode][b]-results[zipcode][a] 
+      const genres = unsortedGenres.sort(occurrenceValue)
+      const genreOccurences = genres.map( genre => results[zipcode][genre])
+      return (
+        <AreaDisplay 
+        key={key} areaName={zipcode} 
+        genreOccurences={genreOccurences} genresList={genres}
+      />
       )
     })
   }
@@ -43,7 +45,7 @@ class Results extends Component {
       )
     results = this.sort(results.data)
     console.log(results)
-    return this.displayResults(results)
+    return this.displayAreas(results)
   }
   renderLoading() {
     console.log('rendering loading message')
