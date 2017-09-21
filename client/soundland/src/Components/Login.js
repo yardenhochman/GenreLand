@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -43,7 +44,6 @@ class Login extends Component {
       }).catch(err=> console.log(err));
       event.target.reset();
     } 
-  }
 
   render() {
     return(
@@ -85,5 +85,7 @@ class Login extends Component {
       </div>
     )
   }
+}
+
 
 export default Login;

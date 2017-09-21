@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Registration extends Component {
   constructor() {
@@ -12,12 +13,20 @@ class Registration extends Component {
       password_confirm: '',
       fireRedirect: false,
     }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+
+  }
+  componentDidMount(){
+    console.log(this.state)
   }
 
   handleInputChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    
+    let name = event.target.name;
+    let value = event.target.value;
+
+    console.log(event.target.name)
+    console.log(event.target.value)
+
     this.setState({
       [name]: value,
     });
@@ -25,6 +34,7 @@ class Registration extends Component {
 
   handleFormSubmit(event) {
       event.preventDefault();
+      console.log('inside handleformsubmit')
     if (this.state.password_digest === this.state.password_confirm) {
       // fetch POST request to server to create new user
       // redirect to their profile? back two pages?
@@ -33,16 +43,28 @@ class Registration extends Component {
         name: this.state.name,
         username: this.state.username,
         email: this.state.email,
-        password_digest: this.password_digest
+        password_digest: this.state.password_digest
       }
+      console.log('------> this is the state',this.state)
+      console.log(typeof this.state.name);
+      console.log(typeof this.state.username);
+      console.log(typeof this.state.email);
+      console.log(typeof this.state.password_digest);
+      console.log(data,'<----- data')
 //routes here are not valid revist
       axios({
+        
         method: 'POST',
-        url: 'http://localhost:3001/auth/',
-        data
+        url: 'http://localhost:3001/auth/register',
+        data: {
+        name: this.state.name,
+        username: this.state.username,
+        email: this.state.email,
+        password_digest: this.state.password_digest
+        }
       })
       .then(res => {
-        console.log(res.data);
+        console.log('res.data---->',res.data);
         this.setState({
           newID: res.data.id,
           //The res.data.id might be wrong here
@@ -59,7 +81,7 @@ class Registration extends Component {
         password_confirm: ''
       })
     }
-  }
+  
 
   render() {
     return(
@@ -72,27 +94,27 @@ class Registration extends Component {
         </div>
 
         <div className="register-form">
-          <form onSubmit={this.handleFormSubmit}>
+          <form onSubmit={(event)=> {this.handleFormSubmit(event)}}>
             <input
               type="text"
               placeholder="Name"
               name="name"
               value={this.state.name}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="text"
               placeholder="Username"
               name="username"
               value={this.state.username}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="email"
               placeholder="Email"
               name="email"
               value={this.state.email}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="password"
@@ -100,7 +122,7 @@ class Registration extends Component {
               name="password_digest"
               minLength="6" required 
               value={this.state.password_digest}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="password"
@@ -108,7 +130,7 @@ class Registration extends Component {
               name="password_confirm"
               minLength="6" required 
               value={this.state.password_confirm}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="submit"
@@ -116,7 +138,7 @@ class Registration extends Component {
             />
           </form>
           {this.state.fireRedirect
-          ? <Redirect push to={`/user/${this.state.newId}`} />
+          ? <Redirect push to={`/`} />
           : ''}
         </div>
 

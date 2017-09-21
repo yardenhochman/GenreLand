@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import Genreland from './Components/Genreland';
-import Location from './Components/Location';
-import Results from './Components/results';
-import Footer from './Components/Footer';
+import Header from './Header';
+import Genreland from './Genreland';
+import Location from './Location';
+import Results from './results';
+import Footer from './Footer';
 
 class Search extends Component {
   constructor() {
