@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Footer from './Footer';
-//import Nav from './Nav';
-
+import AreaDisplay from './AreaDisplay'
 class Results extends Component {
   constructor() {
     super();
@@ -9,7 +7,22 @@ class Results extends Component {
       eventClicked: false,
     }
   }
-
+  displayAreas(results) {
+    let zipcodes = Object.getOwnPropertyNames(results);
+    return zipcodes.map( (zipcode,index) => {
+      const key = String(zipcode) + String(' number ' + index)
+      const unsortedGenres = Object.getOwnPropertyNames(results[zipcode])
+      const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
+      const genres = unsortedGenres.sort(occurrenceValue)
+      const genreOccurences = genres.map( genre => results[zipcode][genre])
+      return (
+        <AreaDisplay 
+        key={key} areaName={zipcode} 
+        genreOccurences={genreOccurences} genresList={genres}
+      />
+      )
+    })
+  }
   sort(data) {
     let results = {};
     data.map( (number) => {
@@ -22,12 +35,6 @@ class Results extends Component {
       })
       return results;
   }
-  displayResults(results) {
-
-  }
-
-
-
   resultsParser(results) {
     if (results.message !== 'ok')
       return (
@@ -36,7 +43,7 @@ class Results extends Component {
         </div>
       )
     results = this.sort(results.data)
-    return this.displayResults(results)
+    return this.displayAreas(results)
   }
   renderLoading() {
     console.log('rendering loading message')
