@@ -26,7 +26,7 @@ class EventsEdit extends Component {
             const eventData = res.data.data;
             this.setState({ 
                 title: eventData.title,
-                address: eventData.address,
+                address: eventData.address, //onclick to cancel venue
                 date: eventData.date,
                 time: eventData.time, 
                 genre: eventData.genre,
@@ -134,7 +134,7 @@ class EventsEdit extends Component {
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
+             ? <Redirect push to={`/events-general/${this.state.newId}`} />
              : ''}
              
           </div>  
