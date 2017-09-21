@@ -13,7 +13,6 @@ class Results extends Component {
       const key = String(zipcode) + String(' number ' + index)
       const unsortedGenres = Object.getOwnPropertyNames(results[zipcode])
       const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
-      const value = (a,b) => results[zipcode][b]-results[zipcode][a] 
       const genres = unsortedGenres.sort(occurrenceValue)
       const genreOccurences = genres.map( genre => results[zipcode][genre])
       return (
@@ -44,7 +43,6 @@ class Results extends Component {
         </div>
       )
     results = this.sort(results.data)
-    console.log(results)
     return this.displayAreas(results)
   }
   renderLoading() {

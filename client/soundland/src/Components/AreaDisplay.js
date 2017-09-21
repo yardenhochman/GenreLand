@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const AreaDisplay = props => {
+const AreaDisplay = (props) => {
   return (
-    <div key={props.key}>
+    <div>
       <h1>
         {props.areaName}
       </h1>
       <ul>
-        {props.genreList.map( (genre,index) => {
+        {props.genresList.map( (genre,index) => {
           return (
             <li className="list-group-item" key={String(genre) + String(' number ' + index)}>
-              <h2>{genre}</h2>
-              <p>{props.genreOccurences[index]}</p>
+              <p>{genre+' '+props.genreOccurences[index]}</p>
             </li>
           )
         })}
