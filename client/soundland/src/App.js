@@ -2,20 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Genreland from './Components/Genreland'
 import Location from './Components/Location'
-<<<<<<< HEAD
 import Results from './Components/results'
 import axios from 'axios';
 import Footer from './Components/Footer';
-//import Nav from './Nav';
-=======
-<<<<<<< Updated upstream
-import axios from 'axios';
-=======
-import Header from './Components/Header'
-import Footer from './Componets/Footer'
->>>>>>> Stashed changes
->>>>>>> update route names
 
+//import Nav from './Nav';
 class App extends Component {
   constructor() {
     super();

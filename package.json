@@ -32,9 +32,10 @@
     "method-override": "^2.3.9",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.1",
-    "passport-local": "^1.0.0",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "pg-promise": "^6.7.1"
+    "pg-promise": "^6.7.1",
+    "react-router-dom": "^4.2.2"
   }
 }
