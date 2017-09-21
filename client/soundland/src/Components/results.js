@@ -43,6 +43,7 @@ class Results extends Component {
         </div>
       )
     results = this.sort(results.data)
+
     return this.displayAreas(results)
   }
   renderLoading() {
