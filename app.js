@@ -39,8 +39,8 @@ app.get('/', (req, res) => {
     res.send('hello world')
 });
 
-const eventRoutes = require('./routes/event-routes');
-app.use('/event', eventRoutes);
+ const eventRoutes = require('./routes/event-routes');
+ app.use('/event', eventRoutes);
 
 const userProfile = require('./routes/user-routes');
 app.use('/profile', userProfile);

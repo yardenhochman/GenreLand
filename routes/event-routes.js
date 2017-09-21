@@ -4,7 +4,7 @@ const eventController = require('../controllers/event-controller')
 
 
 //to display all events currently live
-eventRoutes.get('/', eventController.findAll);
+ eventRoutes.get('/', eventController.findAll);
 
 //display specific event page
 eventRoutes.get('/:id', eventController.findOne);
@@ -18,4 +18,4 @@ eventRoutes.delete('/:id', eventController.kill);
 //update an event
 eventRoutes.put('/:id', eventController.update);
 
-// module.exports = eventRoutes;
+ module.exports = eventRoutes;
