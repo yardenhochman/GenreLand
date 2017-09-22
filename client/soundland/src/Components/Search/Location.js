@@ -4,15 +4,13 @@ const automatic = () => {
   return
 }
 
-const Location = (props) => {
-  return (
-    <div className='Please enter your zipcode'>
-      <h2>{props.name}</h2>
-      <input type="number" onChange = {props.handleZipcodeInput} value = {props.setLocation}></input>
-      <button onClick = {automatic} >Use your current location</button>
-    </div>
-    )
-}
+const Location = ({name , handleZipcodeInput , setLocation}) => 
+      <div className='Please enter your zipcode'>
+        <h2>{name}</h2>
+        <input type="number" onChange = {handleZipcodeInput} value = {setLocation}></input>
+        <button onClick = {automatic} >Use your current location</button>
+      </div>
+
 export default Location;
       /* coords: '' */
 
