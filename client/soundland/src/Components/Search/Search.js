@@ -14,7 +14,7 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      location: null,
+      location: '',
       music: "0",
       waiting: false,
       results: null
@@ -22,18 +22,35 @@ class Search extends Component {
     this.updateLocation = this.updateLocation.bind(this)
     this.updateMusic = this.updateMusic.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-
+    this.handleGenreChoice = this.handleGenreChoice.bind(this)
+    this.handleZipcodeInput = this.handleZipcodeInput.bind(this)
   }
+    
+    handleZipcodeInput(event) {
+      event.preventDefault();
+      let input = Number(event.target.value);
+      if (isNaN(input))
+        return
+      this.updateLocation(input)
+    }
+
+
     updateLocation(location) {
       this.setState({
         location: location
       });
     }
+
     updateMusic(music) {
       this.setState({
         music: music
       });
     }
+    handleGenreChoice(event) {
+      event.preventDefault();
+      this.updateMusic(event.target.value)
+    }
+
     onSubmit() {
       if (this.state.location === null || this.state.music === "0")
         return
@@ -68,10 +85,26 @@ class Search extends Component {
         <Header />
         <div>
           {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
-          <Genreland name={'Favorite Musical Artist'} updateMusic={this.updateMusic} />
-          <Location name={'Where do you live'} updateLocation={this.updateLocation} />
-          <button onClick={this.onSubmit} >Submit</button>
-          <Results results={this.state.results} waiting={this.state.waiting} />
+          <Genreland 
+            name = {'Favorite Musical Artist'} 
+            updateMusic = {this.updateMusic} 
+            handleGenreChoice = {this.handleGenreChoice} 
+            selectedMusic = {this.state.music}
+            />
+          <Location 
+            name = {'Where do you live'} 
+            updateLocation = {this.updateLocation} 
+            handleZipcodeInput = {this.handleZipcodeInput}
+            setLocation = {this.state.location}
+          />
+          <button 
+            onClick = {this.onSubmit}>
+            Submit
+          </button>
+          <Results 
+            results={this.state.results} 
+            waiting={this.state.waiting} 
+          />
         </div>
         <Footer />
       </div>

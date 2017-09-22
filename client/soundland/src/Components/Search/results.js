@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import AreaDisplay from './AreaDisplay'
 class Results extends Component {
-  constructor() {
-    super();
-    this.state = {
-      eventClicked: false,
-    }
-  }
+
   displayAreas(results) {
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
