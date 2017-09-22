@@ -3,12 +3,7 @@ import AreaDisplay from './AreaDisplay';
 import { Link } from 'react-router-dom';
 
 class Results extends Component {
-  constructor() {
-    super();
-    this.state = {
-      eventClicked: false,
-    }
-  }
+
   displayAreas(results) {
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
@@ -55,7 +50,7 @@ class Results extends Component {
         <Link to={`/Venues/`}>Venues</Link>
         {/* <button onClick={this.eventsView}>Local Scene</button> */}
         {this.displayAreas(results)}
-        
+
       </div>
     )
   }

@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+const automatic = () => {
+  return
+}
 
-class Location extends Component {
-  constructor() {
-    super();
-    this.state = {
-      zipcode: '',
+const Location = ({name , handleZipcodeInput , setLocation}) => 
+      <div className='Please enter your zipcode'>
+        <h2>{name}</h2>
+        <input type="number" onChange = {handleZipcodeInput} value = {setLocation}></input>
+        <button onClick = {automatic} >Use your current location</button>
+      </div>
+
+export default Location;
       /* coords: '' */
-    }
-    this.handleChange = this.handleChange.bind(this)
+
     /* this.automatic = this.automatic.bind(this)
     this.success = this.success.bind(this) */
-  }
-  handleChange(event) {
-    event.preventDefault();
-    let input = Number(event.target.value);
-    if (isNaN(input))
-      return
-    this.setState({zipcode: input})
-    this.props.updateLocation(input)
-  }
+
+  
  /*  success (position) {
     let coords = position.coords
     this.setState({coords:position.cords})
@@ -36,17 +34,8 @@ class Location extends Component {
   } */
 
 
-  render() {
-    return (
-    <div className='Please enter your zipcode?'>
-      <h2>{this.props.name}</h2>
-      <input type="number" onChange = {this.handleChange} value = {this.state.zipcode}></input>
-      <button onClick = {this.automatic} >Use your current location</button>
-    </div>
-    )
-  }
-}
-export default Location;
+
+    
 
 /*
 orig
