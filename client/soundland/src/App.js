@@ -48,7 +48,7 @@ class App extends Component {
       data
     })
     .then(res => {
-      console.log(res.data);
+      console.log(`Backend's response:` + res.data);
       this.setState({
         results:res.data,
         waiting: false
