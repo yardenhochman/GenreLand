@@ -1,58 +1,74 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Header from './Header2';
-import Footer from './Footer';
+import Header from '../header2';
+import Footer from '../Footer';
 import axios from 'axios';
 
-class EventsForm extends Component {
+class EventsEdit extends Component {
     constructor() {
-      super();
-        this.state = {
-            title: '',
-            address: '',
-            date: '',
-            time: '',
-            genre: '',
-            description: '',
-            fireRedirect: false,
-          };
-        this.eventFormChange = this.eventFormChange.bind(this);
-        this.eventFormSubmit = this.eventFormSubmit.bind(this);
-      }
+        super();
+          this.state = {
+              title: '',
+              address: '',
+              date: '',
+              time: '',
+              genre: '',
+              description: '',
+              fireRedirect: false,
+            };
+          this.eventFormChange = this.eventFormChange.bind(this);
+          this.eventFormSubmit = this.eventFormSubmit.bind(this);
+        }
 
-      eventFormChange(event) {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-          [name]: value,
-        });
-      }
-
-      eventFormSubmit(event){
-          event.preventDefault();
-        axios
-          .post('/event', {
-              title: this.state.title,
-              address: this.state.address,
-              date: this.state.date, //date and time separate
-              time: this.state.time,
-              genre: this.state.genre,
-              description: this.state.description,
-            })
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    newId: res.data.data.id,
-                    fireRedirect: true,
-                });
+  componentDidMount() {
+    axios.get(`/event/${this.props.match.params.id}`)
+        .then(res => {
+            const eventData = res.data.data;
+            this.setState({ 
+                title: eventData.title,
+                address: eventData.address, //onclick to cancel venue
+                date: eventData.date,
+                time: eventData.time, 
+                genre: eventData.genre,
+                description: eventData.description,
               })
-            .catch(err => console.log(err));
-            event.target.reset();
-          }
-        render(){
+            }).catch(err => console.log('error in event edit mount'));
+           }
+
+  handleInputChange(event){
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  eventFormSubmit(event){
+    event.preventDefault();
+  axios
+    .put(`/event/${this.props.match.params.id}`, {
+        title: this.state.title,
+        address: this.state.address,
+        date: this.state.date, //date and time separate
+        time: this.state.time,
+        genre: this.state.genre,
+        description: this.state.description,
+      })
+      .then(res => {
+          console.log(res);
+          this.setState({
+              newId: res.data.data.id,
+              fireRedirect: true,
+          });
+        })
+      .catch(err => console.log(err));
+      event.target.reset();
+    }
+
+   render(){
          return (
            <Header />  
-           <div className ="eventAdd">
+           <div className ="eventEdit">
             <form onSubmit={this.eventFormSubmit}>
              <label>
                  Event Title:
@@ -118,7 +134,7 @@ class EventsForm extends Component {
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
+             ? <Redirect push to={`/events-general/${this.state.newId}`} />
              : ''}
              
           </div>  
@@ -128,4 +144,4 @@ class EventsForm extends Component {
       }
 
 
-export default EventsForm;
+export default EventsEdit;
