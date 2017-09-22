@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import AreaDisplay from './AreaDisplay'
+import AreaDisplay from './AreaDisplay';
+import { Redirect } from 'react-router-dom';
 
 class Results extends Component {
   constructor() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Registration extends Component {
   constructor() {
@@ -81,6 +81,7 @@ class Registration extends Component {
           <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Register</h3>
+          <Link to={`/`}>Back to Main Page</Link>
         </div>
 
         <div className="register-form">

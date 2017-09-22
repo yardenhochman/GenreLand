@@ -51,8 +51,10 @@ class EventsForm extends Component {
           }
         render(){
          return (
-           <Header />  
-           <div className ="eventAdd">
+           
+          <div>
+            <Header />  
+           <div className="eventAdd">
             <form onSubmit={this.eventFormSubmit}>
              <label>
                  Event Title:
@@ -120,9 +122,9 @@ class EventsForm extends Component {
             {this.state.fireRedirect
              ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
              : ''}
-             
+             </div>
+             <footer /> 
           </div>  
-          <footer /> 
          );
         }
       }
