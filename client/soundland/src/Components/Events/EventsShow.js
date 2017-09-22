@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Header from '../Header2';
-import Footer from '../Footer';
+//import Header from '../Header2';
+//import Footer from '../Footer';
 import axios from 'axios';
 
 class EventsShow extends Component {

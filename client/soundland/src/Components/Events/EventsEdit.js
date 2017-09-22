@@ -138,7 +138,7 @@ class EventsEdit extends Component {
              ? <Redirect push to={`/EventsList/${this.state.newId}`} />
              : ''}
           </div>  
-          <footer />
+          <Footer />
         </div> 
          );
         }

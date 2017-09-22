@@ -123,7 +123,7 @@ class EventsForm extends Component {
              ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
              : ''}
              </div>
-             <footer /> 
+             <Footer /> 
           </div>  
          );
         }

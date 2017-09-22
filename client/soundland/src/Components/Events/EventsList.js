@@ -36,11 +36,11 @@ class EventsList extends Component {
         render(){
             return(
               <div>
-                <header />
+                <Header />
                 <div ClassName="eventsList">
                     {this.renderEvents()}
                 </div>
-                <footer />
+                <Footer />
               </div>
             )
           }
