@@ -14,7 +14,7 @@ class EventsList extends Component {
       }
 
       compnentDidMount(){
-          axios.get('http://localhost:3001/event')
+          axios.get('http://localhost:3001/event/')
           .then(res => {
            this.setState({
                eventApiDataLoaded: true,

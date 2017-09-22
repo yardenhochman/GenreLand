@@ -3,7 +3,7 @@ const Events = require('../models/events')
 const eventController = {};
 
 eventController.findAll = (req, res) =>{
-    Events.findAll()
+    Events.findAll('query results by zip events')
     .then(rez => {
         res.json({
             message: 'ok',
@@ -11,6 +11,10 @@ eventController.findAll = (req, res) =>{
         })
     }).catch(err =>{
         console.log(err)
+        res.status(500).json({
+            message: 'all events page not found',
+            error: err
+        })
     })
 }
 
