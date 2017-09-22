@@ -45,23 +45,12 @@ class Registration extends Component {
         email: this.state.email,
         password_digest: this.state.password_digest
       }
-      console.log('------> this is the state',this.state)
-      console.log(typeof this.state.name);
-      console.log(typeof this.state.username);
-      console.log(typeof this.state.email);
-      console.log(typeof this.state.password_digest);
-      console.log(data,'<----- data')
 //routes here are not valid revist
       axios({
         
         method: 'POST',
         url: 'http://localhost:3001/auth/register',
-        data: {
-        name: this.state.name,
-        username: this.state.username,
-        email: this.state.email,
-        password_digest: this.state.password_digest
-        }
+        data: data
       })
       .then(res => {
         console.log('res.data---->',res.data);
@@ -81,6 +70,7 @@ class Registration extends Component {
         password_confirm: ''
       })
     }
+  }
   
 
   render() {
@@ -145,7 +135,6 @@ class Registration extends Component {
       </div>
     )
   }
-
 }
 
 export default Registration;

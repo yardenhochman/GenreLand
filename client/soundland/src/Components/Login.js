@@ -31,11 +31,11 @@ class Login extends Component {
         //routes here are not valid revist
       axios({
         method: 'POST',
-        url: 'http://localhost:3001/auth/',
-        data
+        url: 'http://localhost:3001/auth/login',
+        data:data
       })
       .then(res => {
-        console.log(res.data);
+        console.log('Logged in!');
         this.setState({
           id: res.data.id,
           //The res.data.id might be wrong here
@@ -56,13 +56,13 @@ class Login extends Component {
         </div>
 
         <div className="login-form">
-          <form onSubmit={this.handleFormSubmit}>
+          <form onSubmit={(event)=> {this.handleFormSubmit(event)}}>
             <input
               type="text"
               placeholder="Username"
               name="username"
               value={this.state.username}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="password"
@@ -70,7 +70,7 @@ class Login extends Component {
               name="password_digest"
               minLength="6" required 
               value={this.state.password_digest}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="submit"
@@ -78,7 +78,7 @@ class Login extends Component {
             />
           </form>
           {this.state.fireRedirect
-          ? <Redirect push to={`/user/${this.state.id}`} />
+          ? <Redirect push to={`/`} />
           : ''}
         </div>
 
