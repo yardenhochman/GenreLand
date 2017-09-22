@@ -77,8 +77,7 @@ class Search extends Component {
               Submit
             </button>
             <Results 
-              results =               {this.state.results} 
-              waiting =               {this.state.waiting} 
+              state =                 {this.state}
             />
           </div>
         <Footer />
