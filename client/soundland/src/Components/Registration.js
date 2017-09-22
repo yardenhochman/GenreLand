@@ -78,7 +78,7 @@ class Registration extends Component {
       <div className="register">
 
         <div className="register-top">
-          <img className="profile-icon"
+          <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Register</h3>
         </div>

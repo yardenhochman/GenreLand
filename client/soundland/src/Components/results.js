@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AreaDisplay from './AreaDisplay'
+
 class Results extends Component {
   constructor() {
     super();

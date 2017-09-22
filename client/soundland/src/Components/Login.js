@@ -50,7 +50,7 @@ class Login extends Component {
       <div className="login">
 
         <div className="login-top">
-          <img className="profile-icon"
+          <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Login</h3>
         </div>
