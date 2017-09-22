@@ -14,15 +14,14 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      location:     '',
-      music:        "0",
-      waiting:      false,
-      results:      null,
-      venues:       null
+      location:                       '',
+      music:                          "0",
+      waiting:                        false,
+      results:                        null
     }
-    this.onSubmit =             this.onSubmit.bind(this)
-    this.handleGenreChoice =    this.handleGenreChoice.bind(this)
-    this.handleZipcodeInput =   this.handleZipcodeInput.bind(this)
+  this.onSubmit =                     this.onSubmit.bind(this)
+  this.handleGenreChoice =            this.handleGenreChoice.bind(this)
+  this.handleZipcodeInput =           this.handleZipcodeInput.bind(this)
   }
 
   handleZipcodeInput(event) {
@@ -41,20 +40,19 @@ class Search extends Component {
       return
     this.setState({waiting: true})
     let data = {
-      zipcode:      this.state.location,
-      genre:        Number(this.state.music),
-      description:  ' '
+      zipcode:                        this.state.location,
+      genre:                          Number(this.state.music),
+      description:                    ' '
     };
     axios({
-      method:      'POST',
-      url:         'http://localhost:3001/results',
+      method:                         'POST',
+      url:                            'http://localhost:3001/results',
       data
     }).then( res => {
         console.log(res.data);
         this.setState({
-          results:res.data,
-          venues: res.venues,
-          waiting: false
+          results:                    res.data,
+          waiting:                    false
         })
       }).catch( err => console.log(err))
   }
@@ -65,23 +63,22 @@ class Search extends Component {
           <div>
             {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
             <Genreland 
-              name =                {'Favorite Musical Artist'} 
-              handleGenreChoice =   {this.handleGenreChoice} 
-              selectedMusic =       {this.state.music}
+              name =                  {'Favorite Musical Artist'} 
+              handleGenreChoice =     {this.handleGenreChoice} 
+              selectedMusic =         {this.state.music}
               />
             <Location 
-              name =                {'Where do you live'} 
-              handleZipcodeInput =  {this.handleZipcodeInput}
-              setLocation =         {this.state.location}
+              name =                  {'Where do you live'} 
+              handleZipcodeInput =    {this.handleZipcodeInput}
+              setLocation =           {this.state.location}
             />
             <button 
-              onClick =             {this.onSubmit}>
+              onClick =               {this.onSubmit}>
               Submit
             </button>
             <Results 
-              results =             {this.state.results} 
-              waiting =             {this.state.waiting} 
-              venues =              {this.state.venues}
+              results =               {this.state.results} 
+              waiting =               {this.state.waiting} 
             />
           </div>
         <Footer />

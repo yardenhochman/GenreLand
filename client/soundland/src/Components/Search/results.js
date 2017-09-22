@@ -46,8 +46,7 @@ class Results extends Component {
     results = this.sort(results.data)
     return (
       <div>
-
-        <Link to={`/Venues/`}>Venues</Link>
+        <Link to={`/Venues/`}>Local Scene</Link>
         {/* <button onClick={this.eventsView}>Local Scene</button> */}
         {this.displayAreas(results)}
 
@@ -56,15 +55,10 @@ class Results extends Component {
   }
   renderLoading() {
     console.log('rendering loading message')
-    return (
-      <h2>
-        Searching your area
-      </h2>
-    )
+    return <h2>Searching your area</h2>
   }
   checkResults() {
-    const results = this.props.results
-    const waiting = this.props.waiting
+    const { results, waiting } = this.props
     if (!results && !waiting)
       return ('')
     if (waiting) 
