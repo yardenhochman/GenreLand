@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Registration extends Component {
   constructor() {
@@ -8,14 +10,23 @@ class Registration extends Component {
       username: '',
       email: '',
       password_digest: '',
-      password_confirm: ''
+      password_confirm: '',
+      fireRedirect: false,
     }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+
+  }
+  componentDidMount(){
+    console.log(this.state)
   }
 
   handleInputChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    
+    let name = event.target.name;
+    let value = event.target.value;
+
+    console.log(event.target.name)
+    console.log(event.target.value)
+
     this.setState({
       [name]: value,
     });
@@ -23,6 +34,7 @@ class Registration extends Component {
 
   handleFormSubmit(event) {
       event.preventDefault();
+      console.log('inside handleformsubmit')
     if (this.state.password_digest === this.state.password_confirm) {
       // fetch POST request to server to create new user
       // redirect to their profile? back two pages?
@@ -31,19 +43,24 @@ class Registration extends Component {
         name: this.state.name,
         username: this.state.username,
         email: this.state.email,
-        password_digest: this.password_digest
+        password_digest: this.state.password_digest
       }
 //routes here are not valid revist
-      fetch("localhost:3001/profile",
-        {method: "POST",
-        body: data})
-      .then(function (data) {
-        return data.json();
+      axios({
+        
+        method: 'POST',
+        url: 'http://localhost:3001/auth/register',
+        data: data
       })
-      .then(redirect("localhost:3001/")
-      .catch(console.log(Err)
-        )
-      )
+      .then(res => {
+        console.log('res.data---->',res.data);
+        this.setState({
+          newID: res.data.id,
+          //The res.data.id might be wrong here
+          fireRedirect: true,
+        });
+      }).catch(err=> console.log(err));
+      event.target.reset();
 
     } else {
       alert('Passwords do not match')
@@ -54,6 +71,7 @@ class Registration extends Component {
       })
     }
   }
+  
 
   render() {
     return(
@@ -66,27 +84,27 @@ class Registration extends Component {
         </div>
 
         <div className="register-form">
-          <form onSubmit={this.handleFormSubmit}>
+          <form onSubmit={(event)=> {this.handleFormSubmit(event)}}>
             <input
               type="text"
               placeholder="Name"
               name="name"
               value={this.state.name}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="text"
               placeholder="Username"
               name="username"
               value={this.state.username}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="email"
               placeholder="Email"
               name="email"
               value={this.state.email}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="password"
@@ -94,7 +112,7 @@ class Registration extends Component {
               name="password_digest"
               minLength="6" required 
               value={this.state.password_digest}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="password"
@@ -102,19 +120,21 @@ class Registration extends Component {
               name="password_confirm"
               minLength="6" required 
               value={this.state.password_confirm}
-              onChange={this.handleInputChange}
+              onChange={(event)=> {this.handleInputChange(event)}}
             />
             <input
               type="submit"
               value="Submit"
             />
           </form>
+          {this.state.fireRedirect
+          ? <Redirect push to={`/`} />
+          : ''}
         </div>
 
       </div>
     )
   }
-
 }
 
 export default Registration;

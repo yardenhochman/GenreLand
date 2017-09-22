@@ -10,9 +10,12 @@ usersController.index = (req, res) => {
   });
 }
 
+
+
 usersController.create = (req, res) => {
+  console.log(req.body,'<-------')
   const salt = bcrypt.genSaltSync();
-  const hash = bcrypt.hashSync(req.body.password, salt);
+  const hash = bcrypt.hashSync(req.body.password_digest, salt);
   User.create({
     name: req.body.name,
     username: req.body.username,
@@ -21,12 +24,15 @@ usersController.create = (req, res) => {
   }).then(user => {
     req.login(user, (err) => {
       if (err) return next(err);
-      res.redirect('/profile');
+      res.redirect('/');
     });
   }).catch(err => {
     console.log(err);
     res.status(500).json({error: err});
   });
 }
+
+
+
 
 module.exports = usersController;

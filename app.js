@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(methodOverride('_method'));
 app.use(cookieParser());
+app.use(flash());
 app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
