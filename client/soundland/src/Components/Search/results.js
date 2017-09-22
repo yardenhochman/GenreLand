@@ -46,8 +46,7 @@ class Results extends Component {
     return (
       <div>
         <button onClick={this.eventsView}>Local Scene</button>
-        {this.displayAreas(results)}
-        
+        {this.displayAreas(results)} 
       </div>
     )
   }

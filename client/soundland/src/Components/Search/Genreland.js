@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Genreland = (props) => {
-  return (
+const Genreland = ({selectedMusic , handleGenreChoice}) => (
     <form>
       <label>
         Pick your favorite genre:
-        <select value={props.selectedMusic} onChange={props.handleGenreChoice}>
+        <select value={selectedMusic} onChange={handleGenreChoice}>
           <option value="0"></option>
           <option value="1">Rock</option>
           <option value="2">Alternative</option>
@@ -34,7 +33,5 @@ const Genreland = (props) => {
         </select>
       </label>
     </form>
-  );
-}
-
-        export default Genreland;
+)
+export default Genreland;
