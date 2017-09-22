@@ -9,7 +9,8 @@ resultsController.queryResults = (req, res) =>{
     .then(results =>{
         res.json({
             message: 'ok',
-            data: results
+            data: results,
+            venues: res.locals.venues
         })
     }).catch(err =>{
         console.log(err)
