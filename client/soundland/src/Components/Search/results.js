@@ -24,6 +24,10 @@ class Results extends Component {
       )
     })
   }
+  eventsView() {
+    console.log(`Coming Soon!`)
+    return //this will link the user to events component. That's also where the user can see local bars
+  }
   sort(data) {
     let results = {};
     data.map( (number) => {
@@ -44,8 +48,13 @@ class Results extends Component {
         </div>
       )
     results = this.sort(results.data)
-
-    return this.displayAreas(results)
+    return (
+      <div>
+        <button onClick={this.eventsView}>Local Scene</button>
+        {this.displayAreas(results)}
+        
+      </div>
+    )
   }
   renderLoading() {
     console.log('rendering loading message')
