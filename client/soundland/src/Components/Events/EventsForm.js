@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header2';
 import Footer from '../Footer';
 import axios from 'axios';
@@ -10,8 +10,8 @@ class EventsForm extends Component {
         this.state = {
             title: '',
             address: '',
-            date: '',
-            time: '',
+            event_date: '',
+            event_time: '',
             genre: '',
             description: '',
             fireRedirect: false,
@@ -31,11 +31,11 @@ class EventsForm extends Component {
       eventFormSubmit(event){
           event.preventDefault();
         axios
-          .post('/event', {
+          .post('http://localhost:3001/event', {
               title: this.state.title,
               address: this.state.address,
-              date: this.state.date, //date and time separate
-              time: this.state.time,
+              event_date: this.state.date, //date and time separate
+              event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
             })
@@ -46,7 +46,7 @@ class EventsForm extends Component {
                     fireRedirect: true,
                 });
               })
-            .catch(err => console.log(err));
+            .catch(err => console.log('error in eventsform'));
             event.target.reset();
           }
         render(){
@@ -54,7 +54,7 @@ class EventsForm extends Component {
            
           <div>
             <Header />  
-           <div className="eventAdd">
+           <div className="eventsAdd">
             <form onSubmit={this.eventFormSubmit}>
              <label>
                  Event Title:
@@ -66,37 +66,39 @@ class EventsForm extends Component {
                  value={this.state.title}
                  onChange={this.eventFormChange}
                  />
-            </label>
+            </label><br/>
             <label>
                  Event Address:
                  <input 
                  type="text"
-                 placeholder="Address"
+                 placeholder="Place of Venue"
                  name="address"
                  required
                  value={this.state.address}
                  onChange={this.eventFormChange}
                  />
-            </label>
+            </label><br/>
             <label>
-                Event Date:
+                Date:
                 <input 
                 type="date"
-                placeholder="date"
                 name="date"
+                value="01-01-2017"
                 required
-                value={this.state.date}
+                value={this.state.event_date}
                 onChange={this.eventFormChange}
                 />
-                Event Start Time:
+            </label><br/>
+            <label>
+                Start Time:
                 <input type="time"
-                placeholder="time"
-                pattern="[0-9]{2}:[0-9]{2}"
+                name="time" 
+                //pattern="[0-9]{2}:[0-9]{2}" //https://stackoverflow.com/questions/19670943/html-regex-pattern-first-digit-1-9-second-digit-0-9
                 required
-                value={this.state.time}
+                value={this.state.event_time}
                 onChange={this.eventFormChange}
                 />
-            </label>
+            </label><br/>
             <label>
                 Genre Type:
                 <input 
@@ -106,9 +108,9 @@ class EventsForm extends Component {
                 value={this.state.genre}
                 onChange={this.eventFormChange}
                 />
-            </label>
+            </label><br/>
             <label>
-                Event Description:
+                Description of Event:
                 <input 
                 type="text"
                 placeholder="description"
@@ -116,12 +118,13 @@ class EventsForm extends Component {
                 value={this.state.description}
                 onChange={this.eventFormChange}
                 />
-            </label>
+            </label><br/>
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
              ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
              : ''}
+             <Link to={`/Venues/`}>Back to Venues</Link>
              </div>
              <Footer /> 
           </div>  

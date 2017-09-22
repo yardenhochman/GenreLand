@@ -7,7 +7,7 @@ class Header2 extends Component {
         <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/1041163-200.png" alt=""/>
 
         <div className="nav-buttons-align">
-            <input
+            {/* <input
             placeholder="Search"
             type="text" 
             />
@@ -15,8 +15,8 @@ class Header2 extends Component {
             type="submit"
             value="Search"
             //onSubmit={searchPlaceholder()}
-            />
-          <a href="/account" className="nav-button">Account</a>
+            /> */}
+          <a href="/account" className="nav-button">Account </a>
           <a href="/logout" className="nav-button">Log Out</a>
         </div>
       </div>

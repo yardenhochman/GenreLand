@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AreaDisplay from './AreaDisplay';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Results extends Component {
   constructor() {
@@ -51,7 +51,9 @@ class Results extends Component {
     results = this.sort(results.data)
     return (
       <div>
-        <button onClick={this.eventsView}>Local Scene</button>
+
+        <Link to={`/Venues/`}>Venues</Link>
+        {/* <button onClick={this.eventsView}>Local Scene</button> */}
         {this.displayAreas(results)}
         
       </div>
