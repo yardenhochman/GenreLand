@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Header from '../header2';
+import Header from '../Header2';
 import Footer from '../Footer';
 import axios from 'axios';
 
@@ -21,7 +21,7 @@ class EventsEdit extends Component {
         }
 
   componentDidMount() {
-    axios.get(`/event/${this.props.match.params.id}`)
+    axios.get(`/events/${this.props.match.params.id}`)
         .then(res => {
             const eventData = res.data.data;
             this.setState({ 
@@ -46,7 +46,7 @@ class EventsEdit extends Component {
   eventFormSubmit(event){
     event.preventDefault();
   axios
-    .put(`/event/${this.props.match.params.id}`, {
+    .put(`http://localhost:3001/event/${this.props.match.params.id}`, {
         title: this.state.title,
         address: this.state.address,
         date: this.state.date, //date and time separate
@@ -67,8 +67,9 @@ class EventsEdit extends Component {
 
    render(){
          return (
+          <div>
            <Header />  
-           <div className ="eventEdit">
+           <div className="eventEdit">
             <form onSubmit={this.eventFormSubmit}>
              <label>
                  Event Title:
@@ -134,14 +135,13 @@ class EventsEdit extends Component {
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/events-general/${this.state.newId}`} />
+             ? <Redirect push to={`/EventsList/${this.state.newId}`} />
              : ''}
-             
           </div>  
-          <footer /> 
+          <Footer />
+        </div> 
          );
         }
       }
-
 
 export default EventsEdit;

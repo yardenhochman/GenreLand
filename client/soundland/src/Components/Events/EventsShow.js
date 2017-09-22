@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-//import Header from './Header2';
-//import Footer from './Footer';
+import { Link, Redirect } from 'react-router-dom';
+//import Header from '../Header2';
+//import Footer from '../Footer';
 import axios from 'axios';
 
 class EventsShow extends Component {
@@ -16,7 +16,7 @@ class EventsShow extends Component {
       }
 
       componentDidMount() {
-          axios.get(`/event/${this.props.match.params.id}`)
+          axios.get(`http://localhost:3001/event/${this.props.match.params.id}`)
           .then(res => {
               this.setState({
                 eventApiDataLoaded: true,
@@ -48,7 +48,7 @@ class EventsShow extends Component {
             </Link>
             <span className="delete" onClick={this.deleteEvent}>Delete Event</span>
             {this.state.fireRedirect
-                ? <Redirect push to="/general-event" />
+                ? <Redirect push to="/EventsList" />
                 : ''}
             </div>
             )

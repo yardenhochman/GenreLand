@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Header from '../header2';
+import Header from '../Header2';
 import Footer from '../Footer';
+import Events from './Events';
 import axios from 'axios';
 
 class EventsList extends Component {
@@ -13,7 +14,7 @@ class EventsList extends Component {
       }
 
       compnentDidMount(){
-          axios.get('/event')
+          axios.get('http://localhost:3001/event')
           .then(res => {
            this.setState({
                eventApiDataLoaded: true,
@@ -34,15 +35,15 @@ class EventsList extends Component {
       
         render(){
             return(
-                <header />
+              <div>
+                <Header />
                 <div ClassName="eventsList">
                     {this.renderEvents()}
                 </div>
-                <footer />    
+                <Footer />
+              </div>
             )
           }
         }
-
-
 
     export default EventsList;
