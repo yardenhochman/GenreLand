@@ -77,9 +77,7 @@ class Search extends Component {
               Submit
             </button>
             <Results 
-              results =               {this.state.results} 
-              waiting =               {this.state.waiting} 
-              mainLocation =          {this.state.location}
+              state =                 {this.state}
             />
           </div>
         <Footer />

@@ -7,15 +7,16 @@ class Results extends Component {
 
 
 
-  displayAreasMap(results, mainLocation) {
-    console.log(mainLocation)
+  displayAreasMap(results, usersChoices) {
+    console.log(usersChoices.location)
     return (
       <MapDisplay 
-        mainLocation =        {mainLocation}
+        location =        {usersChoices.location}
       />
     )
   }
-  displayAreas(results, mainLocation) {
+  displayAreas(results, usersChoices) {
+    console.log(usersChoices)
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
       const key = String(zipcode) + String(' number ' + index)
@@ -29,7 +30,8 @@ class Results extends Component {
             areaName =        {zipcode} 
             genreOccurences = {genreOccurences} 
             genresList =      {genres}
-            mainLocation =    {mainLocation}
+            selectedGenre =   {Number(usersChoices.music)}
+            usersLocation =   {String(usersChoices.location)===zipcode?true:false}
           />
       )
     })
@@ -42,15 +44,15 @@ class Results extends Component {
     let results = {};
     data.map( number => {
       if (!results[number.zipcode])
-        results[number.zipcode] = {[number.genre]: 1};
+        return results[number.zipcode] = {[number.genre]: 1};
       else if (!results[number.zipcode][number.genre])
-        results[number.zipcode][number.genre] = 1;
+        return results[number.zipcode][number.genre] = 1;
       else
-        results[number.zipcode][number.genre]++;
+        return results[number.zipcode][number.genre]++;
     })
     return results;
   }
-  resultsParser(results, mainLocation) {
+  resultsParser(results, usersChoices) {
     if (results.message !== 'ok')
       return <div>Try a different zipcode.</div>
     results = this.sort(results.data)
@@ -58,8 +60,8 @@ class Results extends Component {
       <div>
         <Link to={`/Venues/`}>Local Scene</Link>
         {/* <button onClick={this.eventsView}>Local Scene</button> */}
-        {this.displayAreas(results, mainLocation)}
-        {this.displayAreasMap(results, mainLocation)}
+        {this.displayAreas(results, usersChoices)}
+        {this.displayAreasMap(results, usersChoices)}
       </div>
     )
   }
@@ -68,12 +70,14 @@ class Results extends Component {
     return <h2>Searching your area</h2>
   }
   checkResults() {
-    const { results, waiting, mainLocation } = this.props
+    const { location, music, waiting, results} = this.props.state
+    let usersChoices = {};
+    usersChoices = {location, music}
     if (!results && !waiting)
       return ('')
     if (waiting) 
       return this.renderLoading()
-    return this.resultsParser(results, mainLocation)
+    return this.resultsParser(results, usersChoices)
   }
   render() {
     return (
