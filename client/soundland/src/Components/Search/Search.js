@@ -79,6 +79,7 @@ class Search extends Component {
             <Results 
               results =               {this.state.results} 
               waiting =               {this.state.waiting} 
+              mainLocation =          {this.state.location}
             />
           </div>
         <Footer />
