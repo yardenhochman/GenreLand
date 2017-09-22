@@ -83,9 +83,10 @@ class EventsForm extends Component {
                 <input 
                 type="date"
                 name="date"
-                value="01-01-2017"
+                min="2017-09-21" 
+                max="2050-01-01"
                 required
-                value={this.state.event_date}
+                //value={this.state.event_date}
                 onChange={this.eventFormChange}
                 />
             </label><br/>
@@ -95,7 +96,7 @@ class EventsForm extends Component {
                 name="time" 
                 //pattern="[0-9]{2}:[0-9]{2}" //https://stackoverflow.com/questions/19670943/html-regex-pattern-first-digit-1-9-second-digit-0-9
                 required
-                value={this.state.event_time}
+                //value={this.state.event_time}
                 onChange={this.eventFormChange}
                 />
             </label><br/>
@@ -124,7 +125,7 @@ class EventsForm extends Component {
             {this.state.fireRedirect
              ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
              : ''}
-             <Link to={`/Venues/`}>Back to Venues</Link>
+             <Link to={`/EventsList/`}>Back to Event List</Link>
              </div>
              <Footer /> 
           </div>  

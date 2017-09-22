@@ -44,6 +44,4 @@ Events.update = (data, id) => {
     [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.createdby, id])
 }
 
-
-
 module.exports = Events;
