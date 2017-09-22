@@ -5,7 +5,7 @@ const zipcodeHelper = require('../services/zipcode');
 
 
 //displays the results page
-resultsRoutes.post('/', resultsController.insertLocation, resultsController.insertMusic2Location, zipcodeHelper.getAllZips, resultsController.queryResults)
+resultsRoutes.post('/', resultsController.insertLocation, resultsController.insertMusic2Location, zipcodeHelper.getZipsAndPlaces, resultsController.queryResults)
 
 
 
