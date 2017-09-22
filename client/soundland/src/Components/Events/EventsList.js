@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './header2';
-import Footer from './Footer';
+import Header from '../header2';
+import Footer from '../Footer';
 import axios from 'axios';
 
 class EventsList extends Component {
