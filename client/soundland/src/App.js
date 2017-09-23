@@ -35,12 +35,13 @@ class App extends Component {
           <Route exact path="/user" component={User} />
 
           <Route exact path="/venues" component={Venues} />
-
+        
           <Route exact path="/EventsForm" component={EventsAdd} />
           <Route exact path="/EventsEdit/:id" component={EventsEdit} />
           <Route exact path="/EventsShow/:id" component={EventsShow} />
           <Route exact path="/EventsList" component={EventsList} />
           <Route exact path="/Events" component={Events} />
+
         </div>
       </Router>
     );

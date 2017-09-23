@@ -4,8 +4,7 @@ const Events = {};
 
 Events.findAll = () => {
     return db.query(`
-    SELECT * FROM
-    events`)
+    SELECT * FROM events`)
 };
 
 Events.findById = id => {
