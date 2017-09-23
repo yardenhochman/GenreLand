@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import App from '../App.js';
+
+import Header from './Header';
+import Footer from './Footer';
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password_digest: '',
@@ -21,6 +25,7 @@ class Login extends Component {
     });
   }
 
+
   handleFormSubmit(event) {
       event.preventDefault();
 
@@ -28,7 +33,6 @@ class Login extends Component {
         username: this.state.username,
         password_digest: this.password_digest
       }
-        //routes here are not valid revist
       axios({
         method: 'POST',
         url: 'http://localhost:3001/auth/login',
@@ -36,11 +40,11 @@ class Login extends Component {
       })
       .then(res => {
         console.log('Logged in!');
-        this.setState({
-          id: res.data.id,
-          //The res.data.id might be wrong here
-          fireRedirect: true,
-        });
+        console.log(res.data, 'THIS IS THE RES');
+        //When the user logs in, something will set the state in
+        //App.js to be auth: true
+        this.props.loggedIn();
+
       }).catch(err=> console.log(err));
       event.target.reset();
     } 
@@ -48,7 +52,7 @@ class Login extends Component {
   render() {
     return(
       <div className="login">
-
+        <Header />
         <div className="login-top">
           <img className="profile-icon"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
@@ -78,10 +82,10 @@ class Login extends Component {
             />
           </form>
           {this.state.fireRedirect
-          ? <Redirect push to={`/`} />
+          ? <Redirect push to={`/user`} />
           : ''}
         </div>
-
+        <Footer />
       </div>
     )
   }

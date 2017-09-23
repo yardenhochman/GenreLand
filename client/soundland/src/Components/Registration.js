@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
+import Header from './Header';
+import Footer from './Footer';
+
 class Registration extends Component {
   constructor() {
     super();
@@ -76,7 +79,7 @@ class Registration extends Component {
   render() {
     return(
       <div className="register">
-
+        <Header />
         <div className="register-top">
           <img className="profile-icon"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
@@ -131,7 +134,7 @@ class Registration extends Component {
           ? <Redirect push to={`/`} />
           : ''}
         </div>
-
+        <Footer />
       </div>
     )
   }
