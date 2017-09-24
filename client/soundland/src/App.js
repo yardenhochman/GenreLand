@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { IndexRoute } from 'react-router'
 
 import About from     './Components/AboutUs';
 import Footer from    './Components/Footer';
@@ -38,22 +37,20 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route        path="/"                   component={PageLayout} />
-            <IndexRoute                            component={Search} />
+            <Route exact path="/"                            component={Search} />
             <Route      path="/about"              component={About} />
             <Route      path="/results"            component={Results} />
             <Route      path="/venues"             component={Venues} />
-          <Route        path="/auth">
+          <Route        path="/auth" />
             <Route      path="/login"              component={Login} />
             <Route      path="/register"           component={Register} />
             <Route      path="/user"               component={User} />
-          </Route>
-          <Route        path="/Events">
-            <IndexRoute                            component={Events} />
+          <Route        path="/Events" />
+            <Route exact path="/Events"                            component={Events} />
             <Route      path="/Form"               component={EventsAdd} />
             <Route      path="/Edit/:id"           component={EventsEdit} />
             <Route      path="/Show/:id"           component={EventsShow} />
             <Route      path="/List"               component={EventsList} />
-          </Route>
           <Route path='*'                          render={NotFound} />
         </div>
       </Router>

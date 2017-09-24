@@ -59,28 +59,24 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <Header />
-          <div>
-            {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
-            <Genreland 
-              name =                  {'Favorite Musical Artist'} 
-              handleGenreChoice =     {this.handleGenreChoice} 
-              selectedMusic =         {this.state.music}
-              />
-            <Location 
-              name =                  {'Where do you live'} 
-              handleZipcodeInput =    {this.handleZipcodeInput}
-              setLocation =           {this.state.location}
-            />
-            <button 
-              onClick =               {this.onSubmit}>
-              Submit
-            </button>
-            <Results 
-              state =                 {this.state}
-            />
-          </div>
-        <Footer />
+        {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
+        <Genreland 
+          name =                  {'Favorite Musical Artist'} 
+          handleGenreChoice =     {this.handleGenreChoice} 
+          selectedMusic =         {this.state.music}
+          />
+        <Location 
+          name =                  {'Where do you live'} 
+          handleZipcodeInput =    {this.handleZipcodeInput}
+          setLocation =           {this.state.location}
+        />
+        <button 
+          onClick =               {this.onSubmit}>
+          Submit
+        </button>
+        <Results 
+          state =                 {this.state}
+        />
       </div>
     );
   }
