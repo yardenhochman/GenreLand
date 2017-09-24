@@ -1,6 +1,6 @@
 const db = require('../db/config');
 
-const Event2user = {};
+const Events2user = {};
 //users who partipant
 //events2user
 //event_id INTEGER, user_id INTEGER
@@ -28,4 +28,4 @@ Events2user.findById = id => {
     WHERE event_id =$1`)   
 };
 
-module.exports = Event2user;
+module.exports = Events2user;
