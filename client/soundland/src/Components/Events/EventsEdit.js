@@ -94,6 +94,18 @@ class EventsEdit extends Component {
                  />
             </label>
             <label>
+                Zip Code:
+                <input 
+                type="number"
+                placeholder="zip code"
+                name="zip code"
+                pattern="[0-9]{5}"
+                required
+                //value={this.state.zip_code}
+                onChange={this.eventFormChange}
+                />
+            </label><br/>
+            <label>
                 Event Date:
                 <input 
                 type="date"

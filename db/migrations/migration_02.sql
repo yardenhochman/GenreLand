@@ -8,5 +8,7 @@ CREATE TABLE IF NOT EXISTS events (
   event_time VARCHAR(255),
   genre TEXT NOT NULL,
   description TEXT NOT NULL,
-  createdby INTEGER NOT NULL
+  createdby INTEGER NOT NULL,
+  zip_code INTEGER
+  -- user_id INTEGER REFERENCES users(id)
 );

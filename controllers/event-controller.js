@@ -1,4 +1,6 @@
-const Events = require('../models/events')
+const Events2user = require('../models/events2user');
+const Location = require('../models/location');
+const Events = require('../models/events');
 
 const eventController = {};
 
@@ -38,7 +40,8 @@ eventController.create = (req, res) => {
         event_time: req.body.time,
         genre: req.body.genre,
         description: req.body.description,
-        createdby: req.body.user
+        createdby: req.body.user,
+        zip_code: req.body.zip_code
     })
     .then(rez =>{
         res.json({
@@ -69,7 +72,8 @@ eventController.update = (req, res) =>{
         event_time: req.body.time,
         genre: req.body.genre,
         description: req.body.description,
-        createdby: req.body.user  
+        createdby: req.body.user,
+        zip_code: req.body.zip_code  
     }).then(rez =>{
         res.json({
             message: 'edit event',
