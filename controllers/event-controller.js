@@ -36,12 +36,12 @@ eventController.create = (req, res) => {
     Events.create({
         title: req.body.title,
         address: req.body.address,
+        zip_code: req.body.zip_code,
         event_date: req.body.date,
         event_time: req.body.time,
         genre: req.body.genre,
         description: req.body.description,
-        createdby: req.body.user,
-        zip_code: req.body.zip_code
+        createdby: req.body.user
     })
     .then(rez =>{
         res.json({

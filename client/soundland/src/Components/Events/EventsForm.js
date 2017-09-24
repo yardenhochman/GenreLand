@@ -10,11 +10,12 @@ class EventsForm extends Component {
         this.state = {
             title: '',
             address: '',
+            zip_code: '',
             event_date: '',
             event_time: '',
             genre: '',
             description: '',
-            zip_code: '',
+            createdby: 1,
             fireRedirect: false,
           };
         this.eventFormChange = this.eventFormChange.bind(this);
@@ -47,6 +48,7 @@ class EventsForm extends Component {
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
+              createdby: 1,
           }
           console.log(data);
           axios({
@@ -76,7 +78,7 @@ class EventsForm extends Component {
                  Event Title:
                 <input 
                  type="text"
-                 placeholder="title"
+                 placeholder="Title"
                  name="title"
                  required
                  value={this.state.title}
@@ -98,33 +100,34 @@ class EventsForm extends Component {
                 Zip Code:
                 <input 
                 type="text"
-                placeholder="zip code"
-                name="zip code"
+                placeholder="Zip code"
+                name="zip_code"
                 pattern="[0-9]{5}"
+                maxLength="5"
                 required
-                //value={this.state.zip_code}
-                onChange={this.eventFormChange}
+                value={this.state.zip_code}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <label>
                 Date:
                 <input 
                 type="date"
-                name="date"
+                name="event_date"
                 min="2017-09-21" 
                 max="2050-01-01"
                 required
-                //value={this.state.event_date}
+                value={this.state.event_date}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <label>
                 Start Time:
                 <input type="time"
-                name="time" 
+                name="event_time" 
                 //pattern="[0-9]{2}:[0-9]{2}" //https://stackoverflow.com/questions/19670943/html-regex-pattern-first-digit-1-9-second-digit-0-9
                 required
-                //value={this.state.event_time}
+                value={this.state.event_time}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
@@ -132,7 +135,7 @@ class EventsForm extends Component {
                 Genre Type:
                 <input 
                 type="text"
-                placeholder="genre"
+                placeholder="Genre"
                 name="genre"
                 value={this.state.genre}
                 onChange={(event)=> {this.eventFormChange(event)}}
@@ -142,9 +145,19 @@ class EventsForm extends Component {
                 Description of Event:
                 <input 
                 type="text"
-                placeholder="description"
+                placeholder="Description"
                 name="description"
                 value={this.state.description}
+                onChange={(event)=> {this.eventFormChange(event)}}
+                />
+            </label><br/>
+            <label>
+                created by:
+                <input 
+                type="text"
+                placeholder="created by"
+                name="created by"
+                value={1}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
