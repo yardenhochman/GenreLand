@@ -22,6 +22,16 @@ import Events from     './Components/Events/Events';
 
 //import Nav from './Nav';
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userName:                       'Guest'
+    }
+  this.setUserName =                     this.setUserName.bind(this)
+  }
+  setUserName(userName) {
+    this.state({userName:`${userName}`})
+  }
   render() {
     return (
       <Router>
@@ -35,12 +45,7 @@ class App extends Component {
           <Route exact path="/user"           component={User} />
 
           <Route exact path="/venues"         component={Venues} />
-
-          <Route exact path="/EventsForm"     component={EventsAdd} />
-          <Route exact path="/EventsEdit/:id" component={EventsEdit} />
-          <Route exact path="/EventsShow/:id" component={EventsShow} />
-          <Route exact path="/EventsList"     component={EventsList} />
-          <Route exact path="/Events"         component={Events} />
+ 
         </div>
       </Router>
     );
