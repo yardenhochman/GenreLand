@@ -27,9 +27,11 @@ class EventsForm extends Component {
       eventFormChange(event) {
         const name = event.target.name;
         const value = event.target.value;
+        const val = event.target.val;
 
         console.log(event.target.name);
         console.log(event.target.value);
+        console.log(event.target.val);
 
         this.setState({
           [name]: value,
@@ -102,7 +104,7 @@ class EventsForm extends Component {
                 name="zip code"
                 pattern="[0-9]{5}"
                 required
-                //value={this.state.zip_code}
+                value={this.state.zip_code}
                 onChange={this.eventFormChange}
                 />
             </label><br/>
@@ -114,7 +116,7 @@ class EventsForm extends Component {
                 min="2017-09-21" 
                 max="2050-01-01"
                 required
-                //value={this.state.event_date}
+                val={this.state.event_date}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
@@ -124,7 +126,7 @@ class EventsForm extends Component {
                 name="time" 
                 //pattern="[0-9]{2}:[0-9]{2}" //https://stackoverflow.com/questions/19670943/html-regex-pattern-first-digit-1-9-second-digit-0-9
                 required
-                //value={this.state.event_time}
+                val={this.state.event_time}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
@@ -152,7 +154,8 @@ class EventsForm extends Component {
             </form>
             {this.state.fireRedirect
              ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
-             : ''}
+             : ''} 
+             {/* redirect to eventshow /events/rez.id */}
              <Link to={`/EventsList/`}>Back to Event List</Link>
              </div>
              <Footer /> 
