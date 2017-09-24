@@ -3,7 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import About from     './Components/AboutUs';
-//import Footer from    './Components/Footer';
+import Footer from    './Components/Footer';
+import Header from    './Components/Header';
+import Header2 from    './Components/Header2'; //will create an if statement later for logged toggle
 
 import Search from    './Components/Search/Search';
 import Results from   './Components/Search/results';
@@ -21,31 +23,35 @@ import EventsList from './Components/Events/EventsList';
 import Events from     './Components/Events/Events';
 
 //import Nav from './Nav';
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userName:                       'Guest'
-    }
-  this.setUserName =                     this.setUserName.bind(this)
-  }
-  setUserName(userName) {
-    this.state({userName:`${userName}`})
-  }
+//set up according to https://medium.freecodecamp.org/beginner-s-guide-to-react-router-53094349669
+const NotFound = () => <h1>404.. This page is not found!</h1>
+let userLogged = false;
+const PageLayout = ({ children }) => <div>{userLogged?<Header2 />:<Header />}{children}<Footer /></div>
+
+
+class App extends Component { 
+  
+  //state: false check for auth: if true set state: true
   render() {
     return (
       <Router>
         <div className="App">
-
-          <Route exact path="/"               component={Search} />
-          <Route exact path="/about"          component={About} />
-          <Route exact path="/results"        component={Results} />
-          <Route exact path="/auth/login"     component={Login} />
-          <Route exact path="/auth/register"  component={Register} />
-          <Route exact path="/user"           component={User} />
-
-          <Route exact path="/venues"         component={Venues} />
- 
+          <Route        path="/"                   component={PageLayout} />
+            <Route exact path="/"                            component={Search} />
+            <Route      path="/about"              component={About} />
+            <Route      path="/results"            component={Results} />
+            <Route      path="/venues"             component={Venues} />
+          <Route        path="/auth" />
+            <Route      path="/login"              component={Login} />
+            <Route      path="/register"           component={Register} />
+            <Route      path="/user"               component={User} />
+          <Route        path="/Events" />
+            <Route exact path="/Events"                            component={Events} />
+            <Route      path="/Form"               component={EventsAdd} />
+            <Route      path="/Edit/:id"           component={EventsEdit} />
+            <Route      path="/Show/:id"           component={EventsShow} />
+            <Route      path="/List"               component={EventsList} />
+          <Route path='*'                          render={NotFound} />
         </div>
       </Router>
     );
