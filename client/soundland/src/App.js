@@ -34,16 +34,6 @@ class App extends Component {
           <Route exact path="/auth/register"  component={Register} />
           <Route exact path="/user"           component={User} />
 
-<<<<<<< HEAD
-          <Route exact path="/venues" component={Venues} />
-        
-          <Route exact path="/EventsForm" component={EventsAdd} />
-          <Route exact path="/EventsEdit/:id" component={EventsEdit} />
-          <Route exact path="/EventsShow/:id" component={EventsShow} />
-          <Route exact path="/EventsList" component={EventsList} />
-          <Route exact path="/Events" component={Events} />
-
-=======
           <Route exact path="/venues"         component={Venues} />
 
           <Route exact path="/EventsForm"     component={EventsAdd} />
@@ -51,7 +41,6 @@ class App extends Component {
           <Route exact path="/EventsShow/:id" component={EventsShow} />
           <Route exact path="/EventsList"     component={EventsList} />
           <Route exact path="/Events"         component={Events} />
->>>>>>> 5334e0e0564b941e2e7272246f29a69575c87427
         </div>
       </Router>
     );
