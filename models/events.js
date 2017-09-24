@@ -2,10 +2,14 @@ const db = require('../db/config');
 
 const Events = {};
 
-Events.findAll = (zipcode) => {
+Events.FindByZipcode = (zipcode)
+
+
+Events.FindByZipcode = (data) => {
     return db.query(`
     SELECT * FROM
-    events WHERE zipcode = zip_code`)
+    events WHERE zipcode = $1`,
+    [data[0].zip, data[1].zip, data[2].zip, data[3].zip, data[4].zip])
 };
 
 Events.findById = id => {

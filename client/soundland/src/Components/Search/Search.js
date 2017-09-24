@@ -12,14 +12,14 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      location:                       '',
-      music:                          "0",
-      waiting:                        false,
-      results:                        null
+      location: '',
+      music:  "0",
+      waiting:  false,
+      results:  null
     }
-  this.onSubmit =                     this.onSubmit.bind(this)
-  this.handleGenreChoice =            this.handleGenreChoice.bind(this)
-  this.handleZipcodeInput =           this.handleZipcodeInput.bind(this)
+  this.onSubmit = this.onSubmit.bind(this)
+  this.handleGenreChoice =  this.handleGenreChoice.bind(this)
+  this.handleZipcodeInput = this.handleZipcodeInput.bind(this)
   }
 
   handleZipcodeInput(event) {
@@ -33,7 +33,7 @@ class Search extends Component {
     event.preventDefault();
     this.setState({music: event.target.value});
   }
-  automatic(){
+  automatic(){ //isn't working right now. see legacy components for the code
     return
   }
   onSubmit() {
@@ -41,19 +41,19 @@ class Search extends Component {
       return
     this.setState({waiting: true})
     let data = {
-      zipcode:                        this.state.location,
-      genre:                          Number(this.state.music),
-      description:                    ' '
+      zipcode:  this.state.location,
+      genre:  Number(this.state.music),
+      description:  ' '
     };
     axios({
-      method:                         'POST',
-      url:                            'http://localhost:3001/results',
+      method: 'POST',
+      url:  'http://localhost:3001/results',
       data
     }).then( res => {
         console.log(res.data);
         this.setState({
-          results:                    res.data,
-          waiting:                    false
+          results:  res.data,
+          waiting:  false
         })
       }).catch( err => console.log(err))
   }
@@ -98,11 +98,11 @@ class Search extends Component {
         <button onClick = {this.automatic} >Use your current location</button>
     </div>
         <button 
-          onClick =               {this.onSubmit}>
+          onClick = {this.onSubmit}>
           Submit
         </button>
         <Results 
-          state =                 {this.state}
+          state = {this.state}
         />
       </div>
     );
