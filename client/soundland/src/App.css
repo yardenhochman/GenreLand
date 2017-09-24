@@ -1,6 +1,6 @@
 body {
   background-color: #333;
-  background: linear-gradient(to right, #febf01 1%,#333 0%);
+  background: linear-gradient(to right, #f1b82d 1%,#333 0%);
   color: #fff;
   font-family: 'Yantramanav', sans-serif;
 }
@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .lock-up {
@@ -26,7 +27,7 @@ div.lock-up > img {
   filter: invert(1);
 }
 
-div.lock-up > h4 {
+a > h4 {
   font-family: 'Merriweather', serif;
   margin-top: 15%;
 }
@@ -49,8 +50,34 @@ div.lock-up > h4 {
   color: #ccc;
 }
 
-a {
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #111;
+  text-align: center;
+}
+
+ul {
+  margin: 2px;
+}
+
+li {
+  display: inline;
+  list-style: none;
+  padding: 0 5px 0 5px;
+  font-size: 13px;
+  margin: 5px;
+}
+
+a, a:visited, a:active {
   text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: #f1b82d;
 }
 
 .App {
