@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Header from './Header';
-import Footer from './Footer';
-
 const About = () => {
   return (
     <div>
-        <Header/>
-        <Link to={`/`}>Main Page</Link>
-
         <div className="about">
           <h2>The SoundLand Team</h2>
 
@@ -41,7 +35,6 @@ const About = () => {
               <Link to={"https://github.com/yardenhochman"}>Yarden's GitHub Page </Link>
               <p></p>
             </div>
-        <Footer />
       </div>
   )
 }

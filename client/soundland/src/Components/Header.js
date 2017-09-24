@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -6,8 +7,9 @@ const Header = () => {
       <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/1041163-200.png" alt="logo"/>
 
       <div className="nav-buttons-align">
-        <a href="/auth/login" className="nav-button">Login </a>
-        <a href="/auth/register" className="nav-button">Register</a>
+      <Link to={`/`}>Main Page</Link>
+        <Link to={"/auth/login"} className="nav-button">Login </Link>
+        <Link to={"/auth/register"} className="nav-button">Register</Link>
       </div>
     </div>
   )
