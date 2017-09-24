@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
 
-class About extends Component {
-
-  render (){
-    return(
-      <div>
+const About = () => {
+  return (
+    <div>
         <Header/>
         <Link to={`/`}>Main Page</Link>
 
@@ -45,8 +43,7 @@ class About extends Component {
             </div>
         <Footer />
       </div>
-    );
-   }
+  )
 }
 
 export default About;
