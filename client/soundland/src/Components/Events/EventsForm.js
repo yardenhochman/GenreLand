@@ -14,6 +14,7 @@ class EventsForm extends Component {
             event_time: '',
             genre: '',
             description: '',
+            zip_code: '',
             fireRedirect: false,
           };
         this.eventFormChange = this.eventFormChange.bind(this);
@@ -38,6 +39,7 @@ class EventsForm extends Component {
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
+              zip_code: this.state.zip_code //user zipcode insert here
             })
             .then(res => {
                 console.log(res);
@@ -77,6 +79,18 @@ class EventsForm extends Component {
                  value={this.state.address}
                  onChange={this.eventFormChange}
                  />
+            </label><br/>
+            <label>
+                Zip Code:
+                <input 
+                type="text"
+                placeholder="zip code"
+                name="zip code"
+                pattern="[0-9]{5}"
+                required
+                //value={this.state.zip_code}
+                onChange={this.eventFormChange}
+                />
             </label><br/>
             <label>
                 Date:
