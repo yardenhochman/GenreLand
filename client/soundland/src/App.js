@@ -26,7 +26,7 @@ import Events from     './Components/Events/Events';
 //set up according to https://medium.freecodecamp.org/beginner-s-guide-to-react-router-53094349669
 const NotFound = () => <h1>404.. This page is not found!</h1>
 let userLogged = false;
-const PageLayout = ({ children }) => <div>{userLogged?<Header2 />:<Header />}{children}<Footer /></div>
+const PageLayout = ({ children }) => <div>{userLogged?<Header2 />:<Header />}{children}</div>
 
 
 class App extends Component { 
@@ -37,7 +37,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route        path="/"                   component={PageLayout} />
-            <Route exact path="/"                            component={Search} />
+            <Route exact path="/"                  component={Search} />
             <Route      path="/about"              component={About} />
             <Route      path="/results"            component={Results} />
             <Route      path="/venues"             component={Venues} />
@@ -46,12 +46,12 @@ class App extends Component {
             <Route      path="/register"           component={Register} />
             <Route      path="/user"               component={User} />
           <Route        path="/Events" />
-            <Route exact path="/Events"                            component={Events} />
+            <Route exact path="/Events"            component={Events} />
             <Route      path="/Form"               component={EventsAdd} />
             <Route      path="/Edit/:id"           component={EventsEdit} />
             <Route      path="/Show/:id"           component={EventsShow} />
             <Route      path="/List"               component={EventsList} />
-          <Route path='*'                          render={NotFound} />
+          <Route path='*'                          render={Footer} />
         </div>
       </Router>
     );
