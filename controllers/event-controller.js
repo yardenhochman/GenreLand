@@ -6,7 +6,7 @@ eventController.findAll = (req, res) =>{
     Events.findAll('query results by zip events')
     .then(rez => {
         res.json({
-            message: 'ok',
+            message: 'show all events',
             data: rez
         })
     }).catch(err =>{
@@ -22,7 +22,7 @@ eventController.findOne = (req, res) => {
     Events.findById(req.body.id)
     .then(rez =>{
         res.json({
-            message: 'ok',
+            message: 'show one event',
             data: rez
         })
     }).catch(err =>{
@@ -42,7 +42,7 @@ eventController.create = (req, res) => {
     })
     .then(rez =>{
         res.json({
-            message: "ok",
+            message: "event created",
             data: rez
         })
     }).catch(err =>{
@@ -72,7 +72,7 @@ eventController.update = (req, res) =>{
         createdby: req.body.user  
     }).then(rez =>{
         res.json({
-            message: 'ok',
+            message: 'edit event',
             data: rez
         })
     }).catch(err =>{
