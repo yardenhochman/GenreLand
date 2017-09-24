@@ -10,7 +10,7 @@ resultsController.queryResults = (req, res) =>{
         res.json({
             message: 'ok',
             data: results,
-            venues: res.locals.venues
+            events: res.locals.events
         })
     }).catch(err =>{
         console.log(err)
