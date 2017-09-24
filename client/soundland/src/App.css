@@ -1,3 +1,57 @@
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.nav {
+  position: sticky;
+  background-color: #111;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.lock-up {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+
+div.lock-up > img {
+  height: 100%;
+  margin: 0 15px 0 15px;
+  filter: invert(1);
+}
+
+div.lock-up > h4 {
+  font-family: 'Merriweather', serif;
+  margin-top: 15%;
+}
+
+.nav-buttons-align {
+  margin: auto 15px auto 15px;
+  padding: 20px;
+}
+
+.nav-button, .nav-button:visited, .nav-button:active {
+  margin: 5px;
+  padding: 2px 20px 0 0;
+  border-top: 2px solid #fff;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.nav-button:hover {
+  border-top: 2px solid #f1b82d;
+  color: #ccc;
+}
+
+a {
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
 }
