@@ -4,14 +4,12 @@ import MapDisplay from './MapDisplay';
 import { Link } from 'react-router-dom';
 
 class Results extends Component {
-
-
-
   displayAreasMap(results, usersChoices) {
     console.log(usersChoices.location)
     return (
       <MapDisplay 
-        location =        {usersChoices.location}
+        usersZipcode =        {usersChoices.location}
+        results =             {results}
       />
     )
   }

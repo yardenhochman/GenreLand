@@ -20,10 +20,17 @@ class EventsForm extends Component {
         this.eventFormChange = this.eventFormChange.bind(this);
         this.eventFormSubmit = this.eventFormSubmit.bind(this);
       }
+      componentDidMount(){
+        console.log(this.state)
+      }
 
       eventFormChange(event) {
         const name = event.target.name;
         const value = event.target.value;
+
+        console.log(event.target.name);
+        console.log(event.target.value);
+
         this.setState({
           [name]: value,
         });
@@ -31,20 +38,27 @@ class EventsForm extends Component {
 
       eventFormSubmit(event){
           event.preventDefault();
-        axios
-          .post('http://localhost:3001/event', {
+
+          let data = {
               title: this.state.title,
               address: this.state.address,
-              event_date: this.state.date, //date and time separate
+              zip_code: this.state.zip_code, //user zipcode insert here
+              event_date: this.state.date,
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
-              zip_code: this.state.zip_code //user zipcode insert here
+          }
+          console.log(data);
+          axios({
+            
+              method: 'POST',
+              url: 'http://localhost:3001/event',
+              data: data
             })
             .then(res => {
                 console.log(res);
                 this.setState({
-                    newId: res.data.data.id,
+                    newId: res.data.id,
                     fireRedirect: true,
                 });
               })
@@ -57,7 +71,7 @@ class EventsForm extends Component {
           <div>
             <Header />  
            <div className="eventsAdd">
-            <form onSubmit={this.eventFormSubmit}>
+            <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
              <label>
                  Event Title:
                 <input 
@@ -66,7 +80,7 @@ class EventsForm extends Component {
                  name="title"
                  required
                  value={this.state.title}
-                 onChange={this.eventFormChange}
+                 onChange={(event)=> {this.eventFormChange(event)}}
                  />
             </label><br/>
             <label>
@@ -77,7 +91,7 @@ class EventsForm extends Component {
                  name="address"
                  required
                  value={this.state.address}
-                 onChange={this.eventFormChange}
+                 onChange={(event)=> {this.eventFormChange(event)}}
                  />
             </label><br/>
             <label>
@@ -101,7 +115,7 @@ class EventsForm extends Component {
                 max="2050-01-01"
                 required
                 //value={this.state.event_date}
-                onChange={this.eventFormChange}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <label>
@@ -111,7 +125,7 @@ class EventsForm extends Component {
                 //pattern="[0-9]{2}:[0-9]{2}" //https://stackoverflow.com/questions/19670943/html-regex-pattern-first-digit-1-9-second-digit-0-9
                 required
                 //value={this.state.event_time}
-                onChange={this.eventFormChange}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <label>
@@ -121,7 +135,7 @@ class EventsForm extends Component {
                 placeholder="genre"
                 name="genre"
                 value={this.state.genre}
-                onChange={this.eventFormChange}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <label>
@@ -131,7 +145,7 @@ class EventsForm extends Component {
                 placeholder="description"
                 name="description"
                 value={this.state.description}
-                onChange={this.eventFormChange}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <input type="submit" value="Submit!"/>
@@ -146,6 +160,5 @@ class EventsForm extends Component {
          );
         }
       }
-
 
 export default EventsForm;
