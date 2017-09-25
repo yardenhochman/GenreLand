@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
   constructor() {
@@ -10,6 +10,7 @@ class Login extends Component {
       password_digest: '',
       fireRedirect: false,
     }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleInputChange(event) {
@@ -23,10 +24,9 @@ class Login extends Component {
 
   handleFormSubmit(event) {
       event.preventDefault();
-
       let data = {
         username: this.state.username,
-        password_digest: this.state.password_digest
+        password: this.state.password_digest
       }
       console.log(data)
       axios({
@@ -35,17 +35,18 @@ class Login extends Component {
         data: data
       })
       .then(res => {
-        console.log(res);
-        if(res.data.auth){
-          this.setState({
-            id: res.data.id,
-            //The res.data.id might be wrong here
-            fireRedirect: true,
-          }
-        });
-      }).catch(err=> console.log(err));
-      event.target.reset();
+        this.props.userDataForState(res)
+        
+      }).catch(err => console.log(err));
+        
     } 
+    
+      //   this.props.loginAppSuccess(data)
+    //   this.setState({
+    //     fireRedirect: this.props.loginAppSuccess
+    //   })
+    // } 
+
 
   render() {
     return(

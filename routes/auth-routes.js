@@ -20,26 +20,22 @@ authRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-authRouter.post('/login', passport.authenticate('local', {
-  successRedirect: '/auth/success', 
-  failureRedirect: '/auth/failure',
-  failureFlash: true,
-})
+authRouter.post('/login', passport.authenticate('local'),
+  (req, res, next) =>{
+    res.json({
+      auth: true,
+      message: 'ok',
+      user: req.user,
+    })
+  },
+  (err, req, res, next) =>{
+    res.json({
+      auth: false,
+      message: 'Not authed',
+    })
+  }
 );
 
-authRouter.get('/success', (req, res) => {
-res.json({
-  auth: true,
-  message: 'ok',
-  user: req.user,
-});
-});
 
-authRouter.get('/failure', (req, res) => {
-  res.json({
-    auth: false,
-    message: 'Not authed',
-  });
-  });
 
 module.exports = authRouter;

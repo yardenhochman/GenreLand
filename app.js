@@ -19,7 +19,7 @@ app.use(cors())
 app.use(logger('dev'));
 app.use(express.static( 'public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(methodOverride('_method'));
 app.use(cookieParser());
