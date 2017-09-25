@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Header from '../Header2';
-import Footer from '../Footer';
 import axios from 'axios';
 
-class EventsForm extends Component {
+class EventsAdd extends Component {
     constructor() {
       super();
         this.state = {
@@ -69,7 +67,6 @@ class EventsForm extends Component {
          return (
            
           <div>
-            <Header />  
            <div className="eventsAdd">
             <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
              <label>
@@ -155,10 +152,9 @@ class EventsForm extends Component {
              : ''}
              <Link to={`/EventsList/`}>Back to Event List</Link>
              </div>
-             <Footer /> 
           </div>  
          );
         }
       }
 
-export default EventsForm;
+export default EventsAdd;
