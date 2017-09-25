@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import AreaDisplay from './AreaDisplay';
+import GenreDisplay from './AreaDisplay';
 import MapDisplay from './MapDisplay';
 import { Link } from 'react-router-dom';
 
 class Results extends Component {
-
+  constructor() {
+    super();
+    this.state = {eventDisplay: false}
+  }
 
 
 
@@ -17,7 +20,8 @@ class Results extends Component {
       />
     )
   }
-  displayAreas(results, usersChoices) {
+
+  AreaEventDisplay(results, usersChoices) {
     console.log(usersChoices)
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
@@ -27,7 +31,31 @@ class Results extends Component {
       const genres = unsortedGenres.sort(occurrenceValue)
       const genreOccurences = genres.map( genre => results[zipcode][genre] )
       return (
-          <AreaDisplay 
+          <GenreDisplay 
+            key =             {key} 
+            areaName =        {zipcode} 
+            genreOccurences = {genreOccurences} 
+            genresList =      {genres}
+            selectedGenre =   {Number(usersChoices.music)}
+            usersLocation =   {String(usersChoices.location)===zipcode?true:false}
+          />
+      )
+    })
+  }
+
+
+
+  AreaGenreDisplay(results, usersChoices) {
+    console.log(usersChoices)
+    let zipcodes = Object.getOwnPropertyNames(results);
+    return zipcodes.map( (zipcode,index) => {
+      const key = String(zipcode) + String(' number ' + index)
+      const unsortedGenres = Object.getOwnPropertyNames(results[zipcode])
+      const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
+      const genres = unsortedGenres.sort(occurrenceValue)
+      const genreOccurences = genres.map( genre => results[zipcode][genre] )
+      return (
+          <GenreDisplay 
             key =             {key} 
             areaName =        {zipcode} 
             genreOccurences = {genreOccurences} 
@@ -39,11 +67,10 @@ class Results extends Component {
     })
   }
   eventsView() {
-    console.log(`Coming Soon!`)
+    console.log(`Switching to events view`)
     return //this will link the user to events component. That's also where the user can see local bars
   }
   sort(data) {
-    console.log(data)
     let results = {};
     data.map( number => {
       if (!results[number.zipcode])
@@ -56,19 +83,21 @@ class Results extends Component {
     return results;
   }
   eventSort(data) {
-    
+    console.log(`This is the eventSort function`)
+    console.log(data)
     let events = {};
-    data.map( number => {
+    /*data.map( number => {
       [number.title] = {}
-      /* [number.title].description = number.description
+      [number.title].description = number.description
       [number.title].address = number.address
       [number.title].createdBy = number.createdby
       [number.title].eventDate = number.event_date 
       [number.title].eventTime = number.event_time*/
-      // /* if (!events[number.zip_code])
-      //   [number.zip_code] = []
-      // events[number.zip_code].append([number.title])     */ 
-    })
+      /* if (!events[number.zip_code])
+        [number.zip_code] = []
+      events[number.zip_code].append([number.title])      
+    })*/
+
     return events;
   }
   resultsParser(results, usersChoices) {
@@ -76,15 +105,14 @@ class Results extends Component {
     console.log(results.events)
     if (results.message !== 'ok')
       return <div>Try a different zipcode.</div>
-    let data = [...results.events];
     results = this.sort(results.data)
-    
-    /* let eventList = this.eventSort(data) */
+    let eventList = this.eventSort(results.events)
     return (
       <div>
         <Link to={`/Venues/`}>Local Scene</Link>
-        {/* <button onClick={this.eventsView}>Local Scene</button> */}
-        {this.displayAreas(results, usersChoices)}
+
+        {<button onClick={this.eventsView}>Local Scene</button>}
+        {this.state.eventDisplay?this.AreaEventDisplay(results, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {this.displayAreasMap(results, usersChoices)}
       </div>
     )
