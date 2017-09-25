@@ -3,26 +3,28 @@ const Location = require('../models/location');
 const Events = require('../models/events');
 
 const eventController = {};
-
-eventController.EventsByZipcodeList = (req, res) =>{
 /* 
-this controller methods sends the list of zipcodes to the model
-which brings back a list of events for each zipcode
-it then takes the list of events and counts the number of participants
-based on users2events
-*/
-    
-    
-    Events.ByZipcodeList(res.locals.allZips)
+    this controller methods sends the list of zipcodes to the model
+    which brings back a list of events for each zipcode
+    it then takes the list of events and counts the number of participants
+    based on users2events
+    */
+//here we'll have a helper function that sorts the response, so we 
+            //can feed a list of events to the DB to ask for the number of participants
+            //in it.
+
+
+    /* res.json({
+                message: 'shows events for a given zipcode',
+                data: rez
+            }) */
+eventController.EventsByZips = (req, res, next) =>{
+    Events.FindByZips(res.locals.allZips)
     .then( rez => {
-        res.locals.events = 
-        res.json({
-            message: 'shows events for a given zipcode',
-            data: rez
-        })
-    }).catch( err => console.log(err))
-
-
+        res.locals.events = rez
+        next()
+        }).catch( err => console.log(err))
+}
 
 eventController.findAll = (req, res) =>{
     Events.findAll('query results by zip events')

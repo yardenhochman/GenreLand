@@ -2,13 +2,13 @@ const db = require('../db/config');
 
 const Events = {};
 
-Events.FindByZipcode = (zipcode)
 
-
-Events.FindByZipcode = (data) => {
+Events.FindByZips = data => {
+    console.log('===events==>', data)
     return db.query(`
-    SELECT * FROM
-    events WHERE zipcode = $1`,
+    SELECT * 
+    FROM events 
+    WHERE zip_code IN ($1, $2, $3, $4, $5)`,
     [data[0].zip, data[1].zip, data[2].zip, data[3].zip, data[4].zip])
 };
 
