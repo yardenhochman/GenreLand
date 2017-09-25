@@ -86,27 +86,33 @@ class Results extends Component {
     console.log(`This is the eventSort function`)
     console.log(data)
     let events = {};
-    /*data.map( number => {
-      [number.title] = {}
-      [number.title].description = number.description
-      [number.title].address = number.address
-      [number.title].createdBy = number.createdby
-      [number.title].eventDate = number.event_date 
-      [number.title].eventTime = number.event_time*/
-      /* if (!events[number.zip_code])
-        [number.zip_code] = []
-      events[number.zip_code].append([number.title])      
-    })*/
+    data.map( number => {
+      if (!events[number.zip_code])
+        events[number.zip_code] = {}
+      events[number.zip_code][number.title] = { description: number.description, address: number.address, createdBy: number.createdBy}
+      console.log('inside events');
+      console.log(events);
+      //[number.title].description = number.description
+      // [number.title].address = number.address
+      // [number.title].createdBy = number.createdby
+      // [number.title].eventDate = number.event_date 
+      // [number.title].eventTime = number.event_time
+      //  if (!events[number.zip_code])
+      //   [number.zip_code] = []
+      //events[number.zip_code].append([number.title])      
+    })
 
     return events;
   }
   resultsParser(results, usersChoices) {
     console.log('resultsParser')
     console.log(results.events)
-    if (results.message !== 'ok')
+    if (results.message !== 'ok') {
       return <div>Try a different zipcode.</div>
-    results = this.sort(results.data)
+    }
     let eventList = this.eventSort(results.events)
+    results = this.sort(results.data)
+    
     return (
       <div>
         <Link to={`/Venues/`}>Local Scene</Link>
