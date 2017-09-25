@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import GenreDisplay from './AreaDisplay';
+import GenreDisplay from './GenreDisplay';
+import EventDisplay from './EventDisplay';
 import MapDisplay from './MapDisplay';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +8,10 @@ class Results extends Component {
   constructor() {
     super();
     this.state = {events: false}
-  }
+    this.eventsView = this.eventsView.bind(this)
+    }
+  
+
   displayAreasMap(results, usersChoices) {
     console.log(usersChoices.location)
     return (
@@ -20,6 +24,8 @@ class Results extends Component {
   DisplayAreaEvents(results, usersChoices) {
     console.log(usersChoices)
     let zipcodes = Object.getOwnPropertyNames(results);
+    console.log(zipcodes)
+    debugger
     return zipcodes.map( (zipcode,index) => {
       const key = String(zipcode) + String(' number ' + index)
       
@@ -29,16 +35,16 @@ class Results extends Component {
       const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
       const genres = unsortedGenres.sort(occurrenceValue) 
       */
-
       //iterate over events for a given zipcode
-      const events = zipcode.map( event => event[zipcode] )
+      const events = Object.getOwnPropertyNames(results.zipcode)
+      console.log(events)
       events.map( event => {
       return (
-          <GenreDisplay 
+          <EventDisplay 
             key =             {key} 
             areaName =        {zipcode} 
-            Events = {events} 
-            usersLocation =   {String(usersChoices.location)===zipcode?true:false}
+            events = {events} 
+            userLocation =   {String(usersChoices.location)===zipcode?true:false}
           />
       )
     })
@@ -69,7 +75,7 @@ class Results extends Component {
     })
   }
   eventsView() {
-    console.log(`Coming Soon!`)
+    this.setState({events: true})
     return //this will link the user to events component. That's also where the user can see local bars
   }
   sort(data) {
@@ -91,7 +97,7 @@ class Results extends Component {
     return (
       <div className="result-box">
         <h3><Link to={`/EventsForm`}>Post an Event! </Link></h3>
-        {/* <button onClick={this.eventsView}>Local Scene</button> */}
+        <button onClick={this.eventsView}>Local Scene</button>
         {this.state.events?this.DisplayAreaEvents(results, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {/* {this.displayAreasMap(results, usersChoices)} */}
       </div>
