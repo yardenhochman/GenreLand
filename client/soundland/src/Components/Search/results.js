@@ -108,7 +108,7 @@ class Results extends Component {
     results = this.sort(results.data)
     let eventList = this.eventSort(results.events)
     return (
-      <div>
+      <div className="result-box">
         <Link to={`/Venues/`}>Local Scene</Link>
 
         {<button onClick={this.eventsView}>Local Scene</button>}
