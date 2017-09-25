@@ -22,16 +22,25 @@ import EventsShow from './Components/Events/EventsShow';
 import EventsList from './Components/Events/EventsList';
 import Events from     './Components/Events/Events';
 
-//import Nav from './Nav';
 //set up according to https://medium.freecodecamp.org/beginner-s-guide-to-react-router-53094349669
 const NotFound = () => <h1>404.. This page is not found!</h1>
 let userLogged = false;
 const PageLayout = ({ children }) => <div>{userLogged?<Header2 />:<Header />}{children}</div>
 
-
-class App extends Component { 
-  
   //state: false check for auth: if true set state: true
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userName:'Guest'
+    }
+  this.setUserName = this.setUserName.bind(this)
+  }
+
+  setUserName(userName) {
+    this.state({userName:`${userName}`})
+  }
+  
   render() {
     return (
       <Router>
@@ -39,13 +48,12 @@ class App extends Component {
           <Route        path="/"                   component={PageLayout} />
             <Route exact path="/"                  component={Search} />
             <Route      path="/about"              component={About} />
-            <Route      path="/results"            component={Results} />
             <Route      path="/venues"             component={Venues} />
-          <Route        path="/auth" />
+            <Route      path="/auth" />
             <Route      path="/login"              component={Login} />
             <Route      path="/register"           component={Register} />
             <Route      path="/user"               component={User} />
-          <Route        path="/Events" />
+            <Route      path="/Events" />
             <Route exact path="/Events"            component={Events} />
             <Route      path="/Form"               component={EventsAdd} />
             <Route      path="/Edit/:id"           component={EventsEdit} />
