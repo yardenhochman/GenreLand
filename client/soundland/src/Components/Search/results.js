@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import AreaDisplay from './AreaDisplay';
+import GenreDisplay from './AreaDisplay';
 import MapDisplay from './MapDisplay';
 import { Link } from 'react-router-dom';
 
 class Results extends Component {
+  constructor() {
+    super();
+    this.state = {events: false}
+  }
   displayAreasMap(results, usersChoices) {
     console.log(usersChoices.location)
     return (
@@ -13,7 +17,7 @@ class Results extends Component {
       />
     )
   }
-  displayAreas(results, usersChoices) {
+  DisplayAreaEvents(results, usersChoices) {
     console.log(usersChoices)
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
@@ -27,17 +31,19 @@ class Results extends Component {
       */
 
       //iterate over events for a given zipcode
-      const Events = unsortedEvents.map( event => event[zipcode] )
-      return 
+      const events = zipcode.map( event => event[zipcode] )
+      events.map( event => {
+      return (
           <GenreDisplay 
             key =             {key} 
             areaName =        {zipcode} 
-            Events = {Events} 
+            Events = {events} 
             usersLocation =   {String(usersChoices.location)===zipcode?true:false}
           />
       )
     })
-  }
+  })
+}
 
 
 
@@ -115,7 +121,7 @@ class Results extends Component {
       <div className="result-box">
         <h3><Link to={`/EventsForm`}>Post an Event! </Link></h3>
         {/* <button onClick={this.eventsView}>Local Scene</button> */}
-        {this.displayAreas(results, usersChoices)}
+        {this.state.events?this.DisplayAreaEvents(results, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {/* {this.displayAreasMap(results, usersChoices)} */}
       </div>
     )
