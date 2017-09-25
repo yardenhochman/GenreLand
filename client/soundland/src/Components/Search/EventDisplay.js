@@ -1,24 +1,24 @@
 import React from 'react';
 
 const EventDisplay = (props) => {
-  const { areaName, events, userLocation} = props
+  const { areaName, eventList, userLocation} = props
   
-  return (
+  
+   return (
       <div className="EventResults">
         <h1 className={userLocation?"markzipcode":''}>{areaName}</h1>
         <ul>
-          {events.map( (event,index) => {
-            let eventName = Object.getOwnPropertyNames(event);
+          {eventList.map( (event,index) => {
             return (
-              <li className={"list-group-item " + !(userLocation)?"markGenre":''} key = {String(event)+String(index)}>
-                {String(event)+' ' + 5+{/* event.count */}}
+              <li className={"list-group-item " + !(userLocation)?"markGenre":''} key = {String(event.title)+String(index)}>
+                {event.title +'   ' + event.description + ' and ' + 5 + 'participants'}
               </li>
             )
           })}
         </ul>
         
       </div>
-  )
+  ) 
 }
 
 export default EventDisplay;
