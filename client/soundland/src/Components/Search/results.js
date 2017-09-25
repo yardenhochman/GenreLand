@@ -18,12 +18,40 @@ class Results extends Component {
     let zipcodes = Object.getOwnPropertyNames(results);
     return zipcodes.map( (zipcode,index) => {
       const key = String(zipcode) + String(' number ' + index)
+      
+      /* 
+      we will use this code later to sort Events display by the # of participants
+      
+      const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
+      const genres = unsortedGenres.sort(occurrenceValue) 
+      */
+
+      //iterate over events for a given zipcode
+      const Events = unsortedEvents.map( event => event[zipcode] )
+      return 
+          <GenreDisplay 
+            key =             {key} 
+            areaName =        {zipcode} 
+            Events = {Events} 
+            usersLocation =   {String(usersChoices.location)===zipcode?true:false}
+          />
+      )
+    })
+  }
+
+
+
+  AreaGenreDisplay(results, usersChoices) {
+    console.log(usersChoices)
+    let zipcodes = Object.getOwnPropertyNames(results);
+    return zipcodes.map( (zipcode,index) => {
+      const key = String(zipcode) + String(' number ' + index)
       const unsortedGenres = Object.getOwnPropertyNames(results[zipcode])
       const occurrenceValue = (a,b) => results[zipcode][b]-results[zipcode][a]
       const genres = unsortedGenres.sort(occurrenceValue)
       const genreOccurences = genres.map( genre => results[zipcode][genre] )
       return (
-          <AreaDisplay 
+          <GenreDisplay 
             key =             {key} 
             areaName =        {zipcode} 
             genreOccurences = {genreOccurences} 
