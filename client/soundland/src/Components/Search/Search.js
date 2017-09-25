@@ -53,8 +53,10 @@ class Search extends Component {
         console.log(res.data);
         this.setState({
           results:  res.data,
+          events: res.events,
           waiting:  false
         })
+        console.log(this.state.events)
       }).catch( err => console.log(err))
   }
   render() {
