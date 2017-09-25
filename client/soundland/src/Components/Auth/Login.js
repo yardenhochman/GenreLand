@@ -26,20 +26,22 @@ class Login extends Component {
 
       let data = {
         username: this.state.username,
-        password_digest: this.password_digest
+        password_digest: this.state.password_digest
       }
-        //routes here are not valid revist
+      console.log(data)
       axios({
         method: 'POST',
         url: 'http://localhost:3001/auth/login',
-        data:data
+        data: data
       })
       .then(res => {
-        console.log('Logged in!');
-        this.setState({
-          id: res.data.id,
-          //The res.data.id might be wrong here
-          fireRedirect: true,
+        console.log(res);
+        if(res.data.auth){
+          this.setState({
+            id: res.data.id,
+            //The res.data.id might be wrong here
+            fireRedirect: true,
+          }
         });
       }).catch(err=> console.log(err));
       event.target.reset();
