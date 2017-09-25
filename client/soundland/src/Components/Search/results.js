@@ -4,6 +4,10 @@ import MapDisplay from './MapDisplay';
 import { Link } from 'react-router-dom';
 
 class Results extends Component {
+
+
+
+
   displayAreasMap(results, usersChoices) {
     console.log(usersChoices.location)
     return (
@@ -39,6 +43,7 @@ class Results extends Component {
     return //this will link the user to events component. That's also where the user can see local bars
   }
   sort(data) {
+    console.log(data)
     let results = {};
     data.map( number => {
       if (!results[number.zipcode])
@@ -50,10 +55,31 @@ class Results extends Component {
     })
     return results;
   }
+  eventSort(data) {
+    
+    let events = {};
+    data.map( number => {
+      [number.title] = {}
+      /* [number.title].description = number.description
+      [number.title].address = number.address
+      [number.title].createdBy = number.createdby
+      [number.title].eventDate = number.event_date 
+      [number.title].eventTime = number.event_time*/
+      /* if (!events[number.zip_code])
+        [number.zip_code] = []
+      events[number.zip_code].append([number.title])     */ 
+    })
+    return events;
+  }
   resultsParser(results, usersChoices) {
+    console.log('resultsParser')
+    console.log(results.events)
     if (results.message !== 'ok')
       return <div>Try a different zipcode.</div>
+    let data = [...results.events];
     results = this.sort(results.data)
+    
+    /* let eventList = this.eventSort(data) */
     return (
       <div>
         <Link to={`/Venues/`}>Local Scene</Link>
@@ -68,7 +94,7 @@ class Results extends Component {
     return <h2>Searching your area</h2>
   }
   checkResults() {
-    const { location, music, waiting, results} = this.props.state
+    const { location, music, waiting, results } = this.props.state
     let usersChoices = {};
     usersChoices = {location, music}
     if (!results && !waiting)

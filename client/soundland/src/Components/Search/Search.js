@@ -15,7 +15,8 @@ class Search extends Component {
       location: '',
       music:  "0",
       waiting:  false,
-      results:  null
+      results:  null,
+      events:   null
     }
   this.onSubmit = this.onSubmit.bind(this)
   this.handleGenreChoice =  this.handleGenreChoice.bind(this)
@@ -53,7 +54,7 @@ class Search extends Component {
         console.log(res.data);
         this.setState({
           results:  res.data,
-          events: res.events,
+          events:   res.data.events,
           waiting:  false
         })
         console.log(this.state.events)
