@@ -7,6 +7,8 @@ resultsController.queryResults = (req, res) =>{
     console.log('queryResults reached');
     Music2locations.results(res.locals.allZips)
     .then( results => {
+        console.log('checking in the results controller'+res.locals.events[0][0])
+        console.log('this was the results controller')
         res.json({
             message: 'ok',
             data: results,
