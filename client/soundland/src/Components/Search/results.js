@@ -92,7 +92,12 @@ class Results extends Component {
     data.map( number => {
       if (!events[number.zip_code])
         events[number.zip_code] = {}
-      events[number.zip_code][number.title] = { description: number.description, address: number.address, createdBy: number.createdBy}
+      events[number.zip_code][number.title] = 
+      { description: number.description, 
+        address: number.address, 
+        createdBy: number.createdby, 
+        eventDate: number.event_date, 
+        eventTime: number.event_time  }
       console.log('inside events');
       console.log(events);
       //[number.title].description = number.description
@@ -107,7 +112,7 @@ class Results extends Component {
 
     return events;
   }
-  resultsParser(results, usersChoices) {
+resultsParser(results, usersChoices) {
     console.log('resultsParser')
     console.log(results.events)
     if (results.message !== 'ok') {
