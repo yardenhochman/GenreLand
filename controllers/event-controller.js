@@ -10,7 +10,7 @@ this controller methods sends the list of zipcodes to the model
 which brings back a list of events for each zipcode
 it then takes the list of events and counts the number of participants
 based on users2events
-*/
+*/}
     
     
     Events.ByZipcodeList(res.locals.allZips)

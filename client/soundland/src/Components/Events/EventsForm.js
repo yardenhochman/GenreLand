@@ -42,11 +42,11 @@ class EventsForm extends Component {
           let data = {
               title: this.state.title,
               address: this.state.address,
-              zip_code: this.state.zip_code, //user zipcode insert here
               event_date: this.state.date,
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
+              zip_code: this.state.zip_code, //user zipcode insert here
           }
           console.log(data);
           axios({
@@ -95,18 +95,6 @@ class EventsForm extends Component {
                  />
             </label><br/>
             <label>
-                Zip Code:
-                <input 
-                type="text"
-                placeholder="zip code"
-                name="zip code"
-                pattern="[0-9]{5}"
-                required
-                //value={this.state.zip_code}
-                onChange={this.eventFormChange}
-                />
-            </label><br/>
-            <label>
                 Date:
                 <input 
                 type="date"
@@ -148,11 +136,24 @@ class EventsForm extends Component {
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
+            <label>
+                Zip Code:
+                <input 
+                type="text"
+                placeholder="zip code"
+                name="zip code"
+                pattern="[0-9]{5}"
+                required
+                //value={this.state.zip_code}
+                onChange={this.eventFormChange}
+                />
+            </label><br/>
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
+             ? <Redirect push to={`/EventsShow/${this.state.newId}`} />
              : ''}
+             {/* once added redirect to eventsshow to show added entry */}
              <Link to={`/EventsList/`}>Back to Event List</Link>
              </div>
              <Footer /> 

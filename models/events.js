@@ -2,7 +2,7 @@ const db = require('../db/config');
 
 const Events = {};
 
-Events.FindByZipcode = (zipcode)
+//Events.FindByZipcode = (zipcode)
 
 
 Events.FindByZipcode = (data) => {
