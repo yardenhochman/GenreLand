@@ -108,16 +108,13 @@ class Results extends Component {
     return events;
   }
 resultsParser(results, usersChoices) {
-    console.log('resultsParser')
-    console.log(results.events)
     if (results.message !== 'ok')
       return <div>Try a different zipcode.</div>
     let eventList = this.eventSort(results.events)
-    console.log(eventList)
     results = this.sort(results.data)
     return (
       <div className="result-box">
-        <h3><Link to={`/EventsForm`}>Post an Event! </Link></h3>
+        <h3><Link to={`/Events/Form`}>Post an Event! </Link></h3>
         <button onClick={this.eventsView}>{this.state.events?"Genres List":"Local Scene"}</button>
         {this.state.events?this.DisplayAreaEvents(eventList, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {/* {this.displayAreasMap(results, usersChoices)} */}
