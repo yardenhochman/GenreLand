@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import axios from 'axios'
 
 import About from     './Components/AboutUs';
 import Footer from    './Components/Footer';
@@ -41,6 +42,34 @@ class App extends Component {
     this.state({userName:`${userName}`})
   }
   
+
+  constructor(){
+    super();
+    this.state = {
+      user: {},
+      loggedIn: false,
+    }
+    // this.loginAppSuccess = this.loginAppSuccess.bind(this)
+    this.userDataForState = this.userDataForState.bind(this)
+  }
+
+  // loginAppSuccess(data){
+    
+
+  userDataForState(res){
+    if(res.data.auth){
+      // console.log(this.setState)
+      this.setState({
+        user: res.data.user,
+        loggedIn: true,
+    });
+    } else{
+    //event.target.reset();
+    alert('Inccorect username or password!')
+    }
+  }
+
+
   render() {
     return (
       <Router>
@@ -49,12 +78,13 @@ class App extends Component {
             <Route exact path="/"                  component={Search} />
             <Route      path="/about"              component={About} />
             <Route      path="/venues"             component={Venues} />
-            <Route      path="/auth" />
-            <Route      path="/login"              component={Login} />
-            <Route      path="/register"           component={Register} />
-            <Route      path="/user"               component={User} />
-            <Route      path="/Events" />
-            <Route exact path="/Events"            component={Events} />
+    
+            <Route      exact path="/auth/login"              render={ props => <Login userDataForState={this.userDataForState} /> } />
+            <Route      exact path="/auth/register"           component={Register} />
+            <Route      exact path="/profile/:id"               component={User} />
+          <Route        path="/Events" />
+            <Route exact path="/Events"                            component={Events} />
+
             <Route      path="/Form"               component={EventsAdd} />
             <Route      path="/Edit/:id"           component={EventsEdit} />
             <Route      path="/Show/:id"           component={EventsShow} />

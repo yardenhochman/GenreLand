@@ -14,16 +14,28 @@ authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
 
 authRouter.post('/register', usersController.create);
 
-authRouter.post('/login', passport.authenticate('local', {
-    successRedirect: '/user',
-    failureRedirect: '/auth/login',
-    failureFlash: true,
-  }),
-);
 
 authRouter.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
+
+authRouter.post('/login', passport.authenticate('local'),
+  (req, res, next) =>{
+    res.json({
+      auth: true,
+      message: 'ok',
+      user: req.user,
+    })
+  },
+  (err, req, res, next) =>{
+    res.json({
+      auth: false,
+      message: 'Not authed',
+    })
+  }
+);
+
+
 
 module.exports = authRouter;

@@ -5,7 +5,10 @@ function comparePass(userPassword, databasePassword) {
 }
 
 function loginRedirect(req, res, next) {
-  if (req.user) return res.redirect('/user');
+  if (req.user) return res.json({
+    message: 'ok',
+    data: req.user
+  });
   return next();
 }
 
@@ -19,3 +22,4 @@ module.exports = {
   loginRedirect,
   loginRequired,
 }
+

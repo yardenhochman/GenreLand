@@ -10,6 +10,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 
 const app = express();
+
 app.use(cors());
 
 require('dotenv').config();
@@ -18,12 +19,13 @@ app.use(cors())
 app.use(logger('dev'));
 app.use(express.static( 'public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(flash());
 app.use(session({
+  key: process.env.SECRET_KEY,
   secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true,
