@@ -6,11 +6,34 @@ const Events = {};
 Events.FindByZips = data => {
     console.log('===events==>', data)
     return db.query(`
-    SELECT * 
-    FROM events 
-    WHERE zip_code IN ($1, $2, $3, $4, $5)`,
+    SELECT
+    events.id,
+    events.title,
+    events.address,
+    events.event_date,
+    events.event_time,
+    events.genre,
+    events.description,
+    events.createdby,
+    events.zip_code,
+    COUNT(*) as count
+    FROM events
+    JOIN events2user ON events.id = events2user.event_id
+    WHERE events.zip_code IN ($1, $2, $3, $4, $5)
+    GROUP BY
+    events.id,
+    events.title,
+    events.address,
+    events.event_date,
+    events.event_time,
+    events.genre,
+    events.description,
+    events.createdby,
+    events.zip_code`,
     [data[0].zip, data[1].zip, data[2].zip, data[3].zip, data[4].zip])
 };
+
+
 
 Events.findById = id => {
     return db.one(`
@@ -48,5 +71,36 @@ Events.update = (data, id) => {
     WHERE id = $9 `,
     [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.createdby, data.zip_code, id])
 }
+
+// Events.queryById = id  => {
+//     return db.query(`
+// SELECT
+// events.id, 
+// events.title, 
+// events.address,
+// events.event_date, 
+// events.event_time,
+// events.genre, 
+// events.description,
+// events.createdby, 
+// events.zip_code,
+// COUNT(*) as count FROM events
+// JOIN events2user ON 
+// events.id = events2user.event_id
+// GROUP BY events.id, 
+// events.title,
+// events.address,
+// events.event_date, 
+// events.event_time, 
+// events.genre,
+// events.description, 
+// events.createdby, 
+// events.zip_code`,
+// [id])
+
+//SELECT * 
+// FROM events 
+// WHERE zip_code IN ($1, $2, $3, $4, $5)`,
+// [data[0].zip, data[1].zip, data[2].zip, data[3].zip, data[4].zip])
 
 module.exports = Events;
