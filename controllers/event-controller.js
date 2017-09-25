@@ -22,6 +22,7 @@ eventController.EventsByZips = (req, res, next) =>{
     Events.FindByZips(res.locals.allZips)
     .then( rez => {
         res.locals.events = rez
+        console.log(res.locals.events)
         next()
         }).catch( err => console.log(err))
 }
