@@ -63,12 +63,19 @@ class Search extends Component {
   render() {
     return (
       <div>
+
+        <div className="hero">
+          <h1><u>Connect</u> with music lovers in your area.</h1>
+          <h1>Plan a <u>party</u> or find new places to go.</h1>
         {/* <h1>You live in {this.state.location ? this.state.location.city : ''}, {this.state.location.state}</h1> */}
-        <form>
-        <label>
-          Pick your favorite genre:
-          <select value={this.music} onChange={this.handleGenreChoice}>
-            <option value="0"></option>
+
+          <div className='zipcode'>
+           <input placeholder="Enter your zipcode" type="number" onChange = {this.handleZipcodeInput} value = {this.state.location}></input>
+          </div>
+
+          {/* <form className="genre-choice"> */}
+          <select className="genre-choice" value={this.music} onChange={this.handleGenreChoice}>
+            <option value="" disabled selected>SELECT A GENRE</option>
             <option value="1">Rock</option>
             <option value="2">Alternative</option>
             <option value="3">RnB</option>
@@ -93,20 +100,15 @@ class Search extends Component {
             <option value="22">Bluegrass</option>
             <option value="23">Disco</option>
           </select>
-        </label>
-      </form>
-      <div className='Please enter your zipcode'>
-        <h2>Enter your Zipcode</h2>
-        <input type="number" onChange = {this.handleZipcodeInput} value = {this.state.location}></input>
-        <button onClick = {this.automatic} >Use your current location</button>
-    </div>
-        <button 
-          onClick = {this.onSubmit}>
-          Submit
+      {/* </form> */}
+
+        <button onClick = {this.onSubmit}>
+          SUBMIT
         </button>
-        <Results 
-          state = {this.state}
-        />
+        </div>
+    
+        <Results state={this.state} />
+
       </div>
     );
   }
