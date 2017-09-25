@@ -10,5 +10,4 @@ CREATE TABLE IF NOT EXISTS events (
   description TEXT NOT NULL,
   createdby INTEGER NOT NULL,
   zip_code INTEGER
-  -- user_id INTEGER REFERENCES users(id)
 );

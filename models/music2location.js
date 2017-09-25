@@ -2,7 +2,7 @@ const db = require('../db/config');
 
 const Music2locations = {};
 
-Music2locations.insert = (data) => {
+Music2locations.insert = data => {
     return db.one (`
     INSERT INTO music2location
     (music_id, location_id, user_id)
