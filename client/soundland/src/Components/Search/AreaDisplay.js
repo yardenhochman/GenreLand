@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AreaDisplay = (props) => {
+const GenreDisplay = (props) => {
   const { areaName, genresList, genreOccurences, selectedGenre, usersLocation} = props
   const genreList = [
     'That cant be right','Rock','Alternative','RnB', 
@@ -27,4 +27,4 @@ const usersGenre = (genreList[selectedGenre])
   )
 }
 
-export default AreaDisplay;
+export default GenreDisplay;
