@@ -65,9 +65,9 @@ class Results extends Component {
       [number.title].createdBy = number.createdby
       [number.title].eventDate = number.event_date 
       [number.title].eventTime = number.event_time*/
-      /* if (!events[number.zip_code])
-        [number.zip_code] = []
-      events[number.zip_code].append([number.title])     */ 
+      // /* if (!events[number.zip_code])
+      //   [number.zip_code] = []
+      // events[number.zip_code].append([number.title])     */ 
     })
     return events;
   }
