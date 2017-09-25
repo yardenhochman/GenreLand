@@ -11,8 +11,8 @@ const Header = () => {
         </div>
 
         <div className="nav-buttons-align">
-        <Link to={"/login"} className="nav-button">Login </Link>
-        <Link to={"/register"} className="nav-button">Register</Link>
+        <Link to={"/auth/login"} className="nav-button">Login </Link>
+        <Link to={"/auth/register"} className="nav-button">Register</Link>
         </div>
 
       </div>

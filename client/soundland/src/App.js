@@ -30,19 +30,6 @@ const PageLayout = ({ children }) => <div>{userLogged?<Header2 />:<Header />}{ch
 
   //state: false check for auth: if true set state: true
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userName:'Guest'
-    }
-  this.setUserName = this.setUserName.bind(this)
-  }
-
-  setUserName(userName) {
-    this.state({userName:`${userName}`})
-  }
-  
-
   constructor(){
     super();
     this.state = {

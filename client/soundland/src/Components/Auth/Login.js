@@ -41,11 +41,6 @@ class Login extends Component {
         
     } 
     
-      //   this.props.loginAppSuccess(data)
-    //   this.setState({
-    //     fireRedirect: this.props.loginAppSuccess
-    //   })
-    // } 
 
 
   render() {
