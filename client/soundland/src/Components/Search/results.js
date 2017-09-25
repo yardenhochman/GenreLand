@@ -22,10 +22,7 @@ class Results extends Component {
     )
   }
   DisplayAreaEvents(results, usersChoices) {
-    console.log(usersChoices)
     let zipcodes = Object.getOwnPropertyNames(results);
-    console.log(zipcodes)
-    debugger
     return zipcodes.map( (zipcode,index) => {
       const key = String(zipcode) + String(' number ' + index)
       
@@ -36,18 +33,14 @@ class Results extends Component {
       const genres = unsortedGenres.sort(occurrenceValue) 
       */
       //iterate over events for a given zipcode
-      const events = Object.getOwnPropertyNames(results.zipcode)
-      console.log(events)
-      events.map( event => {
       return (
           <EventDisplay 
-            key =             {key} 
-            areaName =        {zipcode} 
-            events = {events} 
-            userLocation =   {String(usersChoices.location)===zipcode?true:false}
+            key = {key} 
+            areaName = {zipcode} 
+            eventList = {results[zipcode]} 
+            userLocation = {String(usersChoices.location)===zipcode?true:false}
           />
       )
-    })
   })
 }
 
@@ -75,6 +68,8 @@ class Results extends Component {
     })
   }
   eventsView() {
+    if (this.state.events)
+      return this.setState({events: false})
     this.setState({events: true})
     return //this will link the user to events component. That's also where the user can see local bars
   }
@@ -97,42 +92,34 @@ class Results extends Component {
     let events = {};
     data.map( number => {
       if (!events[number.zip_code])
-        events[number.zip_code] = {}
-      events[number.zip_code][number.title] = 
-      { description: number.description, 
-        address: number.address, 
-        createdBy: number.createdby, 
-        eventDate: number.event_date, 
-        eventTime: number.event_time  }
-      console.log('inside events');
-      console.log(events);
-      //[number.title].description = number.description
-      // [number.title].address = number.address
-      // [number.title].createdBy = number.createdby
-      // [number.title].eventDate = number.event_date 
-      // [number.title].eventTime = number.event_time
-      //  if (!events[number.zip_code])
-      //   [number.zip_code] = []
-      //events[number.zip_code].append([number.title])      
+        events[number.zip_code] = []
+      events[number.zip_code].push(
+              {title: number.title,
+              description: number.description, 
+              address: number.address, 
+              createdBy: number.createdby, 
+              eventDate: number.event_date, 
+              eventTime: number.event_time}
+              )
     })
+      
 
+    console.log(events)
     return events;
   }
 resultsParser(results, usersChoices) {
     console.log('resultsParser')
     console.log(results.events)
-    if (results.message !== 'ok') {
+    if (results.message !== 'ok')
       return <div>Try a different zipcode.</div>
-    }
     let eventList = this.eventSort(results.events)
+    console.log(eventList)
     results = this.sort(results.data)
-    
-
     return (
       <div className="result-box">
         <h3><Link to={`/EventsForm`}>Post an Event! </Link></h3>
-        <button onClick={this.eventsView}>Local Scene</button>
-        {this.state.events?this.DisplayAreaEvents(results, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
+        <button onClick={this.eventsView}>{this.state.events?"Genres List":"Local Scene"}</button>
+        {this.state.events?this.DisplayAreaEvents(eventList, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {/* {this.displayAreasMap(results, usersChoices)} */}
       </div>
     )
