@@ -17,7 +17,7 @@ import User from      './Components/Auth/User';
 
 import Venues from    './Components/Venues';
 
-import EventsAdd from  './Components/Events/EventsForm';
+import EventsForm from  './Components/Events/EventsForm';
 import EventsEdit from './Components/Events/EventsEdit';
 import EventsShow from './Components/Events/EventsShow';
 import EventsList from './Components/Events/EventsList';

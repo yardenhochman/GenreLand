@@ -137,7 +137,7 @@ div.zipcode > input {
   padding: 0;
 }
 
-button {
+button, input.submit {
   background-color: #999999;
   border: none;
   border-radius: 5px;
@@ -175,6 +175,54 @@ li {
   align-items: center;
   justify-content: space-between;
   text-align: right;
+}
+
+/* Event creation styling */
+.eventsAdd {
+  width: 600px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin: 5px;
+  width: 500px; 
+  text-align: left;
+}
+
+h5 {
+  display: inline-block;
+  min-width: 130px;
+  text-align: right;
+  margin: 0 25px 0 0;
+  font-family: 'Josefin Slab', serif;
+  font-size: 15px;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+label > input {
+  padding: 5px;
+  margin: 5px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #999999;
+  background-color: transparent;
+  width: 250px;
+  color: #f1b82d;
+  text-transform: uppercase;
+}
+
+label > select option {
+
+}
+
+.eventsAdd > form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 35px;
 }
 
 .App {
