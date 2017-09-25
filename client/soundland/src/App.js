@@ -48,7 +48,6 @@ class App extends Component {
           <Route        path="/"                   component={PageLayout} />
             <Route exact path="/"                  component={Search} />
             <Route      path="/about"              component={About} />
-            <Route      path="/results"            component={Results} />
             <Route      path="/venues"             component={Venues} />
             <Route      path="/auth" />
             <Route      path="/login"              component={Login} />

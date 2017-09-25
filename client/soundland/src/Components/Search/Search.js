@@ -71,7 +71,6 @@ class Search extends Component {
 
           <div className='zipcode'>
            <input placeholder="Enter your zipcode" type="number" onChange = {this.handleZipcodeInput} value = {this.state.location}></input>
-           <button onClick = {this.automatic} >USE LOCATION</button>
           </div>
 
           {/* <form className="genre-choice"> */}
@@ -103,15 +102,13 @@ class Search extends Component {
           </select>
       {/* </form> */}
 
-        <button 
-          onClick = {this.onSubmit}>
-          Submit
+        <button onClick = {this.onSubmit}>
+          SUBMIT
         </button>
         </div>
     
-        <Results 
-          state = {this.state}
-        />
+        <Results state={this.state} />
+
       </div>
     );
   }

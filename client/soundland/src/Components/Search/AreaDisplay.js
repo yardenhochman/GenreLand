@@ -14,6 +14,7 @@ const usersGenre = (genreList[selectedGenre])
     <div>
       <div className="results">
         <h1 className={usersLocation?"markzipcode":''}>{areaName}</h1>
+
         <ul>
           {genresList.map( (genre,index) => {
             console.log(usersGenre +' '+genre)
@@ -24,6 +25,7 @@ const usersGenre = (genreList[selectedGenre])
             )
           })}
         </ul>
+        
       </div>
     </div>
   )

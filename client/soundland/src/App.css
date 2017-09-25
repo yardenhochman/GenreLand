@@ -135,7 +135,6 @@ div.zipcode > input {
   border-right: none;
   border-left: none;
   padding: 0;
-  margin-right: 10px;
 }
 
 button {
@@ -153,18 +152,18 @@ li {
 }
 
 .result-box {
-
+  padding: 35px;
 }
 
 .results > h1 {
 	transform: rotate(270deg);
-  transform-origin: left top 0;
+  transform-origin: 100px 50px;
   float: left;
   font-family: 'Josefin Slab', serif;
   font-size: 100px;
   font-weight: 100;
   font-style: italic;
-  color: #f1b82d;
+  color: #555555;
   position: relative;
 }
 
