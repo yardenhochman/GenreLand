@@ -97,6 +97,7 @@ class Results extends Component {
         [number.zip_code] = []
       events[number.zip_code].append([number.title])      
     })*/
+
     return events;
   }
   resultsParser(results, usersChoices) {
