@@ -1,16 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="nav">
-      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/1041163-200.png" alt="logo"/>
+      <div className="nav">
 
-      <div className="nav-buttons-align">
-        <a href="/auth/login" className="nav-button">Login </a>
-        <a href="/auth/register" className="nav-button">Register</a>
+        <div className="lock-up">
+          <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/1041163-200.png" alt="logo"/>
+          <Link to={`/`}> <h4>soundland</h4> </Link>
+        </div>
+
+        <div className="nav-buttons-align">
+        <Link to={"/login"} className="nav-button">Login </Link>
+        <Link to={"/register"} className="nav-button">Register</Link>
+        </div>
+
       </div>
-    </div>
   )
 };
 
-export default Header; //why aren't we using a Link to utilize the front end router? same goes for footer
+export default Header;

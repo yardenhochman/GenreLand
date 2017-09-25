@@ -6,13 +6,15 @@ const resultsController = {};
 resultsController.queryResults = (req, res) =>{
     console.log('queryResults reached');
     Music2locations.results(res.locals.allZips)
-    .then(results =>{
+    .then( results => {
+        // console.log('checking in the results controller'+res.locals.events[0][0])
+        console.log('this was the results controller')
         res.json({
             message: 'ok',
             data: results,
-            venues: res.locals.venues
+            events: res.locals.events
         })
-    }).catch(err =>{
+    }).catch( err => {
         console.log(err)
         res.status(500).json({
             message: 'page not found',
@@ -25,17 +27,17 @@ resultsController.insertLocation = (req, res, next) => {
     console.log('insertLocation reached');
     console.log(req.body)
     Location.insert(req.body.zipcode,req.body.description)
-    .then(data =>{
+    .then( data => {
         //let location_id = data.location_id;
         res.locals.id = data.id;
         next();
     })
-    .catch(err =>{
+    .catch( err =>{
         console.log(err)
     })
 }
 
-resultsController.insertMusic2Location = (req, res, next) =>{
+resultsController.insertMusic2Location = (req, res, next) => {
     console.log('music2locations reached');
     let data = {
         genre_id: req.body.genre,
@@ -46,7 +48,7 @@ resultsController.insertMusic2Location = (req, res, next) =>{
     .then(() => {
         next();
     })
-    .catch(err =>{
+    .catch(err => {
         console.log(err)
     })
 }
