@@ -8,8 +8,8 @@ class Results extends Component {
     console.log(usersChoices.location)
     return (
       <MapDisplay 
-        usersZipcode =        {usersChoices.location}
-        results =             {results}
+        usersZipcode = {usersChoices.location}
+        results = {results}
       />
     )
   }
