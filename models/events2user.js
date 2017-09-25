@@ -28,4 +28,9 @@ Events2user.findById = id => {
     WHERE event_id =$1`)   
 };
 
+
+Events2user.findAll = id => {
+    return.query(`SELECT event_id, count(*) from events2user group by event_id having event_id = $1`)
+};
+
 module.exports = Events2user;

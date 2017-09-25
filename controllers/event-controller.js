@@ -64,7 +64,8 @@ eventController.create = (req, res) => {
         genre: req.body.genre,
         description: req.body.description,
         createdby: req.body.user,
-        zip_code: req.body.zip_code
+        zip_code: req.body.zip_code,
+        count: req.body.count,
     })
     .then(rez =>{
         res.json({
@@ -96,7 +97,8 @@ eventController.update = (req, res) =>{
         genre: req.body.genre,
         description: req.body.description,
         createdby: req.body.user,
-        zip_code: req.body.zip_code  
+        zip_code: req.body.zip_code,
+        count: req.body.count,
     }).then(rez =>{
         res.json({
             message: 'edit event',

@@ -9,5 +9,6 @@ CREATE TABLE IF NOT EXISTS events (
   genre TEXT NOT NULL,
   description TEXT NOT NULL,
   createdby INTEGER NOT NULL,
-  zip_code INTEGER
+  zip_code INTEGER,
+  count INTEGER
 );
