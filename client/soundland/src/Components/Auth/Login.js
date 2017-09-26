@@ -9,6 +9,7 @@ class Login extends Component {
       username: '',
       password_digest: '',
       fireRedirect: false,
+      user: {}
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -28,14 +29,22 @@ class Login extends Component {
         username: this.state.username,
         password: this.state.password_digest
       }
-      console.log(data)
       axios({
         method: 'POST',
         url: 'http://localhost:3001/auth/login',
         data: data
       })
       .then(res => {
-        this.props.userDataForState(res)
+        this.props.userDataForState(res);
+        if(res.data.auth){
+          this.setState({
+            user: res,
+            fireRedirect: true
+          })
+        } else{
+        alert('Inccorect username or password!')
+        event.target.reset();
+        }
         
       }).catch(err => console.log(err));
         
@@ -77,7 +86,7 @@ class Login extends Component {
             />
           </form>
           {this.state.fireRedirect
-          ? <Redirect push to={`/`} />
+          ? <Redirect push to={`/profile/${this.state.user.data.user.id}`} />
           : ''}
         </div>
 

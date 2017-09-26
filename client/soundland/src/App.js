@@ -44,18 +44,11 @@ class App extends Component {
     
 
   userDataForState(res){
-    if(res.data.auth){
-      // console.log(this.setState)
       this.setState({
         user: res.data.user,
         loggedIn: true,
     });
-    } else{
-    //event.target.reset();
-    alert('Inccorect username or password!')
-    }
   }
-
 
   render() {
     return (
@@ -68,7 +61,7 @@ class App extends Component {
     
             <Route      exact path="/auth/login"              render={ props => <Login userDataForState={this.userDataForState} /> } />
             <Route      exact path="/auth/register"           component={Register} />
-            <Route      exact path="/profile/:id"               component={User} />
+            <Route      exact path="/profile/:id"              render={ props => <User user={this.state.user} />} />
           <Route        path="/Events" />
             <Route exact path="/Events"                            component={Events} />
 

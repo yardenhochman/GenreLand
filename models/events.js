@@ -1,4 +1,5 @@
 const db = require('../db/config');
+const events2user = require('./events2user')
 
 const Events = {};
 
@@ -47,6 +48,13 @@ Events.update = (data, id) => {
     zip_code = $8
     WHERE id = $9 `,
     [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.createdby, data.zip_code, id])
+}
+
+Events.findUserCreatedEvents = id => {
+    return db.query(`
+    SELECT * FROM events
+    WHERE createdby = $1`,
+    [id])
 }
 
 module.exports = Events;

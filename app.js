@@ -46,8 +46,8 @@ app.get('/', (req, res) => {
  const eventRoutes = require('./routes/event-routes');
  app.use('/event', eventRoutes);
 
-const userProfile = require('./routes/user-routes');
-app.use('/profile', userProfile);
+const profileRoutes = require('./routes/profile-routes');
+app.use('/profile', profileRoutes);
 
 const resultsRoutes = require('./routes/results-routes');
 app.use('/results', resultsRoutes)

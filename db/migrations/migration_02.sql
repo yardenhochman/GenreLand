@@ -1,5 +1,7 @@
 \c sound_land;
 
+DROP TABLE events;
+
 CREATE TABLE IF NOT EXISTS events (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
