@@ -133,7 +133,7 @@ class EventsAdd extends Component {
             </label>
             <label>
                 <h5>Genre</h5>
-                <select>
+                <select className="event-form">
                 <option value="" disabled selected>SELECT A GENRE</option>
                 <option value="1">Rock</option>
                 <option value="2">Alternative</option>
