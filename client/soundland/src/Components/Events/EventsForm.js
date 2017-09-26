@@ -19,6 +19,7 @@ class EventsAdd extends Component {
           };
         this.eventFormChange = this.eventFormChange.bind(this);
         this.eventFormSubmit = this.eventFormSubmit.bind(this);
+        this.handleGenreChoice =  this.handleGenreChoice.bind(this)
       }
       componentDidMount(){
         console.log(this.state)
@@ -26,12 +27,17 @@ class EventsAdd extends Component {
       }
 
       eventFormChange(event) {
+        if (event.target.name==="zip_code"&&isNaN(Number(event.target.value)))
+          return 
+        console.log(event.target.name)
         const name = event.target.name;
         const value = event.target.value;
 
-        this.setState({
-          [name]: value,
-        });
+        this.setState({[name]: value});
+      }
+      handleGenreChoice(event) {
+        event.preventDefault();
+        this.setState({genre: event.target.value});
       }
 
       eventFormSubmit(event){
@@ -96,13 +102,11 @@ class EventsAdd extends Component {
             <label>
                 <h5>Zipcode</h5>
                 <input 
-                type="text"
+                type="number"
                 placeholder="zip code"
-                name="zip code"
-                pattern="[0-9]{5}"
-                required
-                //value={this.state.zip_code}
-                onChange={this.eventFormChange}
+                name="zip_code"
+                value={this.state.zip_code}
+                onChange={(event) => {this.eventFormChange(event)}}
                 />
             </label>
             <label>
@@ -129,7 +133,7 @@ class EventsAdd extends Component {
             </label>
             <label>
                 <h5>Genre</h5>
-                <select className="event-form">
+                <select className="event-form" value={this.genre} onChange={this.handleGenreChoice}>
                 <option value="" disabled selected>SELECT A GENRE</option>
                 <option value="1">Rock</option>
                 <option value="2">Alternative</option>
@@ -172,7 +176,7 @@ class EventsAdd extends Component {
             </form>
 
             {this.state.fireRedirect
-             ? <Redirect push to={`/Events/List${this.state.newId}`} />
+             ? <Redirect push to={`/Events/List`} />
              : ''}
              <Link to={`/Events/List/`}>Back to Event List</Link>
              </div>
