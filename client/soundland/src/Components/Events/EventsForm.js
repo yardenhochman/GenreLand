@@ -177,9 +177,9 @@ class EventsAdd extends Component {
             </form>
 
             {this.state.fireRedirect
-             ? <Redirect push to={`/Events/List`} />
+             ? <Redirect push to={`/List`} />
              : ''}
-             <Link to={`/Events/List/`}>Back to Event List</Link>
+             <Link to={`/List`}>Back to Event List</Link>
              </div>
              <Footer /> 
           </div>  

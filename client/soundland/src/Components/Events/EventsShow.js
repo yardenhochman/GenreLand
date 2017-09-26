@@ -16,11 +16,12 @@ class EventsShow extends Component {
       }
 
       componentDidMount() {
-          axios.get(`http://localhost:3001/event/${this.props.match.params.id}`)
+          axios.get(`http://localhost:3001/show/${this.props.match.params.id}`)
           .then(res => {
               this.setState({
                 eventApiDataLoaded: true,
                 event: res.data.data,
+                
                 })
               }).catch(err => console.log('error in events show mount'));
             }
@@ -39,6 +40,7 @@ class EventsShow extends Component {
 
         renderEventOrLoad(){
             if(this.state.eventApiDataLoaded) {
+        
          return (
              <div className="eventinside">
               <h4>{this.state.eventData.title}</h4>

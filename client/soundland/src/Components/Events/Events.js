@@ -13,7 +13,7 @@ class Events extends Component {
             <h4>{this.props.event.title}</h4>
             <h5>{this.props.event.address}</h5>
             <p>{this.props.event.date}</p>
-            <Link to={`/EventsList/${this.props.event.id}`}>More Info
+            <Link to={`/show/${this.props.event.id}`}>More Info
             </Link>
         </div>
         )
