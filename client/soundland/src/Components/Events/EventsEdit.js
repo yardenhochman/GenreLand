@@ -17,7 +17,7 @@ class EventsEdit extends Component {
 
   componentDidMount() {
     let id = this.props.id
-    console.log(this.props.id)
+    console.log(this.props.params)
     debugger
     axios({ 
         method:'POST',

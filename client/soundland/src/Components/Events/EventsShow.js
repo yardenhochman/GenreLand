@@ -57,7 +57,7 @@ class EventsShow extends Component {
               <p>{this.state.event.event_date}</p>
               <p>{this.state.event.event_time}</p>
               <p>{this.state.event.description} </p>
-              <Link to={`/edit/${this.props.match.params.id}`} params ={{id:this.state.event.id}} >Edit Event
+              <Link to={`/edit/${this.props.match.params.id}`} params ={{id: this.props.match.params.id}} >Edit Event
               </Link>
               <button className="delete" onClick={this.deleteEvent} >Delete Event</button>
               {this.state.fireRedirect
