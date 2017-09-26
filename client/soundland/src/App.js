@@ -23,8 +23,9 @@ import EventsShow from './Components/Events/EventsShow';
 import EventsList from './Components/Events/EventsList';
 import Events from     './Components/Events/Events';
 
-//set up according to https://medium.freecodecamp.org/beginner-s-guide-to-react-router-53094349669
+//set up auth.js according to https://medium.freecodecamp.org/beginner-s-guide-to-react-router-53094349669
 const NotFound = () => <h1>404.. This page is not found!</h1>
+
 
 
   //state: false check for auth: if true set state: true
@@ -54,8 +55,10 @@ class App extends Component {
     //event.target.reset();
     alert('Incorrect username or password!')
     }
-
   }
+  
+
+
 
   render() {
     return (
