@@ -178,7 +178,7 @@ li {
 }
 
 /* Event creation styling */
-.eventsAdd {
+.eventsAdd, .eventEdit {
   width: 600px;
   margin: 0 auto;
 }
