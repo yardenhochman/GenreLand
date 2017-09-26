@@ -56,7 +56,7 @@ class Profile extends Component {
                     <p>{event.description}</p>
                     <p>Created by: {event.createdby}</p>
                     <p>{event.zip_code}</p>
-             </div>
+                </div>
             )
         })
     }
@@ -90,7 +90,7 @@ class Profile extends Component {
                     Your created events
                     </h2>
                     {this.state.propsLoaded ? this.userEventData() : " "}
-                    {this.renderUserEvents(this.state.userEvents)}
+                    {this.state.ready?this.renderUserEvents(this.state.userEvents):''}
                     <h2>
                     Your attending events
                     </h2>
@@ -101,4 +101,3 @@ class Profile extends Component {
     }
 }
 export default Profile;
-

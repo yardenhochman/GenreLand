@@ -125,7 +125,7 @@ class Registration extends Component {
             />
             <input
               type="submit"
-              value="Submit"
+              value="Register"
             />
           </form>
           {this.state.fireRedirect
