@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import Results from './results';
 
-
 class Search extends Component {
   constructor() {
     super();
@@ -41,7 +40,8 @@ class Search extends Component {
     let data = {
       zipcode:  this.state.location,
       genre:  Number(this.state.music),
-      description:  ' '
+      description:  ' ',
+      id: this.props.user.id||0
     };
     axios({
       method: 'POST',

@@ -39,11 +39,18 @@ class App extends Component {
     // this.loginAppSuccess = this.loginAppSuccess.bind(this)
     this.userDataForState = this.userDataForState.bind(this)
     this.PageLayout = this.PageLayout.bind(this)
+    this.loggedOut = this.loggedOut.bind(this)
+  
   }
-
+    loggedOut(){
+      this.setState({
+        user: {},
+        loggedIn: false,
+      })
+    }
   // loginAppSuccess(data){
   PageLayout({ children }) {
-    return <div>{this.state.loggedIn?<Header2 user={this.state.user}/>:<Header user={this.state.user}/>}{children}</div>
+    return <div>{this.state.loggedIn?<Header2 user={this.state.user} loggedOut={this.loggedOut}/>:<Header user={this.state.user}/>}{children}</div>
   }
   userDataForState(res){
       this.setState({
@@ -51,7 +58,7 @@ class App extends Component {
         loggedIn: true,
     });
   }
-  
+
 
 
   render() {
@@ -64,7 +71,7 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route exact path="/auth/login" render={ props => <Login userDataForState={this.userDataForState} /> } />
 
-            <Route exact path="/auth/register" render={ props => <Register user={this.state.user} /> } />
+            <Route exact path="/auth/register" render={ props => <Register userDataForState={this.userDataForState} /> } />
             <Route exact path="/profile/:id" render = {props => <User user={this.state.user} /> } />
 
           <Route path="/Events" />

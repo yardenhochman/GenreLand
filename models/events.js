@@ -118,3 +118,4 @@ Events.findUserCreatedEvents = id => {
 
 
 module.exports = Events;
+

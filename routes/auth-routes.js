@@ -17,7 +17,10 @@ authRouter.post('/register', usersController.create);
 
 authRouter.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.json({
+    message: 'ok',
+    loggedOut: true,
+  })
 });
 
 authRouter.post('/login', passport.authenticate('local'),

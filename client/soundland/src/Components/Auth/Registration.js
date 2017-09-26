@@ -76,15 +76,15 @@ class Registration extends Component {
 
   render() {
     return(
-      <div className="register">
+      <div className="login-register">
 
-        <div className="register-top">
+        <div className="top">
           <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Register</h3>
         </div>
 
-        <div className="register-form">
+        <div className="form">
           <form onSubmit={(event)=> {this.handleFormSubmit(event)}}>
             <input
               type="text"
@@ -125,7 +125,7 @@ class Registration extends Component {
             />
             <input
               type="submit"
-              value="Submit"
+              value="Register"
             />
           </form>
           {this.state.fireRedirect
