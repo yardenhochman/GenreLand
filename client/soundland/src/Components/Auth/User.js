@@ -45,17 +45,15 @@ class Profile extends Component {
     renderUserEvents(data){
         return data.map((event, index) =>{
             return(
-                <div>
+                <div className="event">
                     <h3 key={`${index}`}>
                         {event.title}
                     </h3>
-                    <p>{event.address}</p>
-                    <p>{event.event_date}</p>
-                    <p>{event.event_time}</p>
+                    <p>{event.address}, {event.zip_code}</p>
+                    <p>{event.event_date} at {event.event_time}</p>
                     <p>{event.genre}</p>
                     <p>{event.description}</p>
-                    <p>Created by: {event.createdby}</p>
-                    <p>{event.zip_code}</p>
+                    <p>Hosted by: {event.createdby}</p>
                 </div>
             )
         })
@@ -64,17 +62,15 @@ class Profile extends Component {
     renderUserAttendingEvents(data){
         return data.map((event, index) =>{
             return(
-                <div>
+                <div className="event">
                     <h3 key={`${index}`}>
                         {event.title}
                     </h3>
-                    <p>{event.address}</p>
-                    <p>{event.event_date}</p>
-                    <p>{event.event_time}</p>
+                    <p>{event.address}, {event.zip_code}</p>
+                    <p>{event.event_date} at {event.event_time}</p>
                     <p>{event.genre}</p>
                     <p>{event.description}</p>
                     <p>Created by: {event.createdby}</p>
-                    <p>{event.zip_code}</p>
                 </div>
             )
         })
@@ -82,19 +78,21 @@ class Profile extends Component {
     render(){
         return(
             <div>
-                <h1>
-                    welcome {this.state.propsLoaded ? this.state.user.name : ''}
+                <h1 className="welcome">
+                    Welcome {this.state.propsLoaded ? this.state.user.name : ''}
                 </h1>
-                <div>
-                    <h2>
-                    Your created events
-                    </h2>
+                <div className='events-profile'>
+
+                  <div className='planned'>
+                    <h2>Parties you planned!</h2>
                     {this.state.propsLoaded ? this.userEventData() : " "}
                     {this.state.ready?this.renderUserEvents(this.state.userEvents):''}
-                    <h2>
-                    Your attending events
-                    </h2>
+                  </div>
+
+                  <div className='attending'>
+                    <h2>Parties you're attending!</h2>
                     {this.state.ready?this.renderUserAttendingEvents(this.state.eventsAttending):''}
+                  </div>
                 </div>
             </div>
         )
