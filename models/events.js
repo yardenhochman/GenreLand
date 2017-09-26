@@ -50,6 +50,7 @@ Events.create = data => {
     (title, address, event_date, event_time, genre, description, createdby, zip_code )
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
     [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.createdby, data.zip_code])
+
 };
 
 

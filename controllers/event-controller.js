@@ -56,21 +56,7 @@ eventController.findOne = (req, res) => {
 }
 
 eventController.create = (req, res) => {
-    // console.log(req.body.info)
-    console.log('before create event');
-    Events.create(req.body.info)
-    // Events.create({
-    // title: req.body.title,
-    // address: req.body.address,
-    // zip_code: req.body.zip_code,
-    // event_date: req.body.date,
-    // event_time: req.body.time,
-    // genre: req.body.genre,
-    // description: req.body.description,
-    // createdby: req.body.user,
-    //})
-    .then(res =>{
-        console.log("here!!1231")
+    Events.create(req.body.info).then(rez =>{
         res.json({
             message: "event created",
             data: rez
