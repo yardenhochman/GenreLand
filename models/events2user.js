@@ -1,9 +1,6 @@
 const db = require('../db/config');
 
 const Events2user = {};
-//users who partipant
-//events2user
-//event_id INTEGER, user_id INTEGER
 
 //user wants to join event only
 Events2user.insert  = (data) => {
@@ -18,10 +15,17 @@ user_id and event_id*/
 Events2user.destroy = id => {
     return db.none(`
     DELETE FROM events2user
-    WHERE user_id = $1 AND event_id = $2`,
+    WHERE event_id = $1`,
     [id])
 };
 //find event and display all user_id
+
+Events2user.findById = id => {
+    return db.query(`
+    SELECT * FROM events2user
+    WHERE event_id =$1`,
+    [id])   
+  
 // Events2user.findById = id => {
 //     return db.query(`
 //     SELECT * FROM events2user
@@ -32,6 +36,16 @@ Events2user.results = id => {
     console.log('users by event',id)
     return db.query(`SELECT event_id, count(*) from events2user group by event_id having event_id = $1`,
     [])
+
 };
+
+Events2user.findAllUsersAttendingEvents = id => {
+    return db.query(`
+    SELECT * FROM events
+    JOIN events2user ON events.id = events2user.event_id
+    WHERE events2user.user_id = $1`,
+    [id])
+}
+
 
 module.exports = Events2user;

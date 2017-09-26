@@ -45,8 +45,6 @@ class App extends Component {
     return <div>{this.state.loggedIn?<Header2 user={this.state.user}/>:<Header user={this.state.user}/>}{children}</div>
   }
   userDataForState(res){
-    if(res.data.auth){
-      // console.log(this.setState)
       this.setState({
         user: res.data.user,
         loggedIn: true,
@@ -55,13 +53,14 @@ class App extends Component {
     //event.target.reset();
     alert('Incorrect username or password!')
     }
-  }
 
+  }
 
   render() {
     return (
       <Router>
         <div className="App">
+
           <Route path="/" component={this.PageLayout} />
             <Route exact path="/" render={ props => <Search user={this.state.user} /> } />
             <Route path="/about" component={About} />
