@@ -10,10 +10,11 @@ class EventsEdit extends Component {
           this.state = {
               title: '',
               address: '',
-              date: '',
-              time: '',
+              event_date: '',
+              event_time: '',
               genre: '',
               description: '',
+              zip_code: '',
               fireRedirect: false,
             };
           this.eventFormChange = this.eventFormChange.bind(this);
@@ -27,10 +28,11 @@ class EventsEdit extends Component {
             this.setState({ 
                 title: eventData.title,
                 address: eventData.address, //onclick to cancel venue
-                date: eventData.date,
-                time: eventData.time, 
+                event_date: eventData.event_date,
+                event_time: eventData.event_time, 
                 genre: eventData.genre,
                 description: eventData.description,
+                zip_code: eventData.zip_code,
               })
             }).catch(err => console.log('error in event edit mount'));
            }
@@ -49,10 +51,11 @@ class EventsEdit extends Component {
     .put(`http://localhost:3001/event/${this.props.match.params.id}`, {
         title: this.state.title,
         address: this.state.address,
-        date: this.state.date, //date and time separate
-        time: this.state.time,
+        event_date: this.state.event_date, //date and time separate
+        event_time: this.state.event_time,
         genre: this.state.genre,
         description: this.state.description,
+        zip_code: this.state.zip_code,
       })
       .then(res => {
           console.log(res);
@@ -70,7 +73,7 @@ class EventsEdit extends Component {
           <div>
            <Header />  
            <div className="eventEdit">
-            <form onSubmit={this.eventFormSubmit}>
+           <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
              <label>
                  Event Title:
                 <input 
@@ -79,9 +82,9 @@ class EventsEdit extends Component {
                  name="title"
                  required
                  value={this.state.title}
-                 onChange={this.eventFormChange}
+                 onChange={(event)=> {this.eventFormChange(event)}}
                  />
-            </label>
+            </label><br/>
             <label>
                  Event Address:
                  <input 
@@ -90,64 +93,63 @@ class EventsEdit extends Component {
                  name="address"
                  required
                  value={this.state.address}
-                 onChange={this.eventFormChange}
+                 onChange={(event)=> {this.eventFormChange(event)}}
                  />
-            </label>
+            </label><br/>
             <label>
                 Zip Code:
                 <input 
                 type="number"
                 placeholder="zip code"
-                name="zip code"
+                name="zip_code"
                 pattern="[0-9]{5}"
                 required
-                //value={this.state.zip_code}
-                onChange={this.eventFormChange}
+                value={this.state.zip_code}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
             </label><br/>
             <label>
                 Event Date:
                 <input 
                 type="date"
-                placeholder="date"
-                name="date"
+                name="event_date"
                 required
-                value={this.state.date}
-                onChange={this.eventFormChange}
+                value={this.state.event_date}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
                 Event Start Time:
                 <input type="time"
-                placeholder="time"
+                name="event_time"
                 pattern="[0-9]{2}:[0-9]{2}"
                 required
-                value={this.state.time}
-                onChange={this.eventFormChange}
+                value={this.state.event_time}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
-            </label>
+            </label><br/>
             <label>
                 Genre Type:
                 <input 
                 type="text"
-                placeholder="genre"
+                placeholder="Genre"
                 name="genre"
                 value={this.state.genre}
-                onChange={this.eventFormChange}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
-            </label>
+            </label><br/>
             <label>
                 Event Description:
                 <input 
                 type="text"
-                placeholder="description"
+                placeholder="Description"
                 name="description"
                 value={this.state.description}
-                onChange={this.eventFormChange}
+                onChange={(event)=> {this.eventFormChange(event)}}
                 />
-            </label>
+            </label><br/>
             <input type="submit" value="Submit!"/>
             </form>
             {this.state.fireRedirect
-             ? <Redirect push to={`/EventsList/${this.state.newId}`} />
+             ? <Redirect push to={`/EventsShow/${this.state.newId}`} />
              : ''}
           </div>  
           <Footer />
