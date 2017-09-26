@@ -72,7 +72,7 @@ class App extends Component {
             <Route exact path="/Events/Form" render = { props => <EventsForm user={this.state.user} userDataForState={this.userDataForState} /> } />
             <Route path="/Edit/:id" render = { props => <EventsEdit userDataForState={this.userDataForState} /> } />
             <Route path="/Show/:id" component={EventsShow} />
-            <Route path="/List" component={EventsList} />
+            <Route path="/List" render = { props => <EventsList user={this.state.user} /> } />
           <Route path='*' render={Footer} />
         </div>
       </Router>
