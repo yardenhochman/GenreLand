@@ -43,7 +43,7 @@ class EventsAdd extends Component {
       eventFormSubmit(event){
           event.preventDefault();
 
-          let data = {
+          let info = {
               title: this.state.title,
               address: this.state.address,
               zip_code: this.state.zip_code, //user zipcode insert here
@@ -53,11 +53,11 @@ class EventsAdd extends Component {
               description: this.state.description,
               createdby: this.props.user.id||"annonymous"
           }
-          console.log(data);
+          console.log(info);
           axios({
               method: 'POST',
               url: `http://localhost:3001/event`,
-              data: data
+              data: {info}
             })
             .then(res => {
                 console.log(res);
