@@ -56,7 +56,6 @@ class EventsAdd extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({
-                    newId: res.data.id,
                     fireRedirect: true,
                 });
               })
@@ -173,12 +172,10 @@ class EventsAdd extends Component {
             </form>
 
             {this.state.fireRedirect
-             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
+             ? <Redirect push to={`/Events/List${this.state.newId}`} />
              : ''}
-             <Link to={`/EventsList/`}>Back to Event List</Link>
-
+             <Link to={`/Events/List/`}>Back to Event List</Link>
              </div>
-
              <Footer /> 
           </div>  
          );
