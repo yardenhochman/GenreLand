@@ -48,7 +48,7 @@ Events.create = data => {
     INSERT INTO events 
     (title, address, event_date, event_time, genre, description, zip_code, createdby )
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8`,
-    [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.createdby])
+    [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.zip_code, data.createdby])
 };
 
 Events.destroy = id => {

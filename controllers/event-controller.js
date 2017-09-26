@@ -65,15 +65,13 @@ eventController.create = (req, res) => {
         description: req.body.description,
         createdby: req.body.user,
         zip_code: req.body.zip_code
-    })
-    .then(rez =>{
+    }).then(rez =>{
+        console.log("here!!1231")
         res.json({
             message: "event created",
             data: rez
         })
-    }).catch(err =>{
-        console.log(err)
-    })
+    }).catch(err => console.log(err))
 }
 
 eventController.kill = (req, res) => {
