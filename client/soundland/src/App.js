@@ -59,7 +59,6 @@ class App extends Component {
   
 
 
-
   render() {
     return (
       <Router>
@@ -73,7 +72,7 @@ class App extends Component {
             <Route exact path="/profile/:id" component={User} />
           <Route path="/Events" />
             <Route exact path="/Events" component={Events} />
-            <Route exact path="/Events/Form" render = { props => <EventsAdd user={this.state.user} userDataForState={this.userDataForState} /> } />
+            <Route exact path="/Events/Form" render = { props => <EventsForm user={this.state.user} userDataForState={this.userDataForState} /> } />
             <Route path="/Edit/:id" render = { props => <EventsEdit userDataForState={this.userDataForState} /> } />
             <Route path="/Show/:id" component={EventsShow} />
             <Route path="/List" component={EventsList} />
