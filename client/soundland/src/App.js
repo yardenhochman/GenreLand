@@ -63,7 +63,11 @@ class App extends Component {
             <Route exact path="/" render={ props => <Search user={this.state.user} /> } />
             <Route path="/about" component={About} />
             <Route exact path="/auth/login" render={ props => <Login userDataForState={this.userDataForState} /> } />
+<<<<<<< HEAD
             <Route exact path="/auth/register" render={ props => <Register userDataForState={this.userDataForState} /> } />
+=======
+            <Route exact path="/auth/register" render={ props => <Register user={this.state.user} userdataForState={this.userDataForState} /> } />
+>>>>>>> Final changes for styling
             <Route exact path="/profile/:id" component={User} />
           <Route path="/Events" />
             <Route exact path="/Events" component={Events} />

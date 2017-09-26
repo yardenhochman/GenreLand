@@ -11,9 +11,9 @@ const Header2 = () => {
       </div>
 
       <div className="nav-buttons-align">
-        <Link to="/account" className="nav-button">Account </Link>
-        <Link to="/logout" className="nav-button">Log Out</Link>
-      </div>
+        <Link to={`/profile/${this.state.user.data.user.id}`} className="nav-button">Account </Link>
+        <Link to={"/logout"} className="nav-button">Log Out</Link>
+        </div>
 
     </div>
   )

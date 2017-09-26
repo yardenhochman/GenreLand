@@ -54,15 +54,15 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="login">
+      <div className="login-register">
 
-        <div className="login-top">
+        <div className="top">
           <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Login</h3>
         </div>
 
-        <div className="login-form">
+        <div className="form">
           <form onSubmit={(event)=> {this.handleFormSubmit(event)}}>
             <input
               type="text"
@@ -81,7 +81,7 @@ class Login extends Component {
             />
             <input className="submit"
               type="submit"
-              value="Submit"
+              value="Log In"
             />
           </form>
           {this.state.fireRedirect

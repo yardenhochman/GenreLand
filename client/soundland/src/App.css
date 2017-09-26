@@ -155,7 +155,7 @@ li {
   padding: 35px;
 }
 
-.results > h1 {
+.GenreResults > h1 {
 	transform: rotate(270deg);
   transform-origin: 100px 50px;
   float: left;
@@ -167,7 +167,7 @@ li {
   position: relative;
 }
 
-.results {
+.GenreResults {
   max-width: 680px;
   margin: 0 auto;
   background: linear-gradient(to left, #f1b82d .1%,#333 0%);
@@ -257,14 +257,14 @@ select.event-form {
   letter-spacing: 2px;
 }
 
-.login {
+.login-register{
   width: 500px;
   background: #111;
   margin: 0 auto;
   padding: 25px;
 }
 
-.login-top {
+.top{
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -278,7 +278,7 @@ select.event-form {
   filter: invert(1);
 }
 
-.login-form > form > input {
+.form > form > input {
   display: block;
   margin: 10px auto 10px auto;
   background-color: transparent;
@@ -289,6 +289,18 @@ select.event-form {
   width: 100%;
   color: #f1b82d;
   font-size: 20px;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.form > form > input.submit {
+  background-color: #333;
+  border: none;
+}
+
+.form > form > input.submit:hover {
+  background-color: #555;
+  border: none;
+  color: #fff;
 }
 
 .App {

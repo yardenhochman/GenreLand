@@ -56,10 +56,11 @@ class Registration extends Component {
         console.log('res.data---->',res.data);
         this.props.userDataForState(res)
         this.setState({
-          newID: res.data.id,
+          newID: res.user.id,
           //The res.data.id might be wrong here
           fireRedirect: true,
         });
+        console.log(this.state.fireRedirect)
       }).catch(err=> console.log(err));
       event.target.reset();
 
@@ -76,15 +77,15 @@ class Registration extends Component {
 
   render() {
     return(
-      <div className="register">
+      <div className="login-register">
 
-        <div className="register-top">
+        <div className="top">
           <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Register</h3>
         </div>
 
-        <div className="register-form">
+        <div className="form">
           <form onSubmit={(event)=> {this.handleFormSubmit(event)}}>
             <input
               type="text"
@@ -123,9 +124,9 @@ class Registration extends Component {
               value={this.state.password_confirm}
               onChange={(event)=> {this.handleInputChange(event)}}
             />
-            <input
+            <input className="submit"
               type="submit"
-              value="Submit"
+              value="Register"
             />
           </form>
           {this.state.fireRedirect
