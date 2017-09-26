@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class Header2 extends Component {
   
@@ -10,6 +11,7 @@ class Header2 extends Component {
       dataLoaded: false,
     }
     this.renderAccountLink = this.renderAccountLink.bind(this)
+    this.logOut = this.logOut.bind(this)
   }
 
 
@@ -18,6 +20,19 @@ class Header2 extends Component {
         user: this.props.user,
         dataLoaded: true
       })
+  }
+
+  logOut() {
+    axios({
+      method: 'GET',
+      url: 'http://localhost:3001/auth/logout'
+    })
+    .then ((res)=>{
+      if (res.data.loggedOut) {
+        this.props.loggedOut();
+        <Redirect push to={'/'} />
+      }
+    })
   }
 
   renderAccountLink(){
@@ -37,8 +52,8 @@ class Header2 extends Component {
 
         <div className="nav-buttons-align">
           {this.state.dataLoaded ? this.renderAccountLink() : " " }
-          <Link to={"/logout"} className="nav-button">Log Out</Link>
-          </div>
+          <Link onClick = {this.logOut} to={`/`} className="nav-button" >Log Out</Link>
+        </div>
 
       </div>
     )

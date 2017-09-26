@@ -14,12 +14,6 @@ authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
 
 authRouter.post('/register', usersController.create);
 
-
-authRouter.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
-
 authRouter.post('/login', passport.authenticate('local'),
   (req, res, next) =>{
     res.json({
@@ -36,6 +30,16 @@ authRouter.post('/login', passport.authenticate('local'),
   }
 );
 
+authRouter.get('/logout', (req, res) => {
+  req.logout()
+  // .then(()=>{
+    console.log("returning json")
+    res.json({
+      message: 'ok',
+      loggedOut: true,
+    })
+  })
+// });
 
 
 module.exports = authRouter;

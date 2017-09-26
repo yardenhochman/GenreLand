@@ -257,14 +257,14 @@ select.event-form {
   letter-spacing: 2px;
 }
 
-.login {
+.login-register {
   width: 500px;
   background: #111;
   margin: 0 auto;
   padding: 25px;
 }
 
-.login-top {
+.top {
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -278,7 +278,7 @@ select.event-form {
   filter: invert(1);
 }
 
-.login-form > form > input {
+.form > form > input {
   display: block;
   margin: 10px auto 10px auto;
   background-color: transparent;
