@@ -28,7 +28,7 @@ eventController.EventsByZips = (req, res, next) =>{
 }
 
 eventController.findAll = (req, res) =>{
-    Events.findAll('query results by zip events')
+    Events.findAll()
     .then(rez => {
         res.json({
             message: 'show all events',

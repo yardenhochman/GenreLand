@@ -35,6 +35,11 @@ Events.FindByZips = data => {
 };
 
 
+Events.findAll = id => {
+    return db.query(`
+    SELECT * FROM events`)
+};
+
 
 Events.findById = id => {
     return db.one(`

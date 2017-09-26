@@ -13,30 +13,35 @@ class EventsList extends Component {
         }
       }
 
-      compnentDidMount(){
+      componentDidMount(){
+          console.log('fetching')
           axios.get('http://localhost:3001/event/')
           .then(res => {
            this.setState({
-               eventApiDataLoaded: true,
                eventApiData: res.data.data,
+               eventApiDataLoaded: true
            })    
         })
       }
 
-      renderEvents(){ //return twice because use of .map
-          if(this.state.eventApiDataLoaded){
-              return this.state.eventApiData.map( event => {
+      renderEvents(data){ //return twice because use of .map
+            return data.map(aEvent => {
                 return (
-                    <Events key={event.id} event={event} />
+                    <Events key={aEvent.id} event={aEvent} />
+
                 );
-              });
-          } else return <p>Loading Events</p>
+                
+            });
+            this.setState({
+                eventApiDataLoaded: false,
+            })
+
         }
       
         render(){
             return(
                 <div ClassName="eventsList">
-                    {this.renderEvents()}
+                    {this.state.eventApiDataLoaded ? this.renderEvents(this.state.eventApiData) : " "}
                 </div>
             )
           }
