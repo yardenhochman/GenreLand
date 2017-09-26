@@ -56,9 +56,7 @@ eventController.findOne = (req, res) => {
 }
 
 eventController.create = (req, res) => {
-    console.log(req.body.info)
     Events.create(req.body.info).then(rez =>{
-        console.log("here!!1231")
         res.json({
             message: "event created",
             data: rez

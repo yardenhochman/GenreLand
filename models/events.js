@@ -46,7 +46,7 @@ Events.findById = id => {
 Events.create = data => {
     return db.one(`
     INSERT INTO events 
-    (title, address, zip_code, event_date, event_time, genre, description, createdby )
+    (title, address, zip_code, event_date, event_time, genre, description, createdby)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8`,
     [data.title, data.address, data.zip_code, data.event_date, data.event_time, data.genre, data.description, data.createdby])
 };
