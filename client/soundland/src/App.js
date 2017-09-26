@@ -46,15 +46,10 @@ class App extends Component {
     return <div>{this.state.loggedIn?<Header2 user={this.state.user}/>:<Header user={this.state.user}/>}{children}</div>
   }
   userDataForState(res){
-    if(res.data.auth){
       this.setState({
         user: res.data.user,
         loggedIn: true,
     });
-    } else{
-    //event.target.reset();
-    alert('Incorrect username or password!')
-    }
   }
   
 
@@ -68,7 +63,7 @@ class App extends Component {
             <Route exact path="/" render={ props => <Search user={this.state.user} /> } />
             <Route path="/about" component={About} />
             <Route exact path="/auth/login" render={ props => <Login userDataForState={this.userDataForState} /> } />
-            <Route exact path="/auth/register" render={ props => <Register user={this.state.user} /> } />
+            <Route exact path="/auth/register" render={ props => <Register userDataForState={this.userDataForState} /> } />
             <Route exact path="/profile/:id" component={User} />
           <Route path="/Events" />
             <Route exact path="/Events" component={Events} />
