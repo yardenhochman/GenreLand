@@ -26,9 +26,6 @@ class EventsAdd extends Component {
         const name = event.target.name;
         const value = event.target.value;
 
-        console.log(event.target.name);
-        console.log(event.target.value);
-
         this.setState({
           [name]: value,
         });
@@ -45,7 +42,7 @@ class EventsAdd extends Component {
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
-              createdby: this.props.user.id
+              createdby: this.props.user.id||"annonymous"
           }
           console.log(data);
           axios({
