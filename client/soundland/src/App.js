@@ -46,15 +46,10 @@ class App extends Component {
     return <div>{this.state.loggedIn?<Header2 user={this.state.user}/>:<Header user={this.state.user}/>}{children}</div>
   }
   userDataForState(res){
-    if(res.data.auth){
       this.setState({
         user: res.data.user,
         loggedIn: true,
     });
-    } else{
-    //event.target.reset();
-    alert('Incorrect username or password!')
-    }
   }
   
 

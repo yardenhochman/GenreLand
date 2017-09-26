@@ -22,7 +22,6 @@ class Profile extends Component {
     }   
     
     userEventData(){
-        debugger
         let id = this.props.user.id;
         axios({
             method: 'POST',
@@ -60,6 +59,7 @@ class Profile extends Component {
             )
         })
     }
+
     renderUserAttendingEvents(data){
         return data.map((event, index) =>{
             return(
@@ -90,7 +90,7 @@ class Profile extends Component {
                     </h2>
                     {this.state.ready?this.renderUserEvents(this.state.userEvents):''}
                     <h2>
-                    Your created events
+                    Your attending events
                     </h2>
                     {this.state.ready?this.renderUserAttendingEvents(this.state.eventsAttending):''}
                 </div>
