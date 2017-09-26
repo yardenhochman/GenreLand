@@ -42,7 +42,7 @@ class App extends Component {
 
   // loginAppSuccess(data){
   PageLayout({ children }) {
-  return <div>{this.state.loggedIn?<Header2 />:<Header />}{children}</div>
+    return <div>{this.state.loggedIn?<Header2 user={this.state.user}/>:<Header user={this.state.user}/>}{children}</div>
   }
   userDataForState(res){
     if(res.data.auth){
@@ -63,14 +63,14 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route path="/" component={this.PageLayout} />
-            <Route exact path="/" component={Search} />
+            <Route exact path="/" render={ props => <Search user={this.state.user} /> } />
             <Route path="/about" component={About} />
             <Route exact path="/auth/login" render={ props => <Login userDataForState={this.userDataForState} /> } />
-            <Route exact path="/auth/register" component={Register} />
+            <Route exact path="/auth/register" render={ props => <Register user={this.state.user} /> } />
             <Route exact path="/profile/:id" component={User} />
           <Route path="/Events" />
             <Route exact path="/Events" component={Events} />
-            <Route exact path="/Events/Form" render = { props => <EventsAdd userDataForState={this.userDataForState} /> } />
+            <Route exact path="/Events/Form" render = { props => <EventsAdd user={this.state.user} userDataForState={this.userDataForState} /> } />
             <Route path="/Edit/:id" render = { props => <EventsEdit userDataForState={this.userDataForState} /> } />
             <Route path="/Show/:id" component={EventsShow} />
             <Route path="/List" component={EventsList} />

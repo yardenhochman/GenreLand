@@ -54,6 +54,7 @@ class Registration extends Component {
       })
       .then(res => {
         console.log('res.data---->',res.data);
+        this.props.userDataForState(res)
         this.setState({
           newID: res.data.id,
           //The res.data.id might be wrong here
