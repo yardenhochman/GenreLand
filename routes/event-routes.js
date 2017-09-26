@@ -18,7 +18,7 @@ return a list of events and their zipcodes. somewhat similarly to the results ro
 display specific event page:
 take the event ID, and display all information relevant to it.
 */
-eventRoutes.get('/:id', eventController.findOne);
+eventRoutes.post('/:id', eventController.findOne);
 
 //create an event for the current user. 
 eventRoutes.post('/', eventController.create);
