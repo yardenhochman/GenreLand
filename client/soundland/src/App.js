@@ -64,16 +64,16 @@ class App extends Component {
         <div className="App">
           <Route path="/" component={this.PageLayout} />
             <Route exact path="/" render={ props => <Search user={this.state.user} /> } />
-            <Route path="/about" component={About} />
+            <Route path="/about" render={About} />
             <Route exact path="/auth/login" render={ props => <Login userDataForState={this.userDataForState} /> } />
             <Route exact path="/auth/register" render={ props => <Register user={this.state.user} /> } />
-            <Route exact path="/profile/:id" component={User} />
+            <Route exact path="/profile/:id" render={ props => <User user={this.state.user} /> } />
           <Route path="/Events" />
-            <Route exact path="/Events" component={Events} />
+            <Route exact path="/Events" render={ props => <Events user={this.state.user} /> } />
             <Route exact path="/Events/Form" render = { props => <EventsAdd user={this.state.user} userDataForState={this.userDataForState} /> } />
             <Route path="/Edit/:id" render = { props => <EventsEdit userDataForState={this.userDataForState} /> } />
-            <Route path="/Show/:id" component={EventsShow} />
-            <Route path="/List" component={EventsList} />
+            <Route path="/Show/:id" render={ props => <EventsShow user={this.state.user} /> } />
+            <Route path="/List" render={ props => <EventsList user={this.state.user} /> } />
           <Route path='*' render={Footer} />
         </div>
       </Router>
