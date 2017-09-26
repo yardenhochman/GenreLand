@@ -242,14 +242,14 @@ select.event-form {
   justify-content: center;
 }
 
-.eventshowlist {
+.eventshowlist, .eventinside {
   background-color: #333;
   border-top: 2px solid #f1b82d;
   margin: 25px;
   padding: 20px;
 }
 
-.eventshowlist > h4 {
+.eventshowlist > h4, .eventinside > h4 {
   font-family: 'Josefin Slab', serif;
   font-size: 20px;
   font-weight: 100;
