@@ -27,9 +27,9 @@ class EventsAdd extends Component {
       }
 
       eventFormChange(event) {
+        event.preventDefault();
         if (event.target.name==="zip_code"&&isNaN(Number(event.target.value)))
           return 
-        console.log(event.target.name)
         const name = event.target.name;
         const value = event.target.value;
 
@@ -105,6 +105,7 @@ class EventsAdd extends Component {
                 type="number"
                 placeholder="zip code"
                 name="zip_code"
+                required
                 value={this.state.zip_code}
                 onChange={(event) => {this.eventFormChange(event)}}
                 />
