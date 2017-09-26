@@ -36,14 +36,13 @@ class Login extends Component {
       })
       .then(res => {
         this.props.userDataForState(res);
-        if(res.data.auth){
+        if(res.data.auth === true){
           this.setState({
             user: res,
             fireRedirect: true
           })
         } else{
         alert('Inccorect username or password!')
-        event.target.reset();
         }
         
       }).catch(err => console.log(err));

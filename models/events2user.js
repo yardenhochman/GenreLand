@@ -32,12 +32,12 @@ Events2user.findById = id => {
 //     WHERE event_id =$1`)   
 // };
 
-Events2user.results = id => {
-    console.log('users by event',id)
-    return db.query(`SELECT event_id, count(*) from events2user group by event_id having event_id = $1`,
-    [])
+// Events2user.results = id => {
+//     console.log('users by event',id)
+//     return db.query(`SELECT event_id, count(*) from events2user group by event_id having event_id = $1`,
+//     [id])
 
-};
+// }
 
 Events2user.findAllUsersAttendingEvents = id => {
     return db.query(`
