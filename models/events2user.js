@@ -25,7 +25,7 @@ Events2user.findById = id => {
     SELECT * FROM events2user
     WHERE event_id =$1`,
     [id])   
-  
+}
 // Events2user.findById = id => {
 //     return db.query(`
 //     SELECT * FROM events2user
