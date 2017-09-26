@@ -75,7 +75,7 @@ class EventsEdit extends Component {
            <div className="eventEdit">
            <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
              <label>
-                 Event Title:
+                 <h5>Title</h5>
                 <input 
                  type="text"
                  placeholder="title"
@@ -86,7 +86,7 @@ class EventsEdit extends Component {
                  />
             </label><br/>
             <label>
-                 Event Address:
+                 <h5>Address</h5>
                  <input 
                  type="text"
                  placeholder="Address"
@@ -97,7 +97,7 @@ class EventsEdit extends Component {
                  />
             </label><br/>
             <label>
-                Zip Code:
+                <h5>Zip Code</h5>
                 <input 
                 type="number"
                 placeholder="zip code"
@@ -109,7 +109,7 @@ class EventsEdit extends Component {
                 />
             </label><br/>
             <label>
-                Event Date:
+                <h5>Date</h5>
                 <input 
                 type="date"
                 name="event_date"
@@ -117,7 +117,7 @@ class EventsEdit extends Component {
                 value={this.state.event_date}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
-                Event Start Time:
+                <h5>Start Time</h5>
                 <input type="time"
                 name="event_time"
                 pattern="[0-9]{2}:[0-9]{2}"
@@ -127,7 +127,7 @@ class EventsEdit extends Component {
                 />
             </label><br/>
             <label>
-                Genre Type:
+                <h5>Genre</h5>
                 <input 
                 type="text"
                 placeholder="Genre"
@@ -137,7 +137,7 @@ class EventsEdit extends Component {
                 />
             </label><br/>
             <label>
-                Event Description:
+                <h5>Description</h5>
                 <input 
                 type="text"
                 placeholder="Description"

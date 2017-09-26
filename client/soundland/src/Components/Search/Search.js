@@ -54,7 +54,7 @@ class Search extends Component {
           events:   res.data.events,
           waiting:  false
         })
-        console.log(this.state.events)
+        console.log(this.state.events, "This is supposed to log the this.state.events")
       }).catch( err => console.log(err))
   }
   render() {
