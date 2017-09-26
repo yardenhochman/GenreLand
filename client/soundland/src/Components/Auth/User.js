@@ -34,7 +34,8 @@ class Profile extends Component {
             this.setState({
                 userEvents: rez.data.data,
                 eventsAttending: rez.data.eventsAttending,
-                ready: true
+                ready: true,
+                propsLoaded: false
             })
         }).catch(err =>{
             console.log(err)
