@@ -23,6 +23,8 @@ class Results extends Component {
   }
   DisplayAreaEvents(results, usersChoices) {
     let zipcodes = Object.getOwnPropertyNames(results);
+    if (zipcodes.length === 0)
+      return <h2>No Events yet. <br />Perhaps an opportunity...</h2>
     return zipcodes.map( (zipcode,index) => {
       const key = String(zipcode) + String(' number ' + index)
       
@@ -116,7 +118,7 @@ resultsParser(results, usersChoices) {
     return (
       <div className="result-box">
         <h3><Link to={`/Events/Form`}>Post an Event! </Link></h3>
-        {/* <button onClick={this.eventsView}>{this.state.events?"Genres List":"Local Scene"}</button> */}
+        <button onClick={this.eventsView}>{this.state.events?"Genres List":"Local Scene"}</button>
         {this.state.events?this.DisplayAreaEvents(eventList, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {/* {this.displayAreasMap(results, usersChoices)} */}
       </div>

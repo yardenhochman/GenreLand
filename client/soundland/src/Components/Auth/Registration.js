@@ -64,7 +64,7 @@ class Registration extends Component {
       event.target.reset();
 
     } else {
-      alert('Passwords do not match')
+      alert('Passwords do not match.. THIS IS THE ELSE STATEMENT')
       // we can update the alert later to be more complex
       this.setState({
         password_digest: '',

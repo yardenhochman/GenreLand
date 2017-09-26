@@ -19,6 +19,7 @@ class EventsAdd extends Component {
           };
         this.eventFormChange = this.eventFormChange.bind(this);
         this.eventFormSubmit = this.eventFormSubmit.bind(this);
+        this.handleGenreChoice =  this.handleGenreChoice.bind(this)
       }
       componentDidMount(){
         console.log(this.state)
@@ -26,18 +27,23 @@ class EventsAdd extends Component {
       }
 
       eventFormChange(event) {
+        event.preventDefault();
+        if (event.target.name==="zip_code"&&isNaN(Number(event.target.value)))
+          return 
         const name = event.target.name;
         const value = event.target.value;
 
-        this.setState({
-          [name]: value,
-        });
+        this.setState({[name]: value});
+      }
+      handleGenreChoice(event) {
+        event.preventDefault();
+        this.setState({genre: event.target.value});
       }
 
       eventFormSubmit(event){
           event.preventDefault();
 
-          let data = {
+          let info = {
               title: this.state.title,
               address: this.state.address,
               zip_code: this.state.zip_code, //user zipcode insert here
@@ -47,16 +53,15 @@ class EventsAdd extends Component {
               description: this.state.description,
               createdby: this.props.user.id||"annonymous"
           }
-          console.log(data);
+          console.log(info);
           axios({
               method: 'POST',
               url: `http://localhost:3001/event`,
-              data: data
+              data: {info}
             })
             .then(res => {
                 console.log(res);
                 this.setState({
-                    newId: res.data.id,
                     fireRedirect: true,
                 });
               })
@@ -97,13 +102,12 @@ class EventsAdd extends Component {
             <label>
                 <h5>Zipcode</h5>
                 <input 
-                type="text"
+                type="number"
                 placeholder="zip code"
-                name="zip code"
-                pattern="[0-9]{5}"
+                name="zip_code"
                 required
-                //value={this.state.zip_code}
-                onChange={this.eventFormChange}
+                value={this.state.zip_code}
+                onChange={(event) => {this.eventFormChange(event)}}
                 />
             </label>
             <label>
@@ -130,7 +134,7 @@ class EventsAdd extends Component {
             </label>
             <label>
                 <h5>Genre</h5>
-                <select className="event-form">
+                <select className="event-form" value={this.genre} onChange={this.handleGenreChoice}>
                 <option value="" disabled selected>SELECT A GENRE</option>
                 <option value="1">Rock</option>
                 <option value="2">Alternative</option>
@@ -173,12 +177,10 @@ class EventsAdd extends Component {
             </form>
 
             {this.state.fireRedirect
-             ? <Redirect push to={`/eventsadd/${this.state.newId}`} />
+             ? <Redirect push to={`/Events/List`} />
              : ''}
-             <Link to={`/EventsList/`}>Back to Event List</Link>
-
+             <Link to={`/Events/List/`}>Back to Event List</Link>
              </div>
-
              <Footer /> 
           </div>  
          );

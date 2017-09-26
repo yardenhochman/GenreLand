@@ -56,24 +56,14 @@ eventController.findOne = (req, res) => {
 }
 
 eventController.create = (req, res) => {
-    Events.create({
-        title: req.body.title,
-        address: req.body.address,
-        event_date: req.body.date,
-        event_time: req.body.time,
-        genre: req.body.genre,
-        description: req.body.description,
-        createdby: req.body.user,
-        zip_code: req.body.zip_code
-    })
-    .then(rez =>{
+    console.log(req.body.info)
+    Events.create(req.body.info).then(rez =>{
+        console.log("here!!1231")
         res.json({
             message: "event created",
             data: rez
         })
-    }).catch(err =>{
-        console.log(err)
-    })
+    }).catch(err => console.log(err))
 }
 
 eventController.kill = (req, res) => {

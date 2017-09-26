@@ -12,6 +12,7 @@ class Header2 extends Component {
     this.renderAccountLink = this.renderAccountLink.bind(this)
   }
 
+
   componentDidMount(){
       this.setState({
         user: this.props.user,
