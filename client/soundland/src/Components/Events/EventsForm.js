@@ -45,12 +45,12 @@ class EventsAdd extends Component {
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
+              createdby: this.props.user.id
           }
           console.log(data);
           axios({
-            
               method: 'POST',
-              url: 'http://localhost:3001/event',
+              url: `http://localhost:3001/event`,
               data: data
             })
             .then(res => {
