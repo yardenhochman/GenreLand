@@ -9,16 +9,18 @@ class Profile extends Component {
             ready: false,
             userEvents: null,
             eventsAttending: null,
+            propsLoaded: false
         }
         this.userEventData = this.userEventData.bind(this);
         this.renderUserEvents = this.renderUserEvents.bind(this)
         this.renderUserAttendingEvents = this.renderUserAttendingEvents.bind(this)
     }
+
     componentDidMount(){
         this.setState({
-            user: this.props.user
-        })
-        this.userEventData();
+            user: this.props.user,
+            propsLoaded: true
+        })   
     }   
     
     userEventData(){
@@ -29,7 +31,6 @@ class Profile extends Component {
             data: { id }
         })
         .then(rez =>{
-            console.log(rez.data.eventsAttending)
             this.setState({
                 userEvents: rez.data.data,
                 eventsAttending: rez.data.eventsAttending,
@@ -41,7 +42,6 @@ class Profile extends Component {
     }
 
     renderUserEvents(data){
-        console.log(data)
         return data.map((event, index) =>{
             return(
                 <div>
@@ -82,12 +82,13 @@ class Profile extends Component {
         return(
             <div>
                 <h1>
-                    welcome {this.state.user.name}
+                    welcome {this.state.propsLoaded ? this.state.user.name : ''}
                 </h1>
                 <div>
                     <h2>
                     Your created events
                     </h2>
+                    {this.state.propsLoaded ? this.userEventData() : " "}
                     {this.state.ready?this.renderUserEvents(this.state.userEvents):''}
                     <h2>
                     Your attending events

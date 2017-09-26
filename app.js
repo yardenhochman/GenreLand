@@ -17,7 +17,7 @@ require('dotenv').config();
 
 app.use(cors())
 app.use(logger('dev'));
-app.use(express.static( 'public'));
+// app.use(express.static('client/soundland/build'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -39,9 +39,11 @@ app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
 
-app.get('/', (req, res) => {
-    res.send('hello world')
-});
+// app.get('/', (req, res) => {
+//     res.send('hello world')
+// });
+
+
 
  const eventRoutes = require('./routes/event-routes');
  app.use('/event', eventRoutes);
