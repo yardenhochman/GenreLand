@@ -82,7 +82,6 @@ class Registration extends Component {
           <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Register</h3>
-          <Link to={`/`}>Back to Main Page</Link>
         </div>
 
         <div className="register-form">
@@ -133,7 +132,7 @@ class Registration extends Component {
           ? <Redirect push to={`/`} />
           : ''}
         </div>
-
+        <Link to={`/auth/login`}>Already registered? Log in here!</Link>
       </div>
     )
   }

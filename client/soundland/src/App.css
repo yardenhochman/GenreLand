@@ -33,7 +33,7 @@ div.lock-up > img {
   filter: invert(1);
 }
 
-a > h4 {
+h4 {
   font-family: 'Merriweather', serif;
   margin-top: 15%;
 }
@@ -137,7 +137,7 @@ div.zipcode > input {
   padding: 0;
 }
 
-button {
+button, input.submit {
   background-color: #999999;
   border: none;
   border-radius: 5px;
@@ -175,6 +175,120 @@ li {
   align-items: center;
   justify-content: space-between;
   text-align: right;
+}
+
+/* Event creation styling */
+.eventsAdd, .eventEdit {
+  width: 600px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin: 5px;
+  width: 500px; 
+  text-align: left;
+}
+
+h5 {
+  font-family: 'Josefin Slab', serif;
+  font-size: 15px;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+label > h5 {
+  display: inline-block;
+  min-width: 130px;
+  text-align: right;
+  margin: 0 25px 0 0;
+}
+
+
+label > input {
+  padding: 5px;
+  margin: 5px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #999999;
+  background-color: transparent;
+  width: 250px;
+  color: #f1b82d;
+  text-transform: uppercase;
+}
+
+select.event-form {
+  margin-left: 5px;
+  width: 260px;
+  background-color: transparent;
+  border-bottom: 2px solid #999999;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+.eventsAdd > form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 35px;
+}
+
+/* end event creation styling */
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eventshowlist, .eventinside {
+  background-color: #333;
+  border-top: 2px solid #f1b82d;
+  margin: 25px;
+  padding: 20px;
+}
+
+.eventshowlist > h4, .eventinside > h4 {
+  font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.login {
+  width: 500px;
+  background: #111;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.login-top {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #f1b82d;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.profile-icon {
+  height: 100%;
+  filter: invert(1);
+}
+
+.login-form > form > input {
+  display: block;
+  margin: 10px auto 10px auto;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #333;
+  width: 100%;
+  color: #f1b82d;
+  font-size: 20px;
 }
 
 .App {

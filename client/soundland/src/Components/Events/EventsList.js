@@ -35,13 +35,9 @@ class EventsList extends Component {
       
         render(){
             return(
-              <div>
-                <Header />
                 <div ClassName="eventsList">
                     {this.renderEvents()}
                 </div>
-                <Footer />
-              </div>
             )
           }
         }
