@@ -67,6 +67,7 @@ class Header2 extends Component {
         <div className="nav-buttons-align">
           {this.state.dataLoaded ? this.renderAccountLink() : " " }
           <Link onClick={this.logOut} to={"/"} className="nav-button">Log Out</Link>
+          <Link to={"/list"} className="nav-button">Events</Link>
           </div>
 
 
