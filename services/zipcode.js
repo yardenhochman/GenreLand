@@ -12,7 +12,7 @@ function getZips(req, res, next){
     
     axios(`https://www.zipcodeapi.com/rest/${process.env.zipcodeapi_API_KEY}/radius.json/${req.body.zipcode}/3/mi`)
    .then( allZip => {
-        allZips = [
+        let allZips = [
             {
                 zip: allZip.data.zip_codes[0].zip_code
             },
