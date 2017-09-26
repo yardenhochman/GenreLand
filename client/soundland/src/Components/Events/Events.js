@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const Events = (props) => {
     return (
         <div className="eventshowlist">
-            <h1>{props.eventData.title}</h1>
-            <h3>{props.eventData.address}</h3>
-            <p>{props.eventData.description}</p>
+            <h4>{props.eventData.title}</h4>
+            <h5>{props.eventData.address}</h5>
+            <p>{props.eventData.date}</p>
             <Link to={`/EventsList/${props.event.id}`}>More Info
             </Link>
         </div>

@@ -41,13 +41,15 @@ class EventsShow extends Component {
             if(this.state.eventApiDataLoaded) {
          return (
              <div className="eventinside">
-            <h1>{this.state.eventData.title}</h1>
-            <h3>{this.state.eventData.address}</h3>
-            <p>{this.state.eventData.description} </p>
-            <Link to={`/edit/${this.props.match.params.id}`}>Edit Event
-            </Link>
-            <span className="delete" onClick={this.deleteEvent}>Delete Event</span>
-            {this.state.fireRedirect
+              <h4>{this.state.eventData.title}</h4>
+              <h5>{this.state.eventData.address}</h5>
+              <p>{this.state.eventData.date}</p>
+              <p>{this.state.eventData.starttime}</p>
+              <p>{this.state.eventData.description} </p>
+              <Link to={`/edit/${this.props.match.params.id}`}>Edit Event
+              </Link>
+              <span className="delete" onClick={this.deleteEvent}>Delete Event</span>
+              {this.state.fireRedirect
                 ? <Redirect push to="/EventsList" />
                 : ''}
             </div>

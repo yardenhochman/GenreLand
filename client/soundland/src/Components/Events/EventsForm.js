@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+import Footer from '../Footer'
+
 class EventsAdd extends Component {
     constructor() {
       super();
@@ -20,6 +22,7 @@ class EventsAdd extends Component {
       }
       componentDidMount(){
         console.log(this.state)
+        console.log('Loaded the component on the events form page')
       }
 
       eventFormChange(event) {
@@ -63,10 +66,13 @@ class EventsAdd extends Component {
          return (
            
           <div>
+            {/* <Header2 />   */}
            <div className="eventsAdd">
+             <h1>Plan a party <u>tonight</u>!</h1>
             <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
+
              <label>
-                 Event Title:
+                 <h5>Title</h5>
                 <input 
                  type="text"
                  placeholder="title"
@@ -75,9 +81,9 @@ class EventsAdd extends Component {
                  value={this.state.title}
                  onChange={(event)=> {this.eventFormChange(event)}}
                  />
-            </label><br/>
+            </label>
             <label>
-                 Event Address:
+                 <h5>Address</h5>
                  <input 
                  type="text"
                  placeholder="Place of Venue"
@@ -86,9 +92,9 @@ class EventsAdd extends Component {
                  value={this.state.address}
                  onChange={(event)=> {this.eventFormChange(event)}}
                  />
-            </label><br/>
+            </label>
             <label>
-                Zip Code:
+                <h5>Zipcode</h5>
                 <input 
                 type="text"
                 placeholder="zip code"
@@ -98,9 +104,9 @@ class EventsAdd extends Component {
                 //value={this.state.zip_code}
                 onChange={this.eventFormChange}
                 />
-            </label><br/>
+            </label>
             <label>
-                Date:
+                <h5>Date</h5>
                 <input 
                 type="date"
                 name="date"
@@ -110,9 +116,9 @@ class EventsAdd extends Component {
                 //value={this.state.event_date}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
-            </label><br/>
+            </label>
             <label>
-                Start Time:
+                <h5>Time</h5>
                 <input type="time"
                 name="time" 
                 //pattern="[0-9]{2}:[0-9]{2}" //https://stackoverflow.com/questions/19670943/html-regex-pattern-first-digit-1-9-second-digit-0-9
@@ -120,19 +126,38 @@ class EventsAdd extends Component {
                 //value={this.state.event_time}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
-            </label><br/>
+            </label>
             <label>
-                Genre Type:
-                <input 
-                type="text"
-                placeholder="genre"
-                name="genre"
-                value={this.state.genre}
-                onChange={(event)=> {this.eventFormChange(event)}}
-                />
-            </label><br/>
+                <h5>Genre</h5>
+                <select className="event-form">
+                <option value="" disabled selected>SELECT A GENRE</option>
+                <option value="1">Rock</option>
+                <option value="2">Alternative</option>
+                <option value="3">RnB</option>
+                <option value="4">Hip Hop</option>
+                <option value="5">Pop</option>
+                <option value="6">Country</option>
+                <option value="7">EDM</option>
+                <option value="8">Christian/Gospel</option>
+                <option value="9">Seasonal</option>
+                <option value="10">Jazz</option>
+                <option value="11">Classical</option>
+                <option value="12">Heavy Metal</option>
+                <option value="13">Blues</option>
+                <option value="14">Oldies</option>
+                <option value="15">Folk</option>
+                <option value="16">Soul</option>
+                <option value="17">Punk Rock</option>
+                <option value="18">Grunge</option>
+                <option value="19">Reggae</option>
+                <option value="20">Industrial</option>
+                <option value="21">Opera</option>
+                <option value="22">Bluegrass</option>
+                <option value="23">Disco</option>
+              </select>
+            </label>
             <label>
-                Description of Event:
+                <h5>Description</h5>
                 <input 
                 type="text"
                 placeholder="description"
@@ -140,14 +165,18 @@ class EventsAdd extends Component {
                 value={this.state.description}
                 onChange={(event)=> {this.eventFormChange(event)}}
                 />
-            </label><br/>
-            <input type="submit" value="Submit!"/>
+            </label>
+
+            <input className="submit" type="submit" value="Submit!"/>
+            
             </form>
+
             {this.state.fireRedirect
              ? <Redirect push to={`/Events/List${this.state.newId}`} />
              : ''}
              <Link to={`/Events/List/`}>Back to Event List</Link>
              </div>
+             <Footer /> 
           </div>  
          );
         }
