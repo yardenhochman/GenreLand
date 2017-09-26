@@ -8,34 +8,30 @@ class EventsEdit extends Component {
     constructor() {
         super();
           this.state = {
-              title: '',
-              address: '',
-              event_date: '',
-              event_time: '',
-              genre: '',
-              description: '',
-              zip_code: '',
+              event: {},
               fireRedirect: false,
             };
-          this.eventFormChange = this.eventFormChange.bind(this);
+          this.handleInputChange = this.handleInputChange.bind(this);
           this.eventFormSubmit = this.eventFormSubmit.bind(this);
         }
 
   componentDidMount() {
-    axios.get(`/events/${this.props.match.params.id}`)
-        .then(res => {
-            const eventData = res.data.data;
-            this.setState({ 
-                title: eventData.title,
-                address: eventData.address, //onclick to cancel venue
-                event_date: eventData.event_date,
-                event_time: eventData.event_time, 
-                genre: eventData.genre,
-                description: eventData.description,
-                zip_code: eventData.zip_code,
-              })
-            }).catch(err => console.log('error in event edit mount'));
-           }
+    let id = this.props.id
+    console.log(this.props.params)
+    debugger
+    axios({ 
+        method:'POST',
+        url: `http://localhost:3001/event/${this.props.id}`,
+        data: {id} 
+      })
+      .then(res => {
+        console.log(res)
+        this.setState({
+          event: res.data.data,
+          eventApiDataLoaded: true,
+          })
+        }).catch(err => console.log(err))
+    }
 
   handleInputChange(event){
     const name = event.target.name;
@@ -51,7 +47,7 @@ class EventsEdit extends Component {
     .put(`http://localhost:3001/event/${this.props.match.params.id}`, {
         title: this.state.title,
         address: this.state.address,
-        event_date: this.state.event_date, //date and time separate
+        event_date: this.state.event_date, 
         event_time: this.state.event_time,
         genre: this.state.genre,
         description: this.state.description,
@@ -71,7 +67,7 @@ class EventsEdit extends Component {
    render(){
          return (
           <div>
-           <Header />  
+         
            <div className="eventEdit">
            <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
              <label>
@@ -82,7 +78,7 @@ class EventsEdit extends Component {
                  name="title"
                  required
                  value={this.state.title}
-                 onChange={(event)=> {this.eventFormChange(event)}}
+                 onChange={(event)=> {this.handleInputChange(event)}}
                  />
             </label><br/>
             <label>
@@ -93,7 +89,7 @@ class EventsEdit extends Component {
                  name="address"
                  required
                  value={this.state.address}
-                 onChange={(event)=> {this.eventFormChange(event)}}
+                 onChange={(event)=> {this.handleInputChange(event)}}
                  />
             </label><br/>
             <label>
@@ -105,7 +101,7 @@ class EventsEdit extends Component {
                 pattern="[0-9]{5}"
                 required
                 value={this.state.zip_code}
-                onChange={(event)=> {this.eventFormChange(event)}}
+                onChange={(event)=> {this.handleInputChange(event)}}
                 />
             </label><br/>
             <label>
@@ -115,7 +111,7 @@ class EventsEdit extends Component {
                 name="event_date"
                 required
                 value={this.state.event_date}
-                onChange={(event)=> {this.eventFormChange(event)}}
+                onChange={(event)=> {this.handleInputChange(event)}}
                 />
                 <h5>Start Time</h5>
                 <input type="time"
@@ -123,7 +119,7 @@ class EventsEdit extends Component {
                 pattern="[0-9]{2}:[0-9]{2}"
                 required
                 value={this.state.event_time}
-                onChange={(event)=> {this.eventFormChange(event)}}
+                onChange={(event)=> {this.handleInputChange(event)}}
                 />
             </label><br/>
             <label>
@@ -133,7 +129,7 @@ class EventsEdit extends Component {
                 placeholder="Genre"
                 name="genre"
                 value={this.state.genre}
-                onChange={(event)=> {this.eventFormChange(event)}}
+                onChange={(event)=> {this.handleInputChange(event)}}
                 />
             </label><br/>
             <label>

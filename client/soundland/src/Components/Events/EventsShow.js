@@ -13,46 +13,55 @@ class EventsShow extends Component {
             fireRedirect: false,
           };
         this.deleteEvent = this.deleteEvent.bind(this);
+        this.renderEventOrLoad = this.renderEventOrLoad.bind(this)
       }
 
-      componentDidMount() {
-          axios.get(`http://localhost:3001/show/${this.props.match.params.id}`)
+      componentDidMount() { 
+        let id =this.props.match.params.id
+          axios({
+              method:'POST',
+              url: `http://localhost:3001/event/${this.props.match.params.id}`,
+              data: {id} 
+          })
           .then(res => {
+              console.log(res)
               this.setState({
-                eventApiDataLoaded: true,
                 event: res.data.data,
-                
+                eventApiDataLoaded: true,
                 })
-              }).catch(err => console.log('error in events show mount'));
+              }).catch(err => console.log(err));
             }
 
       deleteEvent(){
-          axios.delete(`/event/${this.props.match.params.id}`)
-              .then(res => {
-                  console.log(res);
-                  this.setState({
-                    fireRedirect: true,  
-                  });
-              }).catch(err => {
-                  console.log('error in delete event');
-              });
-            }
+        let id =this.props.match.params.id
+        axios({
+            method:'DELETE',
+            url: `http://localhost:3001/event/${this.props.match.params.id}`,
+            data: {id} 
+        })
+        .then(() => {
+            this.setState({
+            fireRedirect: true,  
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+    }
 
-        renderEventOrLoad(){
+        renderEventOrLoad(data){
             if(this.state.eventApiDataLoaded) {
-        
-         return (
+            return(
              <div className="eventinside">
-              <h4>{this.state.eventData.title}</h4>
-              <h5>{this.state.eventData.address}</h5>
-              <p>{this.state.eventData.date}</p>
-              <p>{this.state.eventData.starttime}</p>
-              <p>{this.state.eventData.description} </p>
-              <Link to={`/edit/${this.props.match.params.id}`}>Edit Event
+              <h4>{this.state.event.title}</h4>
+              <h5>{this.state.event.address}</h5>
+              <p>{this.state.event.event_date}</p>
+              <p>{this.state.event.event_time}</p>
+              <p>{this.state.event.description} </p>
+              <Link to={`/edit/${this.props.match.params.id}`} params ={{id: this.props.match.params.id}} >Edit Event
               </Link>
-              <span className="delete" onClick={this.deleteEvent}>Delete Event</span>
+              <button className="delete" onClick={this.deleteEvent} >Delete Event</button>
               {this.state.fireRedirect
-                ? <Redirect push to="/EventsList" />
+                ? <Redirect push to="/list" />
                 : ''}
             </div>
             )
@@ -61,7 +70,9 @@ class EventsShow extends Component {
 
         render(){
             return (
-                <div className="eventshow"> {this.renderEventOrLoad()}</div>
+                <div className="eventshow"> 
+                    {this.state.eventApiDataLoaded ? this.renderEventOrLoad() : " "}
+                </div>
             )
           }
         }

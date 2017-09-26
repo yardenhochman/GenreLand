@@ -44,6 +44,8 @@ eventController.findAll = (req, res) =>{
 }
 
 eventController.findOne = (req, res) => {
+    console.log('here')
+    console.log(req.body.id)
     Events.findById(req.body.id)
     .then(rez =>{
         res.json({
