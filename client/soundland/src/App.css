@@ -257,6 +257,40 @@ select.event-form {
   letter-spacing: 2px;
 }
 
+.login {
+  width: 500px;
+  background: #111;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.login-top {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #f1b82d;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.profile-icon {
+  height: 100%;
+  filter: invert(1);
+}
+
+.login-form > form > input {
+  display: block;
+  margin: 10px auto 10px auto;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #333;
+  width: 100%;
+  color: #f1b82d;
+  font-size: 20px;
+}
+
 .App {
   text-align: center;
   height: 100%;

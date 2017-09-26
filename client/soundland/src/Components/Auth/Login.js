@@ -60,7 +60,6 @@ class Login extends Component {
           <img className="profile-icon" alt="radio"
           src="https://d30y9cdsu7xlg0.cloudfront.net/png/898318-200.png"/>
           <h3>Login</h3>
-          <Link to={`/`}>Main Page</Link>
         </div>
 
         <div className="login-form">
@@ -80,7 +79,7 @@ class Login extends Component {
               value={this.state.password_digest}
               onChange={(event)=> {this.handleInputChange(event)}}
             />
-            <input
+            <input className="submit"
               type="submit"
               value="Submit"
             />
@@ -89,7 +88,7 @@ class Login extends Component {
           ? <Redirect push to={`/profile/${this.state.user.data.user.id}`} />
           : ''}
         </div>
-
+        <p><Link to={`/auth/register`}>Don't have an account? Register here!</Link></p>
       </div>
     )
   }

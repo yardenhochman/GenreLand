@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-<<<<<<< HEAD
-=======
-import Header2 from '../Header2';
-import Footer from '../Footer';
->>>>>>> Style event creation form
 import axios from 'axios';
+
+import Footer from '../Footer'
 
 class EventsAdd extends Component {
     constructor() {
@@ -181,11 +178,8 @@ class EventsAdd extends Component {
              <Link to={`/EventsList/`}>Back to Event List</Link>
 
              </div>
-<<<<<<< HEAD
-=======
 
              <Footer /> 
->>>>>>> Style event creation form
           </div>  
          );
         }
