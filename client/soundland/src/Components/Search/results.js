@@ -23,6 +23,8 @@ class Results extends Component {
   }
   DisplayAreaEvents(results, usersChoices) {
     let zipcodes = Object.getOwnPropertyNames(results);
+    if (zipcodes.length === 0)
+      return <h2>No Events yet. <br />Perhaps an opportunity...</h2>
     return zipcodes.map( (zipcode,index) => {
       const key = String(zipcode) + String(' number ' + index)
       

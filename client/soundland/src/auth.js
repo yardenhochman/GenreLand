@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 const initialState = "initial state"
 const rerenderFunction = []
 const update = (newState) => {
@@ -18,7 +20,6 @@ const subscribe = (rerenderFunction) => {
   return () => unsubscribe(rerenderFunction)
 }
 
-const NotFound = () => <h1>404.. This page is not found!</h1>
 class AuthData extends Component {
   componentDidMount() {
     const refresh = this.refresh.bind(this)
