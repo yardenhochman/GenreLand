@@ -19,7 +19,7 @@ function getZips(req, res, next){
                 zip: '11212' //allZip.data.zip_codes[0].zip_code
             },
             {
-                zip: '11207' //allZip.data.zip_codes[1].zip_code   
+                zip: '10233' //allZip.data.zip_codes[1].zip_code   
             },
             {
                 zip: '11213' //allZip.data.zip_codes[2].zip_code
@@ -28,7 +28,7 @@ function getZips(req, res, next){
                 zip: '11233' //allZip.data.zip_codes[3].zip_code
             },
             {
-                zip: '11216' //allZip.data.zip_codes[4].zip_code
+                zip: '33244' //allZip.data.zip_codes[4].zip_code
             }
             ]
         //}

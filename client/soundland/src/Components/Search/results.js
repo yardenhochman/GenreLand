@@ -99,7 +99,8 @@ class Results extends Component {
               address: number.address, 
               createdBy: number.createdby, 
               eventDate: number.event_date, 
-              eventTime: number.event_time}
+              eventTime: number.event_time,
+              count: number.count}
               )
     })
       

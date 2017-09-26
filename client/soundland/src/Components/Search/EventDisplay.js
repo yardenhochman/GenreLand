@@ -11,7 +11,12 @@ const EventDisplay = (props) => {
           {eventList.map( (event,index) => {
             return (
               <li className={"list-group-item " + !(userLocation)?"markGenre":''} key = {String(event.title)+String(index)}>
-                {event.title +'   ' + event.description + ' and ' + 5 + 'participants'}
+                {event.title}<br />
+                Details: {event.description}<br />
+                Venue: {event.address}<br />
+                Date: {event.eventDate}<br />
+                Time: {event.eventTime}<br />
+                Total Attending: {event.count}
               </li>
             )
           })}
