@@ -41,20 +41,24 @@ class Profile extends Component {
         })
     }
 
-/*     renderUserEvents(data){
-        console.log(data)
-        let events = [];
-        data.map((event, index) =>{
-            events.push(
-                <EventItem
-                deleteEvent={this.deleteEvent}
-                key={event.id}
-                eventId={event.id}
-                updateSubmit={this.updateEvent}
-                />
-            );
+    renderUserEvents(data){
+        return data.map((event, index) =>{
+            return(
+                <div>
+                    <h3 key={`${index}`}>
+                        {event.title}
+                    </h3>
+                    <p>{event.address}</p>
+                    <p>{event.event_date}</p>
+                    <p>{event.event_time}</p>
+                    <p>{event.genre}</p>
+                    <p>{event.description}</p>
+                    <p>Created by: {event.createdby}</p>
+                    <p>{event.zip_code}</p>
+             </div>
+            )
         })
-    } */
+    }
 
     renderUserAttendingEvents(data){
         return data.map((event, index) =>{
@@ -85,7 +89,7 @@ class Profile extends Component {
                     Your created events
                     </h2>
                     {this.state.propsLoaded ? this.userEventData() : " "}
-                    
+                    {this.renderUserEvents(this.state.userEvents)}
                     <h2>
                     Your attending events
                     </h2>
@@ -97,19 +101,3 @@ class Profile extends Component {
 }
 export default Profile;
 
-            //create a component for that event with delete edit features
-            
-
-            /* return(
-                <div>
-                    <h3 key={`${index}`}>
-                        {event.title}
-                    </h3>
-                    <p>{event.address}</p>
-                    <p>{event.event_date}</p>
-                    <p>{event.event_time}</p>
-                    <p>{event.genre}</p>
-                    <p>{event.description}</p>
-                    <p>{event.zip_code}</p>
-                </div>
-            ) */
