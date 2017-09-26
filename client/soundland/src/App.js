@@ -25,8 +25,7 @@ import Events from     './Components/Events/Events';
 
 //set up according to https://medium.freecodecamp.org/beginner-s-guide-to-react-router-53094349669
 const NotFound = () => <h1>404.. This page is not found!</h1>
-let userLogged = false;
-const PageLayout = ({ children }) => <div>{userLogged?<Header2 />:<Header />}{children}</div>
+
 
   //state: false check for auth: if true set state: true
 class App extends Component {
@@ -38,38 +37,43 @@ class App extends Component {
     }
     // this.loginAppSuccess = this.loginAppSuccess.bind(this)
     this.userDataForState = this.userDataForState.bind(this)
+    this.PageLayout = this.PageLayout.bind(this)
   }
 
   // loginAppSuccess(data){
-    
-
+  PageLayout({ children }) {
+    return <div>{this.state.loggedIn?<Header2 user={this.state.user}/>:<Header user={this.state.user}/>}{children}</div>
+  }
   userDataForState(res){
       this.setState({
         user: res.data.user,
         loggedIn: true,
     });
+    } else{
+    //event.target.reset();
+    alert('Incorrect username or password!')
+    }
+
   }
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Route        path="/"                   component={PageLayout} />
-            <Route exact path="/"                  component={Search} />
-            <Route      path="/about"              component={About} />
-            <Route      path="/venues"             component={Venues} />
-    
-            <Route      exact path="/auth/login"              render={ props => <Login userDataForState={this.userDataForState} /> } />
-            <Route      exact path="/auth/register"           component={Register} />
-            <Route      exact path="/profile/:id"              render={ props => <User user={this.state.user} />} />
-          <Route        path="/Events" />
-            <Route exact path="/Events"                            component={Events} />
 
-            <Route      path="/Form"               component={EventsAdd} />
-            <Route      path="/Edit/:id"           component={EventsEdit} />
-            <Route      path="/Show/:id"           component={EventsShow} />
-            <Route      path="/List"               component={EventsList} />
-          <Route path='*'                          render={Footer} />
+          <Route path="/" component={this.PageLayout} />
+            <Route exact path="/" render={ props => <Search user={this.state.user} /> } />
+            <Route path="/about" component={About} />
+            <Route exact path="/auth/login" render={ props => <Login userDataForState={this.userDataForState} /> } />
+            <Route exact path="/auth/register" render={ props => <Register user={this.state.user} /> } />
+            <Route exact path="/profile/:id" component={User} />
+          <Route path="/Events" />
+            <Route exact path="/Events" component={Events} />
+            <Route exact path="/Events/Form" render = { props => <EventsAdd user={this.state.user} userDataForState={this.userDataForState} /> } />
+            <Route path="/Edit/:id" render = { props => <EventsEdit userDataForState={this.userDataForState} /> } />
+            <Route path="/Show/:id" component={EventsShow} />
+            <Route path="/List" component={EventsList} />
+          <Route path='*' render={Footer} />
         </div>
       </Router>
     );
@@ -77,3 +81,6 @@ class App extends Component {
 }
 
 export default App;
+
+/* 
+<Route path="/venues" component={Venues} /> */

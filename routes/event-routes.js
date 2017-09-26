@@ -21,7 +21,7 @@ take the event ID, and display all information relevant to it.
 eventRoutes.get('/:id', eventController.findOne);
 
 //create an event for the current user. 
-eventRoutes.post('/:id', eventController.create);
+eventRoutes.post('/', eventController.create);
 
 //next two methods will be related to the user's profile
 //delete an event

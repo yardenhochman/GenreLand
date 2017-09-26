@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Header from '../Header2';
-import Footer from '../Footer';
 import axios from 'axios';
 
-class EventsForm extends Component {
+class EventsAdd extends Component {
     constructor() {
       super();
         this.state = {
@@ -47,12 +45,12 @@ class EventsForm extends Component {
               event_time: this.state.time,
               genre: this.state.genre,
               description: this.state.description,
+              createdby: this.props.user.id
           }
           console.log(data);
           axios({
-            
               method: 'POST',
-              url: 'http://localhost:3001/event',
+              url: `http://localhost:3001/event`,
               data: data
             })
             .then(res => {
@@ -69,7 +67,6 @@ class EventsForm extends Component {
          return (
            
           <div>
-            <Header />  
            <div className="eventsAdd">
             <form onSubmit={(event)=> {this.eventFormSubmit(event)}}>
              <label>
@@ -155,10 +152,9 @@ class EventsForm extends Component {
              : ''}
              <Link to={`/EventsList/`}>Back to Event List</Link>
              </div>
-             <Footer /> 
           </div>  
          );
         }
       }
 
-export default EventsForm;
+export default EventsAdd;
