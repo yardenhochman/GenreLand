@@ -40,17 +40,19 @@ class App extends Component {
     this.userDataForState = this.userDataForState.bind(this)
     this.PageLayout = this.PageLayout.bind(this)
     this.loggedOut = this.loggedOut.bind(this)
-  
+
   }
-    loggedOut(){
-      this.setState({
-        user: {},
-        loggedIn: false,
-      })
-    }
+  loggedOut(){
+    this.setState({
+      user: {},
+      loggedIn: false,
+    })
+  }
   // loginAppSuccess(data){
   PageLayout({ children }) {
+
     return <div>{this.state.loggedIn?<Header2 user={this.state.user} loggedOut={this.loggedOut}/>:<Header user={this.state.user}/>}{children}</div>
+
   }
   userDataForState(res){
       this.setState({
@@ -58,7 +60,6 @@ class App extends Component {
         loggedIn: true,
     });
   }
-
 
 
   render() {

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+
 import { Link , Redirect} from 'react-router-dom';
+
 import axios from 'axios';
 
 class Header2 extends Component {
@@ -34,6 +36,19 @@ class Header2 extends Component {
       })
   }
 
+  logOut() {
+    axios({
+      method: 'GET',
+      url: 'http://localhost:3001/auth/logout'
+    })
+    .then ((res)=>{
+      if (res.data.loggedOut) {
+        this.props.loggedOut();
+        <Redirect push to={'/'} />
+      }
+    })
+  }
+
   renderAccountLink(){
     return(
       <Link to={`/profile/${this.props.user.id}`} className="nav-button">Account </Link> 
@@ -53,6 +68,7 @@ class Header2 extends Component {
           {this.state.dataLoaded ? this.renderAccountLink() : " " }
           <Link onClick={this.logOut} to={"/"} className="nav-button">Log Out</Link>
           </div>
+
 
       </div>
     )
