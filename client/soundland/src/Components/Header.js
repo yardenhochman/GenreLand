@@ -13,6 +13,7 @@ const Header = () => {
         <div className="nav-buttons-align">
         <Link to={"/auth/login"} className="nav-button">Login </Link>
         <Link to={"/auth/register"} className="nav-button">Register</Link>
+        <Link to={"/list"} className="nav-button">Events</Link>
         </div>
 
       </div>
