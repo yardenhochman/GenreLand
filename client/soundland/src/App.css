@@ -155,7 +155,7 @@ li {
   padding: 35px;
 }
 
-.results > h1 {
+.GenreResults > h1 {
 	transform: rotate(270deg);
   transform-origin: 100px 50px;
   float: left;
@@ -167,7 +167,7 @@ li {
   position: relative;
 }
 
-.results {
+.GenreResults {
   max-width: 680px;
   margin: 0 auto;
   background: linear-gradient(to left, #f1b82d .1%,#333 0%);
@@ -175,6 +175,7 @@ li {
   align-items: center;
   justify-content: space-between;
   text-align: right;
+  margin-top: 25px;
 }
 
 /* Event creation styling */
@@ -289,6 +290,42 @@ select.event-form {
   width: 100%;
   color: #f1b82d;
   font-size: 20px;
+}
+
+.events-profile {
+  display: flex;
+  justify-content: space-around;
+}
+
+.event {
+  background-color: #444;
+  border-top: 2px solid #f1b82d;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+h3 {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 100;
+  letter-spacing: 3px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.event > p {
+  color: #cccccc;
+  text-align: right;
+  margin: 0;
+}
+
+.welcome {
+  text-transform: uppercase;
+}
+
+h2 {
+  text-transform: uppercase;
 }
 
 .App {

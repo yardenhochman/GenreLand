@@ -117,7 +117,7 @@ resultsParser(results, usersChoices) {
     results = this.sort(results.data)
     return (
       <div className="result-box">
-        <h3><Link to={`/Events/Form`}>Post an Event! </Link></h3>
+        <h5><Link to={`/Events/Form`}>Post an Event! </Link></h5>
         <button onClick={this.eventsView}>{this.state.events?"Genres List":"Local Scene"}</button>
         {this.state.events?this.DisplayAreaEvents(eventList, usersChoices):this.AreaGenreDisplay(results, usersChoices)}
         {/* {this.displayAreasMap(results, usersChoices)} */}
