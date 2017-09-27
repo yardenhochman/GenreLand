@@ -34,7 +34,13 @@ function getZips(req, res, next){
     console.log('====>', allZips)
        res.locals.allZips = allZips
       next()
+<<<<<<< HEAD
     }).catch( err => console.log(err) )
  }
+=======
+//     }).catch( err => console.log(err) )
+ })
+}
+>>>>>>> c37797c81a2a7f73f64c6323f95f34da197e6771
 
 module.exports = {getZips};
