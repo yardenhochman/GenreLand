@@ -77,7 +77,7 @@ Events.update = (data, id) => {
     genre = $5,
     description = $6,
     createdby = $7,
-    zip_code = $8
+    zip_code = $8,
     WHERE id = $9 `,
     [data.title, data.address, data.event_date, data.event_time, data.genre, data.description, data.createdby, data.zip_code, id])
 }

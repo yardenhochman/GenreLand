@@ -57,6 +57,10 @@ app.use('/results', resultsRoutes)
 const authRoutes = require('./routes/auth-routes');
 app.use('/auth', authRoutes);
 
+app.get('/favicon.ico', function(req, res) {
+  res.status(204);
+});
+
 app.get('*', (req, res) => {
     res.send('404error');
   });
