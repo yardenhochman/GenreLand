@@ -1,4 +1,4 @@
-\c sound_land;
+
 
 CREATE TABLE IF NOT EXISTS music (
   id SERIAL PRIMARY KEY,

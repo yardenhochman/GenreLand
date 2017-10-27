@@ -1,4 +1,4 @@
-\c sound_land
+
 
 INSERT INTO music2location (music_id, location_id) VALUES
   (1, 1),

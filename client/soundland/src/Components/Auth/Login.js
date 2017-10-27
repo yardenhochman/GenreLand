@@ -35,6 +35,7 @@ class Login extends Component {
         data: data
       })
       .then(res => {
+        console.log(res)
         this.props.userDataForState(res);
         if(res.data.auth){
           this.setState({

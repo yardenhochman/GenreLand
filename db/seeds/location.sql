@@ -1,4 +1,4 @@
-\c sound_land
+
 
 INSERT INTO location (zipcode) VALUES
   ('11214'),

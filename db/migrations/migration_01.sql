@@ -1,4 +1,4 @@
-\c sound_land;
+
 
 DROP TABLE users;
 

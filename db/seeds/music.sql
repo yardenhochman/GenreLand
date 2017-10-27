@@ -1,4 +1,4 @@
-\c sound_land
+
 
 INSERT INTO music (genre) VALUES
   ('Rock'),
