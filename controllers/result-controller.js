@@ -7,7 +7,6 @@ resultsController.queryResults = (req, res) =>{
     console.log('queryResults reached');
     Music2locations.results(res.locals.allZips)
     .then( results => {
-        // console.log('checking in the results controller'+res.locals.events[0][0])
         console.log('this was the results controller')
         res.json({
             message: 'ok',
@@ -28,13 +27,10 @@ resultsController.insertLocation = (req, res, next) => {
     console.log(req.body)
     Location.insert(req.body.zipcode,req.body.description)
     .then( data => {
-        //let location_id = data.location_id;
         res.locals.id = data.id;
         next();
     })
-    .catch( err =>{
-        console.log(err)
-    })
+    .catch( err => console.log(err) )
 }
 
 resultsController.insertMusic2Location = (req, res, next) => {
@@ -45,12 +41,8 @@ resultsController.insertMusic2Location = (req, res, next) => {
         user_id: req.body.id
     }
     Music2locations.insert(data)
-    .then(() => {
-        next();
-    })
-    .catch(err => {
-        console.log(err)
-    })
+    .then( () => next() )
+    .catch(err => console.log(err) )
 }
 
 module.exports = resultsController;
