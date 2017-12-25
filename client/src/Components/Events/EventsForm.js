@@ -16,12 +16,12 @@ class EventsAdd extends Component {
     genre: '',
     description: '',
     zip_code: '',
-    fireRedirect: false,
+    fireRedirect: false
   };
   componentDidMount = () => {
     console.log(this.state);
     console.log(
-      'Loaded the component on the events form page',
+      'Loaded the component on the events form page'
     );
   };
 
@@ -43,8 +43,17 @@ class EventsAdd extends Component {
   };
 
   eventFormSubmit = event => {
+    console.log();
     event.preventDefault();
-    const { title, address, zip_code, date, time, genre, description} = this.state;
+    const {
+      title,
+      address,
+      zip_code,
+      date,
+      time,
+      genre,
+      description
+    } = this.state;
     let info = {
       title,
       address: address,
@@ -53,29 +62,34 @@ class EventsAdd extends Component {
       event_time: time,
       genre: genre,
       description: description,
-      createdby: this.props.user.id || '0',
+      createdby: this.props.user.id || '0'
     };
     console.log(info);
     axios({
       method: 'POST',
       url: `${SERVER}/event`,
-      data: { info },
+      data: { info }
     })
       .then(res => {
         console.log(res);
         this.setState({
-          fireRedirect: true,
+          fireRedirect: true
         });
       })
       .catch(err =>
-        console.log('error in eventsform'),
+        console.log('error in eventsform')
       );
     event.target.reset();
   };
   render = () => {
+    console.log(this.props.loggedIn);
     return (
       <div>
-        {/* <Header2 />   */}
+        {this.props.loggedIn ? (
+          <Redirect push to={'/auth/login'} />
+        ) : (
+          ''
+        )}
         <div className="eventsAdd">
           <h1>
             Plan a party <u>tonight</u>!

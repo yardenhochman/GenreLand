@@ -63,8 +63,7 @@ class App extends Component {
       loggedIn: true,
     });
   };
-  render = () => {
-    return (
+  render = () => (
       <Router>
         <div className="App">
           <Route
@@ -125,6 +124,7 @@ class App extends Component {
             render={props => (
               <EventsForm
                 user={this.state.user}
+                loggedIn={this.state.loggedIn}
                 userDataForState={
                   this.userDataForState
                 }
@@ -157,7 +157,6 @@ class App extends Component {
         </div>
       </Router>
     );
-  };
 }
 
 export default App;
