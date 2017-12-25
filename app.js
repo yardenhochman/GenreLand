@@ -20,10 +20,7 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.static('client/build'));
 app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({ extended: true }),
-);
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(

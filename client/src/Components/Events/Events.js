@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 //connecting to react routes
 import { Link } from 'react-router-dom';
-class Events extends Component {
 
-    componentDidMount(){
-        console.log(this.props.aEvent)
+
+class Events extends Component {
+    componentDidMount = () => {
+        console.log("Events.js",this.props.Event)
     }
-    render(){
+    render = () => {
     return (
         <div className="eventshowlist">
             

@@ -2,73 +2,69 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Results from './results';
 
-const SERVER = `http://localhost:3001`;
+/* const SERVER = `http://localhost:3001`;
+ */ const SERVER = ``;
 
 class Search extends Component {
-  constructor() {
-    super();
-    this.state = {
-      location: '',
-      music: '0',
-      waiting: false,
-      results: null,
-      events: null,
-    };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleGenreChoice = this.handleGenreChoice.bind(
-      this,
-    );
-    this.handleZipcodeInput = this.handleZipcodeInput.bind(
-      this,
-    );
-  }
+  state = {
+    location: '',
+    music: '0',
+    waiting: false,
+    results: null,
+    events: null,
+  };
 
-  handleZipcodeInput(event) {
+  handleZipcodeInput = event => {
     event.preventDefault();
     let input = Number(event.target.value);
     if (isNaN(input)) return;
     this.setState({ location: input });
-  }
-  handleGenreChoice(event) {
+  };
+  handleGenreChoice = event => {
     event.preventDefault();
     this.setState({ music: event.target.value });
-  }
+  };
   automatic() {
     //isn't working right now. see legacy components for the code
     return;
   }
-  onSubmit() {
-    if (
-      this.state.location === null ||
-      this.state.music === '0'
-    )
+  onSubmit = () => {
+    const { location, music } = this.state;
+    if (location === null || music === '0')
       return;
     this.setState({ waiting: true });
     let data = {
-      zipcode: this.state.location,
-      genre: Number(this.state.music),
+      zipcode: location,
+      genre: Number(music),
       description: ' ',
       id: this.props.user.id || 0,
     };
+    console.log(
+      'onSubmit(Search), data before post:',
+      data,
+    );
     axios({
       method: 'POST',
       url: `${SERVER}/results`,
       data,
     })
       .then(res => {
-        console.log(res.data);
+        console.log(
+          'onSubmit(Search), data after post:',
+          res.data,
+        );
         this.setState({
           results: res.data,
           events: res.data.events,
           waiting: false,
         });
         console.log(
+          'this.state.events:',
           this.state.events,
-          'This is supposed to log the this.state.events',
         );
       })
       .catch(err => console.log(err));
-  }
+  };
   render() {
     return (
       <div>
@@ -140,6 +136,6 @@ class Search extends Component {
       </div>
     );
   }
-};
+}
 
 export default Search;

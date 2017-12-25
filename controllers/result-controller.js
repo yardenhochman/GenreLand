@@ -4,10 +4,10 @@ const Location = require('../models/location')
 const resultsController = {};
 
 resultsController.queryResults = (req, res) =>{
-    console.log('queryResults reached');
+    console.log('queryResults(results-Controller)');
     Music2locations.results(res.locals.allZips)
     .then( results => {
-        console.log('this was the results controller')
+        console.log(results,'this was the results controller')
         res.json({
             message: 'ok',
             data: results,
