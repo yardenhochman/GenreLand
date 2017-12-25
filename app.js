@@ -34,14 +34,14 @@ app.use(
   }),
 );
 app.use(flash());
-app.use(
+/* app.use(
   session({
     key: process.env.SECRET_KEY,
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
   }),
-);
+); */
 app.use(passport.initialize());
 app.use(passport.session());
 
