@@ -1,6 +1,6 @@
 const express = require('express');
 const logger = require('morgan');
-const path = require ('path');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const methodOverride = require('method-override');
@@ -15,24 +15,33 @@ app.use(cors());
 
 require('dotenv').config();
 
-app.use(cors())
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.static('client/build'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(
+  bodyParser.urlencoded({ extended: true }),
+);
 
 app.use(methodOverride('_method'));
 app.use(cookieParser());
+app.use(
+  connect.cookieSession({
+    secret: process.env.SECRET_KEY,
+    cookie: { maxAge: 60 * 60 * 1000 },
+  }),
+);
 app.use(flash());
-app.use(session({
-  key: process.env.SECRET_KEY,
-  secret: process.env.SECRET_KEY,
-  resave: false,
-  saveUninitialized: true,
-}));
+app.use(
+  session({
+    key: process.env.SECRET_KEY,
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+  }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
@@ -43,16 +52,14 @@ app.listen(PORT, () => {
 //     res.send('hello world')
 // });
 
-
-
- const eventRoutes = require('./routes/event-routes');
- app.use('/event', eventRoutes);
+const eventRoutes = require('./routes/event-routes');
+app.use('/event', eventRoutes);
 
 const profileRoutes = require('./routes/profile-routes');
 app.use('/profile', profileRoutes);
 
 const resultsRoutes = require('./routes/results-routes');
-app.use('/results', resultsRoutes)
+app.use('/results', resultsRoutes);
 
 const authRoutes = require('./routes/auth-routes');
 app.use('/auth', authRoutes);
@@ -62,5 +69,5 @@ app.get('/favicon.ico', function(req, res) {
 });
 
 app.get('*', (req, res) => {
-    res.send('404error');
-  });
+  res.send('404error');
+});
