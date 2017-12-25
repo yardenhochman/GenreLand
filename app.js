@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
@@ -26,9 +27,10 @@ app.use(
 app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(
-  connect.cookieSession({
-    secret: process.env.SECRET_KEY,
-    cookie: { maxAge: 60 * 60 * 1000 },
+  cookieSession({
+    name: 'session',
+    keys: [process.env.SECRET_KEY],
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
   }),
 );
 app.use(flash());
